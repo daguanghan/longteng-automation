@@ -1,0 +1,1052 @@
+[
+ {
+  "code": "A01",
+  "kind": "video",
+  "source": "视频资料/全自动电吹风整流桥生产设备.mp4",
+  "line": "A",
+  "line_zh": "电吹风零部件",
+  "title": {
+   "zh": "电吹风整流桥全自动生产设备",
+   "en": "Automatic rectifier-bridge production machine for hair dryers",
+   "vi": "Máy sản xuất cầu chỉnh lưu tự động cho máy sấy tóc"
+  },
+  "site_filter": "dryer",
+  "catalogue_index": 3,
+  "featured": true,
+  "hero": true,
+  "on_website": true,
+  "social_kit": true,
+  "duration_s": 70.9,
+  "width": 1920,
+  "height": 1080,
+  "orientation": "landscape",
+  "web_clip": "assets/video/A01.mp4",
+  "web_poster": "assets/video/A01.jpg",
+  "social": {
+   "16x9": "07_自媒体素材/A01/A01_16x9.mp4",
+   "9x16": "07_自媒体素材/A01/A01_9x16.mp4",
+   "cover": "07_自媒体素材/A01/A01_cover.jpg"
+  },
+  "note": ""
+ },
+ {
+  "code": "A02",
+  "kind": "video",
+  "source": "视频资料/全自动电吹风马达架（整流翼）生产设备.mp4",
+  "line": "A",
+  "line_zh": "电吹风零部件",
+  "title": {
+   "zh": "电吹风马达架（整流翼）全自动生产设备",
+   "en": "Automatic motor-bracket (air-guide vane) assembly machine for hair dryers",
+   "vi": "Máy lắp ráp tự động giá đỡ động cơ (cánh dẫn gió) máy sấy tóc"
+  },
+  "site_filter": "dryer",
+  "catalogue_index": 4,
+  "featured": false,
+  "hero": false,
+  "on_website": true,
+  "social_kit": true,
+  "duration_s": 179.9,
+  "width": 640,
+  "height": 368,
+  "orientation": "landscape",
+  "web_clip": "assets/video/A02.mp4",
+  "web_poster": "assets/video/A02.jpg",
+  "social": {
+   "16x9": "07_自媒体素材/A02/A02_16x9.mp4",
+   "9x16": "07_自媒体素材/A02/A02_9x16.mp4",
+   "cover": "07_自媒体素材/A02/A02_cover.jpg"
+  },
+  "note": "客户现场，含操作员"
+ },
+ {
+  "code": "A03",
+  "kind": "video",
+  "source": "视频资料/分压电阻（线圈电阻）引线自动裁切铆接设备（带检测）.mp4",
+  "line": "A",
+  "line_zh": "电吹风零部件",
+  "title": {
+   "zh": "分压电阻引线自动裁切铆接设备（带检测）",
+   "en": "Divider-resistor lead cutting and riveting machine with inline inspection",
+   "vi": "Máy cắt và tán chân điện trở phân áp tự động, có kiểm tra"
+  },
+  "site_filter": "dryer",
+  "catalogue_index": 1,
+  "featured": true,
+  "hero": false,
+  "on_website": true,
+  "social_kit": true,
+  "duration_s": 116.8,
+  "width": 1280,
+  "height": 720,
+  "orientation": "landscape",
+  "web_clip": "assets/video/A03.mp4",
+  "web_poster": "assets/video/A03.jpg",
+  "social": {
+   "16x9": "07_自媒体素材/A03/A03_16x9.mp4",
+   "9x16": "07_自媒体素材/A03/A03_9x16.mp4",
+   "cover": "07_自媒体素材/A03/A03_cover.jpg"
+  },
+  "note": ""
+ },
+ {
+  "code": "A04",
+  "kind": "video",
+  "source": "视频资料/电吹风发热架鸡眼自动铆接设备.mp4",
+  "line": "A",
+  "line_zh": "电吹风零部件",
+  "title": {
+   "zh": "电吹风发热架鸡眼自动铆接设备",
+   "en": "Heater-frame eyelet auto-riveting machine for hair dryers",
+   "vi": "Máy tán khoen tự động cho khung nhiệt máy sấy tóc"
+  },
+  "site_filter": "dryer",
+  "catalogue_index": 0,
+  "featured": true,
+  "hero": true,
+  "on_website": true,
+  "social_kit": true,
+  "duration_s": 126.8,
+  "width": 1280,
+  "height": 720,
+  "orientation": "landscape",
+  "web_clip": "assets/video/A04.mp4",
+  "web_poster": "assets/video/A04.jpg",
+  "social": {
+   "16x9": "07_自媒体素材/A04/A04_16x9.mp4",
+   "9x16": "07_自媒体素材/A04/A04_9x16.mp4",
+   "cover": "07_自媒体素材/A04/A04_cover.jpg"
+  },
+  "note": ""
+ },
+ {
+  "code": "A05",
+  "kind": "video",
+  "source": "视频资料/电阻胶套2.mp4",
+  "line": "A",
+  "line_zh": "电吹风零部件",
+  "title": {
+   "zh": "电阻胶套自动套入设备",
+   "en": "Automatic resistor-sleeve insertion machine",
+   "vi": "Máy lồng ống bọc điện trở tự động"
+  },
+  "site_filter": "elec",
+  "catalogue_index": 27,
+  "featured": false,
+  "hero": false,
+  "on_website": true,
+  "social_kit": true,
+  "duration_s": 104.0,
+  "width": 1920,
+  "height": 1080,
+  "orientation": "landscape",
+  "web_clip": "assets/video/A05.mp4",
+  "web_poster": "assets/video/A05.jpg",
+  "social": {
+   "16x9": "07_自媒体素材/A05/A05_16x9.mp4",
+   "9x16": "07_自媒体素材/A05/A05_9x16.mp4",
+   "cover": "07_自媒体素材/A05/A05_cover.jpg"
+  },
+  "note": ""
+ },
+ {
+  "code": "A06",
+  "kind": "video",
+  "source": "视频资料/咔塔环涂油机.mp4",
+  "line": "A",
+  "line_zh": "电吹风零部件",
+  "title": {
+   "zh": "折叠手柄咔嗒环定量涂油机",
+   "en": "Click-ring metered greasing machine for folding handles",
+   "vi": "Máy tra dầu định lượng vòng khớp tay cầm gập"
+  },
+  "site_filter": "dryer",
+  "catalogue_index": 6,
+  "featured": false,
+  "hero": false,
+  "on_website": true,
+  "social_kit": true,
+  "duration_s": 140.3,
+  "width": 1920,
+  "height": 1080,
+  "orientation": "landscape",
+  "web_clip": "assets/video/A06.mp4",
+  "web_poster": "assets/video/A06.jpg",
+  "social": {
+   "16x9": "07_自媒体素材/A06/A06_16x9.mp4",
+   "9x16": "07_自媒体素材/A06/A06_9x16.mp4",
+   "cover": "07_自媒体素材/A06/A06_cover.jpg"
+  },
+  "note": ""
+ },
+ {
+  "code": "A07",
+  "kind": "video",
+  "source": "视频资料/电吹风性能检测设备.mp4",
+  "line": "A",
+  "line_zh": "电吹风零部件",
+  "title": {
+   "zh": "电吹风性能检测设备",
+   "en": "Hair-dryer performance test station",
+   "vi": "Trạm kiểm tra hiệu năng máy sấy tóc"
+  },
+  "site_filter": "test",
+  "catalogue_index": null,
+  "featured": true,
+  "hero": false,
+  "on_website": true,
+  "social_kit": true,
+  "duration_s": 26.1,
+  "width": 1920,
+  "height": 1080,
+  "orientation": "landscape",
+  "web_clip": "assets/video/A07.mp4",
+  "web_poster": "assets/video/A07.jpg",
+  "social": {
+   "16x9": "07_自媒体素材/A07/A07_16x9.mp4",
+   "9x16": "07_自媒体素材/A07/A07_9x16.mp4",
+   "cover": "07_自媒体素材/A07/A07_cover.jpg"
+  },
+  "note": "对应实用新型 CN221571564U"
+ },
+ {
+  "code": "B01",
+  "kind": "video",
+  "source": "视频资料/电动牙刷生产线调试视频.mp4",
+  "line": "B",
+  "line_zh": "个护与口腔护理",
+  "title": {
+   "zh": "电动牙刷组装检测生产线（调试）",
+   "en": "Electric-toothbrush assembly and test line",
+   "vi": "Dây chuyền lắp ráp và kiểm tra bàn chải điện"
+  },
+  "site_filter": "care",
+  "catalogue_index": 17,
+  "featured": true,
+  "hero": false,
+  "on_website": true,
+  "social_kit": true,
+  "duration_s": 71.6,
+  "width": 1920,
+  "height": 1080,
+  "orientation": "landscape",
+  "web_clip": "assets/video/B01.mp4",
+  "web_poster": "assets/video/B01.jpg",
+  "social": {
+   "16x9": "07_自媒体素材/B01/B01_16x9.mp4",
+   "9x16": "07_自媒体素材/B01/B01_9x16.mp4",
+   "cover": "07_自媒体素材/B01/B01_cover.jpg"
+  },
+  "note": ""
+ },
+ {
+  "code": "B02",
+  "kind": "video",
+  "source": "视频资料/GN30马达继手压入机.mp4",
+  "line": "B",
+  "line_zh": "个护与口腔护理",
+  "title": {
+   "zh": "GN30 马达联轴件压入机",
+   "en": "GN30 motor-coupling press-fit machine",
+   "vi": "Máy ép khớp nối động cơ GN30"
+  },
+  "site_filter": "care",
+  "catalogue_index": null,
+  "featured": false,
+  "hero": false,
+  "on_website": true,
+  "social_kit": true,
+  "duration_s": 112.8,
+  "width": 1280,
+  "height": 720,
+  "orientation": "landscape",
+  "web_clip": "assets/video/B02.mp4",
+  "web_poster": "assets/video/B02.jpg",
+  "social": {
+   "16x9": "07_自媒体素材/B02/B02_16x9.mp4",
+   "9x16": "07_自媒体素材/B02/B02_9x16.mp4",
+   "cover": "07_自媒体素材/B02/B02_cover.jpg"
+  },
+  "note": ""
+ },
+ {
+  "code": "B03",
+  "kind": "video",
+  "source": "视频资料/牙箱煲机（老化）检测设备.mp4",
+  "line": "B",
+  "line_zh": "个护与口腔护理",
+  "title": {
+   "zh": "牙箱煲机（老化）检测设备",
+   "en": "Gearbox run-in (burn-in) test rig",
+   "vi": "Giàn chạy rà (lão hóa) hộp số"
+  },
+  "site_filter": "test",
+  "catalogue_index": null,
+  "featured": false,
+  "hero": false,
+  "on_website": true,
+  "social_kit": true,
+  "duration_s": 105.5,
+  "width": 544,
+  "height": 960,
+  "orientation": "portrait",
+  "web_clip": "assets/video/B03.mp4",
+  "web_poster": "assets/video/B03.jpg",
+  "social": {
+   "16x9": "07_自媒体素材/B03/B03_16x9.mp4",
+   "9x16": "07_自媒体素材/B03/B03_9x16.mp4",
+   "cover": "07_自媒体素材/B03/B03_cover.jpg"
+  },
+  "note": "画面有龙腾标识"
+ },
+ {
+  "code": "B04",
+  "kind": "video",
+  "source": "视频资料/全自动冲牙器喷嘴弯嘴设备.mp4",
+  "line": "B",
+  "line_zh": "个护与口腔护理",
+  "title": {
+   "zh": "冲牙器喷嘴全自动弯嘴设备",
+   "en": "Automatic nozzle-bending machine for oral irrigators",
+   "vi": "Máy uốn đầu phun tự động cho máy tăm nước"
+  },
+  "site_filter": "care",
+  "catalogue_index": null,
+  "featured": true,
+  "hero": false,
+  "on_website": true,
+  "social_kit": true,
+  "duration_s": 137.3,
+  "width": 544,
+  "height": 960,
+  "orientation": "portrait",
+  "web_clip": "assets/video/B04.mp4",
+  "web_poster": "assets/video/B04.jpg",
+  "social": {
+   "16x9": "07_自媒体素材/B04/B04_16x9.mp4",
+   "9x16": "07_自媒体素材/B04/B04_9x16.mp4",
+   "cover": "07_自媒体素材/B04/B04_cover.jpg"
+  },
+  "note": ""
+ },
+ {
+  "code": "B05",
+  "kind": "video",
+  "source": "视频资料/半自动冲牙器喷嘴湾嘴设备.mp4",
+  "line": "B",
+  "line_zh": "个护与口腔护理",
+  "title": {
+   "zh": "冲牙器喷嘴半自动弯嘴设备",
+   "en": "Semi-automatic nozzle-bending machine for oral irrigators",
+   "vi": "Máy uốn đầu phun bán tự động cho máy tăm nước"
+  },
+  "site_filter": "care",
+  "catalogue_index": null,
+  "featured": false,
+  "hero": false,
+  "on_website": true,
+  "social_kit": true,
+  "duration_s": 66.7,
+  "width": 1920,
+  "height": 1080,
+  "orientation": "landscape",
+  "web_clip": "assets/video/B05.mp4",
+  "web_poster": "assets/video/B05.jpg",
+  "social": {
+   "16x9": "07_自媒体素材/B05/B05_16x9.mp4",
+   "9x16": "07_自媒体素材/B05/B05_9x16.mp4",
+   "cover": "07_自媒体素材/B05/B05_cover.jpg"
+  },
+  "note": "含操作员"
+ },
+ {
+  "code": "B06",
+  "kind": "video",
+  "source": "视频资料/冲牙器按钮点胶设备1.mp4",
+  "line": "B",
+  "line_zh": "个护与口腔护理",
+  "title": {
+   "zh": "冲牙器按钮点胶设备",
+   "en": "Button glue-dispensing machine for oral irrigators",
+   "vi": "Máy phân phối keo nút bấm máy tăm nước"
+  },
+  "site_filter": "care",
+  "catalogue_index": null,
+  "featured": false,
+  "hero": false,
+  "on_website": true,
+  "social_kit": true,
+  "duration_s": 35.8,
+  "width": 720,
+  "height": 1280,
+  "orientation": "portrait",
+  "web_clip": "assets/video/B06.mp4",
+  "web_poster": "assets/video/B06.jpg",
+  "social": {
+   "16x9": "07_自媒体素材/B06/B06_16x9.mp4",
+   "9x16": "07_自媒体素材/B06/B06_9x16.mp4",
+   "cover": "07_自媒体素材/B06/B06_cover.jpg"
+  },
+  "note": ""
+ },
+ {
+  "code": "B07",
+  "kind": "video",
+  "source": "视频资料/ES-RL32接点基台A自动组立设备.mp4",
+  "line": "B",
+  "line_zh": "个护与口腔护理",
+  "title": {
+   "zh": "剃须刀接点基台 A 自动组立设备",
+   "en": "Shaver contact-base (A) automatic assembly machine",
+   "vi": "Máy lắp ráp tự động đế tiếp điểm (A) máy cạo râu"
+  },
+  "site_filter": "care",
+  "catalogue_index": 7,
+  "featured": false,
+  "hero": false,
+  "on_website": true,
+  "social_kit": true,
+  "duration_s": 14.5,
+  "width": 640,
+  "height": 368,
+  "orientation": "landscape",
+  "web_clip": "assets/video/B07.mp4",
+  "web_poster": "assets/video/B07.jpg",
+  "social": {
+   "16x9": "07_自媒体素材/B07/B07_16x9.mp4",
+   "9x16": "07_自媒体素材/B07/B07_9x16.mp4",
+   "cover": "07_自媒体素材/B07/B07_cover.jpg"
+  },
+  "note": "原片 640×368，画质低"
+ },
+ {
+  "code": "B08",
+  "kind": "video",
+  "source": "视频资料/自动毛发剪切试验设备.mp4",
+  "line": "B",
+  "line_zh": "个护与口腔护理",
+  "title": {
+   "zh": "自动毛发剪切试验设备",
+   "en": "Automatic hair-cutting test machine for clippers and trimmers",
+   "vi": "Máy thử cắt tóc tự động cho tông đơ và máy tỉa"
+  },
+  "site_filter": "test",
+  "catalogue_index": null,
+  "featured": false,
+  "hero": false,
+  "on_website": true,
+  "social_kit": true,
+  "duration_s": 35.0,
+  "width": 1920,
+  "height": 1080,
+  "orientation": "landscape",
+  "web_clip": "assets/video/B08.mp4",
+  "web_poster": "assets/video/B08.jpg",
+  "social": {
+   "16x9": "07_自媒体素材/B08/B08_16x9.mp4",
+   "9x16": "07_自媒体素材/B08/B08_9x16.mp4",
+   "cover": "07_自媒体素材/B08/B08_cover.jpg"
+  },
+  "note": ""
+ },
+ {
+  "code": "B09",
+  "kind": "video",
+  "source": "视频资料/防水胶圈自动套入设备验收生产跟踪视频.mp4",
+  "line": "B",
+  "line_zh": "个护与口腔护理",
+  "title": {
+   "zh": "防水胶圈自动套入设备",
+   "en": "Automatic waterproof O-ring fitting machine",
+   "vi": "Máy lắp gioăng chống nước tự động"
+  },
+  "site_filter": "care",
+  "catalogue_index": null,
+  "featured": false,
+  "hero": false,
+  "on_website": true,
+  "social_kit": true,
+  "duration_s": 196.9,
+  "width": 1920,
+  "height": 1080,
+  "orientation": "landscape",
+  "web_clip": "assets/video/B09.mp4",
+  "web_poster": "assets/video/B09.jpg",
+  "social": {
+   "16x9": "07_自媒体素材/B09/B09_16x9.mp4",
+   "9x16": "07_自媒体素材/B09/B09_9x16.mp4",
+   "cover": "07_自媒体素材/B09/B09_cover.jpg"
+  },
+  "note": "验收与量产跟踪"
+ },
+ {
+  "code": "C01",
+  "kind": "video",
+  "source": "视频资料/口红推出组件自动组立设备.mp4",
+  "line": "C",
+  "line_zh": "化妆品包材、烫印与印刷",
+  "title": {
+   "zh": "口红推出组件自动组立设备",
+   "en": "Lipstick swivel-mechanism automatic assembly machine",
+   "vi": "Máy lắp ráp tự động cơ cấu xoay đẩy son môi"
+  },
+  "site_filter": "pack",
+  "catalogue_index": null,
+  "featured": true,
+  "hero": true,
+  "on_website": true,
+  "social_kit": true,
+  "duration_s": 180.5,
+  "width": 1280,
+  "height": 720,
+  "orientation": "landscape",
+  "web_clip": "assets/video/C01.mp4",
+  "web_poster": "assets/video/C01.jpg",
+  "social": {
+   "16x9": "07_自媒体素材/C01/C01_16x9.mp4",
+   "9x16": "07_自媒体素材/C01/C01_9x16.mp4",
+   "cover": "07_自媒体素材/C01/C01_cover.jpg"
+  },
+  "note": ""
+ },
+ {
+  "code": "C02",
+  "kind": "video",
+  "source": "视频资料/圆形泵盖自动烫金机.mp4",
+  "line": "C",
+  "line_zh": "化妆品包材、烫印与印刷",
+  "title": {
+   "zh": "圆形泵盖自动烫金机",
+   "en": "Round pump-cap automatic hot-stamping machine",
+   "vi": "Máy ép nhũ nóng tự động cho nắp bơm tròn"
+  },
+  "site_filter": "pack",
+  "catalogue_index": 29,
+  "featured": true,
+  "hero": true,
+  "on_website": true,
+  "social_kit": true,
+  "duration_s": 164.1,
+  "width": 1920,
+  "height": 1080,
+  "orientation": "landscape",
+  "web_clip": "assets/video/C02.mp4",
+  "web_poster": "assets/video/C02.jpg",
+  "social": {
+   "16x9": "07_自媒体素材/C02/C02_16x9.mp4",
+   "9x16": "07_自媒体素材/C02/C02_9x16.mp4",
+   "cover": "07_自媒体素材/C02/C02_cover.jpg"
+  },
+  "note": "客户现场，开头有工人正脸"
+ },
+ {
+  "code": "C03",
+  "kind": "video",
+  "source": "视频资料/异形全自动烫金机 定制--睫毛膏盖子.mp4",
+  "line": "C",
+  "line_zh": "化妆品包材、烫印与印刷",
+  "title": {
+   "zh": "睫毛膏盖异形全自动烫金机",
+   "en": "Shaped mascara-cap automatic hot-stamping machine",
+   "vi": "Máy ép nhũ nóng tự động cho nắp mascara dạng đặc biệt"
+  },
+  "site_filter": "pack",
+  "catalogue_index": 30,
+  "featured": false,
+  "hero": false,
+  "on_website": true,
+  "social_kit": true,
+  "duration_s": 37.6,
+  "width": 544,
+  "height": 960,
+  "orientation": "portrait",
+  "web_clip": "assets/video/C03.mp4",
+  "web_poster": "assets/video/C03.jpg",
+  "social": {
+   "16x9": "07_自媒体素材/C03/C03_16x9.mp4",
+   "9x16": "07_自媒体素材/C03/C03_9x16.mp4",
+   "cover": "07_自媒体素材/C03/C03_cover.jpg"
+  },
+  "note": ""
+ },
+ {
+  "code": "C04",
+  "kind": "video",
+  "source": "视频资料/四色3轴移印机.mp4",
+  "line": "C",
+  "line_zh": "化妆品包材、烫印与印刷",
+  "title": {
+   "zh": "四色三轴移印机",
+   "en": "Four-colour three-axis pad-printing machine",
+   "vi": "Máy in tampon 4 màu 3 trục"
+  },
+  "site_filter": "pack",
+  "catalogue_index": null,
+  "featured": false,
+  "hero": false,
+  "on_website": true,
+  "social_kit": true,
+  "duration_s": 10.8,
+  "width": 720,
+  "height": 1280,
+  "orientation": "portrait",
+  "web_clip": "assets/video/C04.mp4",
+  "web_poster": "assets/video/C04.jpg",
+  "social": {
+   "16x9": "07_自媒体素材/C04/C04_16x9.mp4",
+   "9x16": "07_自媒体素材/C04/C04_9x16.mp4",
+   "cover": "07_自媒体素材/C04/C04_cover.jpg"
+  },
+  "note": ""
+ },
+ {
+  "code": "C05",
+  "kind": "video",
+  "source": "视频资料/自动供料立式转盘油墨丝印机.mp4",
+  "line": "C",
+  "line_zh": "化妆品包材、烫印与印刷",
+  "title": {
+   "zh": "自动供料立式转盘丝印机",
+   "en": "Auto-feed rotary-table screen-printing machine",
+   "vi": "Máy in lụa bàn xoay cấp liệu tự động"
+  },
+  "site_filter": "pack",
+  "catalogue_index": null,
+  "featured": false,
+  "hero": false,
+  "on_website": true,
+  "social_kit": true,
+  "duration_s": 25.5,
+  "width": 544,
+  "height": 960,
+  "orientation": "portrait",
+  "web_clip": "assets/video/C05.mp4",
+  "web_poster": "assets/video/C05.jpg",
+  "social": {
+   "16x9": "07_自媒体素材/C05/C05_16x9.mp4",
+   "9x16": "07_自媒体素材/C05/C05_9x16.mp4",
+   "cover": "07_自媒体素材/C05/C05_cover.jpg"
+  },
+  "note": ""
+ },
+ {
+  "code": "C06",
+  "kind": "video",
+  "source": "视频资料/包装盒自动套膜切角设备.mp4",
+  "line": "C",
+  "line_zh": "化妆品包材、烫印与印刷",
+  "title": {
+   "zh": "包装盒自动套膜切角设备",
+   "en": "Gift-box automatic film-sleeving and corner-cutting machine",
+   "vi": "Máy bọc màng và cắt góc hộp tự động"
+  },
+  "site_filter": "pack",
+  "catalogue_index": null,
+  "featured": false,
+  "hero": false,
+  "on_website": true,
+  "social_kit": true,
+  "duration_s": 79.2,
+  "width": 640,
+  "height": 368,
+  "orientation": "landscape",
+  "web_clip": "assets/video/C06.mp4",
+  "web_poster": "assets/video/C06.jpg",
+  "social": {
+   "16x9": "07_自媒体素材/C06/C06_16x9.mp4",
+   "9x16": "07_自媒体素材/C06/C06_9x16.mp4",
+   "cover": "07_自媒体素材/C06/C06_cover.jpg"
+  },
+  "note": "原片 640×368"
+ },
+ {
+  "code": "D01",
+  "kind": "video",
+  "source": "视频资料/新能源汽车水加热包自动生产线.mp4",
+  "line": "D",
+  "line_zh": "新能源与汽车零部件",
+  "title": {
+   "zh": "新能源汽车水加热 PTC 自动生产线",
+   "en": "EV coolant PTC heater automatic production line",
+   "vi": "Dây chuyền tự động sản xuất bộ sưởi nước PTC cho xe điện"
+  },
+  "site_filter": "auto",
+  "catalogue_index": 34,
+  "featured": true,
+  "hero": true,
+  "on_website": true,
+  "social_kit": true,
+  "duration_s": 270.0,
+  "width": 1280,
+  "height": 720,
+  "orientation": "landscape",
+  "web_clip": "assets/video/D01.mp4",
+  "web_poster": "assets/video/D01.jpg",
+  "social": {
+   "16x9": "07_自媒体素材/D01/D01_16x9.mp4",
+   "9x16": "07_自媒体素材/D01/D01_9x16.mp4",
+   "cover": "07_自媒体素材/D01/D01_cover.jpg"
+  },
+  "note": ""
+ },
+ {
+  "code": "D02",
+  "kind": "video",
+  "source": "视频资料/汽车暖风波纹条发热包发热芯自动生产线.mp4",
+  "line": "D",
+  "line_zh": "新能源与汽车零部件",
+  "title": {
+   "zh": "汽车暖风 PTC 发热芯自动生产线",
+   "en": "Automotive air-PTC heater-core automatic production line",
+   "vi": "Dây chuyền tự động sản xuất lõi sưởi PTC không khí cho ô tô"
+  },
+  "site_filter": "auto",
+  "catalogue_index": null,
+  "featured": true,
+  "hero": true,
+  "on_website": true,
+  "social_kit": true,
+  "duration_s": 587.8,
+  "width": 1280,
+  "height": 720,
+  "orientation": "landscape",
+  "web_clip": "assets/video/D02.mp4",
+  "web_poster": "assets/video/D02.jpg",
+  "social": {
+   "16x9": "07_自媒体素材/D02/D02_16x9.mp4",
+   "9x16": "07_自媒体素材/D02/D02_9x16.mp4",
+   "cover": "07_自媒体素材/D02/D02_cover.jpg"
+  },
+  "note": ""
+ },
+ {
+  "code": "D03",
+  "kind": "video",
+  "source": "视频资料/汽车发热组件自动组装线客户现场调试视频.mp4",
+  "line": "D",
+  "line_zh": "新能源与汽车零部件",
+  "title": {
+   "zh": "汽车发热组件自动组装线（客户现场调试）",
+   "en": "Automotive heater assembly line — on-site commissioning",
+   "vi": "Dây chuyền lắp ráp bộ sưởi ô tô — chạy thử tại nhà máy khách hàng"
+  },
+  "site_filter": "auto",
+  "catalogue_index": null,
+  "featured": false,
+  "hero": false,
+  "on_website": true,
+  "social_kit": true,
+  "duration_s": 333.0,
+  "width": 1280,
+  "height": 720,
+  "orientation": "landscape",
+  "web_clip": "assets/video/D03.mp4",
+  "web_poster": "assets/video/D03.jpg",
+  "social": {
+   "16x9": "07_自媒体素材/D03/D03_16x9.mp4",
+   "9x16": "07_自媒体素材/D03/D03_9x16.mp4",
+   "cover": "07_自媒体素材/D03/D03_cover.jpg"
+  },
+  "note": "客户现场"
+ },
+ {
+  "code": "D04",
+  "kind": "video",
+  "source": "视频资料/汽车天窗自动背胶设备.mp4",
+  "line": "D",
+  "line_zh": "新能源与汽车零部件",
+  "title": {
+   "zh": "汽车天窗自动背胶设备",
+   "en": "Car-sunroof automatic adhesive-tape application machine",
+   "vi": "Máy dán băng keo tự động cho cửa sổ trời ô tô"
+  },
+  "site_filter": "auto",
+  "catalogue_index": null,
+  "featured": false,
+  "hero": false,
+  "on_website": true,
+  "social_kit": true,
+  "duration_s": 146.7,
+  "width": 960,
+  "height": 544,
+  "orientation": "landscape",
+  "web_clip": "assets/video/D04.mp4",
+  "web_poster": "assets/video/D04.jpg",
+  "social": {
+   "16x9": "07_自媒体素材/D04/D04_16x9.mp4",
+   "9x16": "07_自媒体素材/D04/D04_9x16.mp4",
+   "cover": "07_自媒体素材/D04/D04_cover.jpg"
+  },
+  "note": ""
+ },
+ {
+  "code": "E01",
+  "kind": "video",
+  "source": "视频资料/智能锁锁壳旋铆自动线.mp4",
+  "line": "E",
+  "line_zh": "智能锁与五金",
+  "title": {
+   "zh": "智能锁锁壳旋铆自动线",
+   "en": "Smart-lock housing orbital-riveting line",
+   "vi": "Dây chuyền tán xoay vỏ khóa thông minh"
+  },
+  "site_filter": "lock",
+  "catalogue_index": 33,
+  "featured": true,
+  "hero": false,
+  "on_website": true,
+  "social_kit": true,
+  "duration_s": 166.2,
+  "width": 960,
+  "height": 544,
+  "orientation": "landscape",
+  "web_clip": "assets/video/E01.mp4",
+  "web_poster": "assets/video/E01.jpg",
+  "social": {
+   "16x9": "07_自媒体素材/E01/E01_16x9.mp4",
+   "9x16": "07_自媒体素材/E01/E01_9x16.mp4",
+   "cover": "07_自媒体素材/E01/E01_cover.jpg"
+  },
+  "note": ""
+ },
+ {
+  "code": "E02",
+  "kind": "video",
+  "source": "视频资料/智能锁锁壳焊接.mp4",
+  "line": "E",
+  "line_zh": "智能锁与五金",
+  "title": {
+   "zh": "智能锁锁壳激光焊接",
+   "en": "Smart-lock housing laser welding",
+   "vi": "Hàn laser vỏ khóa thông minh"
+  },
+  "site_filter": "lock",
+  "catalogue_index": null,
+  "featured": false,
+  "hero": false,
+  "on_website": true,
+  "social_kit": true,
+  "duration_s": 40.4,
+  "width": 960,
+  "height": 544,
+  "orientation": "landscape",
+  "web_clip": "assets/video/E02.mp4",
+  "web_poster": "assets/video/E02.jpg",
+  "social": {
+   "16x9": "07_自媒体素材/E02/E02_16x9.mp4",
+   "9x16": "07_自媒体素材/E02/E02_9x16.mp4",
+   "cover": "07_自媒体素材/E02/E02_cover.jpg"
+  },
+  "note": "含操作员手部"
+ },
+ {
+  "code": "E03",
+  "kind": "video",
+  "source": "视频资料/智能锁锁芯焊接.mp4",
+  "line": "E",
+  "line_zh": "智能锁与五金",
+  "title": {
+   "zh": "智能锁锁芯激光焊接",
+   "en": "Smart-lock cylinder laser welding",
+   "vi": "Hàn laser lõi khóa thông minh"
+  },
+  "site_filter": "lock",
+  "catalogue_index": null,
+  "featured": false,
+  "hero": true,
+  "on_website": true,
+  "social_kit": true,
+  "duration_s": 68.2,
+  "width": 1280,
+  "height": 720,
+  "orientation": "landscape",
+  "web_clip": "assets/video/E03.mp4",
+  "web_poster": "assets/video/E03.jpg",
+  "social": {
+   "16x9": "07_自媒体素材/E03/E03_16x9.mp4",
+   "9x16": "07_自媒体素材/E03/E03_9x16.mp4",
+   "cover": "07_自媒体素材/E03/E03_cover.jpg"
+  },
+  "note": ""
+ },
+ {
+  "code": "E04",
+  "kind": "video",
+  "source": "视频资料/保温杯手柄压装焊接设备.mp4",
+  "line": "E",
+  "line_zh": "智能锁与五金",
+  "title": {
+   "zh": "保温杯手柄压装焊接设备",
+   "en": "Vacuum-flask handle press-fit and welding machine",
+   "vi": "Máy ép và hàn tay cầm bình giữ nhiệt"
+  },
+  "site_filter": "lock",
+  "catalogue_index": null,
+  "featured": false,
+  "hero": false,
+  "on_website": true,
+  "social_kit": true,
+  "duration_s": 157.0,
+  "width": 406,
+  "height": 720,
+  "orientation": "portrait",
+  "web_clip": "assets/video/E04.mp4",
+  "web_poster": "assets/video/E04.jpg",
+  "social": {
+   "16x9": "07_自媒体素材/E04/E04_16x9.mp4",
+   "9x16": "07_自媒体素材/E04/E04_9x16.mp4",
+   "cover": "07_自媒体素材/E04/E04_cover.jpg"
+  },
+  "note": "含操作员"
+ },
+ {
+  "code": "F01",
+  "kind": "video",
+  "source": "视频资料/PCBA板性能检测设备.mp4",
+  "line": "F",
+  "line_zh": "电子与家用电器",
+  "title": {
+   "zh": "PCBA 板性能检测设备",
+   "en": "PCBA functional test station",
+   "vi": "Trạm kiểm tra chức năng bo mạch PCBA"
+  },
+  "site_filter": "elec",
+  "catalogue_index": null,
+  "featured": false,
+  "hero": false,
+  "on_website": true,
+  "social_kit": true,
+  "duration_s": 76.7,
+  "width": 544,
+  "height": 960,
+  "orientation": "portrait",
+  "web_clip": "assets/video/F01.mp4",
+  "web_poster": "assets/video/F01.jpg",
+  "social": {
+   "16x9": "07_自媒体素材/F01/F01_16x9.mp4",
+   "9x16": "07_自媒体素材/F01/F01_9x16.mp4",
+   "cover": "07_自媒体素材/F01/F01_cover.jpg"
+  },
+  "note": ""
+ },
+ {
+  "code": "F02",
+  "kind": "video",
+  "source": "视频资料/半自动充电器超声波焊接机.mp4",
+  "line": "F",
+  "line_zh": "电子与家用电器",
+  "title": {
+   "zh": "充电器半自动超声波焊接机",
+   "en": "Semi-automatic ultrasonic welding machine for chargers",
+   "vi": "Máy hàn siêu âm bán tự động cho bộ sạc"
+  },
+  "site_filter": "elec",
+  "catalogue_index": null,
+  "featured": false,
+  "hero": false,
+  "on_website": true,
+  "social_kit": true,
+  "duration_s": 63.1,
+  "width": 1080,
+  "height": 1920,
+  "orientation": "portrait",
+  "web_clip": "assets/video/F02.mp4",
+  "web_poster": "assets/video/F02.jpg",
+  "social": {
+   "16x9": "07_自媒体素材/F02/F02_16x9.mp4",
+   "9x16": "07_自媒体素材/F02/F02_9x16.mp4",
+   "cover": "07_自媒体素材/F02/F02_cover.jpg"
+  },
+  "note": "原片旋转 90°"
+ },
+ {
+  "code": "F03",
+  "kind": "video",
+  "source": "视频资料/电熨斗点胶生产线.mp4",
+  "line": "F",
+  "line_zh": "电子与家用电器",
+  "title": {
+   "zh": "电熨斗温控器点胶生产线",
+   "en": "Steam-iron thermostat glue-dispensing line",
+   "vi": "Dây chuyền phân phối keo bộ điều nhiệt bàn ủi"
+  },
+  "site_filter": "elec",
+  "catalogue_index": null,
+  "featured": false,
+  "hero": false,
+  "on_website": true,
+  "social_kit": true,
+  "duration_s": 23.9,
+  "width": 720,
+  "height": 1280,
+  "orientation": "portrait",
+  "web_clip": "assets/video/F03.mp4",
+  "web_poster": "assets/video/F03.jpg",
+  "social": {
+   "16x9": "07_自媒体素材/F03/F03_16x9.mp4",
+   "9x16": "07_自媒体素材/F03/F03_9x16.mp4",
+   "cover": "07_自媒体素材/F03/F03_cover.jpg"
+  },
+  "note": "对应实用新型 CN221714756U"
+ },
+ {
+  "code": "F04",
+  "kind": "video",
+  "source": "视频资料/婴儿用品玩具齿轮箱自动装配线调试视频.mp4",
+  "line": "F",
+  "line_zh": "电子与家用电器",
+  "title": {
+   "zh": "婴儿用品齿轮箱自动装配线（调试）",
+   "en": "Gearbox automatic assembly line for baby products",
+   "vi": "Dây chuyền lắp ráp hộp số tự động cho sản phẩm trẻ em"
+  },
+  "site_filter": "elec",
+  "catalogue_index": null,
+  "featured": false,
+  "hero": false,
+  "on_website": true,
+  "social_kit": true,
+  "duration_s": 161.3,
+  "width": 960,
+  "height": 544,
+  "orientation": "landscape",
+  "web_clip": "assets/video/F04.mp4",
+  "web_poster": "assets/video/F04.jpg",
+  "social": {
+   "16x9": "07_自媒体素材/F04/F04_16x9.mp4",
+   "9x16": "07_自媒体素材/F04/F04_9x16.mp4",
+   "cover": "07_自媒体素材/F04/F04_cover.jpg"
+  },
+  "note": ""
+ },
+ {
+  "code": "K01",
+  "kind": "video",
+  "source": "宣传资料1/照片/研发中心车间.mp4",
+  "line": null,
+  "line_zh": "企业形象",
+  "title": {
+   "zh": "研发中心与装配车间实拍",
+   "en": "Walk through our R&D and assembly workshop",
+   "vi": "Tham quan xưởng R&D và lắp ráp"
+  },
+  "site_filter": "company",
+  "catalogue_index": null,
+  "featured": false,
+  "hero": false,
+  "on_website": true,
+  "social_kit": true,
+  "duration_s": 18.0,
+  "width": 1280,
+  "height": 720,
+  "orientation": "landscape",
+  "web_clip": "assets/video/K01.mp4",
+  "web_poster": "assets/video/K01.jpg",
+  "social": {
+   "16x9": "07_自媒体素材/K01/K01_16x9.mp4",
+   "9x16": "07_自媒体素材/K01/K01_9x16.mp4",
+   "cover": "07_自媒体素材/K01/K01_cover.jpg"
+  },
+  "note": "18 秒巡厂"
+ }
+]

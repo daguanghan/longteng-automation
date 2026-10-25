@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the trilingual static site for longtengautomation.com (v2, premium layout).
+"""Build the trilingual static site for longtengautomation.com (v3: company videos, certificates and CCTV feature).
 
 Run from the repo root:  python3 _src/build.py
 Writes 7 pages × 3 languages (English at root = x-default, /vi/, /zh/) and single-file previews in preview/.
@@ -40,6 +40,19 @@ def img(path, lang, alt="", cls=""):
     return f'<img src="{pre(lang)}assets/img/{path}" alt="{E(alt)}" loading="lazy"{c}>'
 
 
+def vposter(code, lang):
+    return f"{pre(lang)}assets/video/{code}.jpg"
+
+
+def vcard(code, lang, title, cls="vc"):
+    """Poster with a play button; site.js opens the clip in the shared lightbox."""
+    v = VIDEOS[code]
+    return (f'<button type="button" class="{cls}" data-src="{pre(lang)}assets/video/{code}.mp4" data-title="{E(title)}" '
+            f'data-o="{v["orientation"][0]}" aria-label="{E(VSTR["play"][lang])}: {E(title)}">'
+            f'<img src="{vposter(code, lang)}" alt="{E(title)}" loading="lazy"><span class="play">{ico("play")}</span>'
+            f'<span class="dur">0:{clip_len(code):02d}</span></button>')
+
+
 # ── inline icons (24×24 line style) ──
 def ico(name):
     P = {
@@ -57,6 +70,8 @@ def ico(name):
         "arrow": '<path d="M5 12h14M13 6l6 6-6 6"/>',
         "phone": '<path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/>',
         "mail": '<rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/>',
+        "play": '<path d="M7 4.5v15l13-7.5z" fill="currentColor" stroke="none"/>',
+        "tv": '<rect x="2" y="5" width="20" height="13" rx="2"/><path d="M8 21h8M12 18v3"/>',
     }
     return f'<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{P[name]}</svg>'
 
@@ -167,7 +182,9 @@ def footer(lang, single=False):
             f'<p class="langs">{E(CONTACT["langs"][lang])}</p></div></div>'
             f'<div class="wrap fbot">© 2026 Guangzhou Longteng Automation Equipment Co., Ltd. · {E(T["footer_rights"][lang])}</div></footer>'
             f'<div class="dock"><a href="tel:{PHONE_TEL}">{ico("phone")}{E(STR["call"][lang])}</a><a href="mailto:{EMAIL}">{ico("mail")}Email</a>'
-            f'<a class="q" href="{link("contact", lang, lang, single)}">{E(T["quote"][lang])}</a></div>')
+            f'<a class="q" href="{link("contact", lang, lang, single)}">{E(T["quote"][lang])}</a></div>'
+            f'<dialog id="lb" class="lb"><div class="lbin"><div class="lbm"></div><div class="lbt"><b></b>'
+            f'<button type="button" class="lbx" aria-label="{E(VSTR["close"][lang])}">×</button></div></div></dialog>')
 
 
 def pagehead(title, sub, lang, bg="site/workshop-1.jpg"):
@@ -196,81 +213,122 @@ def sea_map(lang):
     return f'<svg class="seamap" viewBox="0 0 {W} {H}" role="img" aria-label="{E(SEA_H[lang])}">{dots}{"".join(arcs)}{"".join(nodes)}</svg>'
 
 
+def media_band(lang):
+    pts = "".join(f"<li>{E(x)}</li>" for x in MEDIA["points"][lang])
+    art = f"{pre(lang)}assets/img/media/cctv-article.jpg"
+    return (f'<section class="sec media"><div class="wrap medin"><div class="medv rv">'
+            f'<a class="medimg" href="#" data-img="{art}" data-title="{E(MEDIA["h"][lang])}">'
+            f'{img("media/cctv-studio.jpg", lang, MEDIA["h"][lang])}<span class="cctv">CCTV</span></a>'
+            f'<a class="medart" href="#" data-img="{art}" data-title="{E(MEDIA["h"][lang])}">{img("media/cctv-article.jpg", lang, MEDIA["h"][lang])}</a></div>'
+            f'<div class="medt rv"><span class="kick">{E(MEDIA["k"][lang])}</span><h2>{E(MEDIA["h"][lang])}</h2><p>{E(MEDIA["p"][lang])}</p>'
+            f'<ul class="chk">{pts}</ul><p class="note">{E(MEDIA["note"][lang])}</p></div></div></section>')
+
+
+def export_band(lang):
+    cards = "".join(f'<div class="xc rv"><div class="capi">{ico(ic)}</div><h3>{E(L(t, lang))}</h3><p>{E(L(d, lang))}</p></div>' for ic, t, d in EXPORT["items"])
+    return (f'<section class="sec alt"><div class="wrap"><div class="shead rv"><span class="kick">{E(EXPORT["k"][lang])}</span><h2>{E(EXPORT["h"][lang])}</h2>'
+            f'<p class="lead">{E(EXPORT["p"][lang])}</p></div><div class="xgrid">{cards}</div></div></section>')
+
+
+def pthumb(p, lang):
+    if p.get("vid"):
+        return f'<img src="{vposter(p["vid"], lang)}" alt="{E(L(p["t"], lang))}" loading="lazy">'
+    return img(p["imgs"][0], lang, L(p["t"], lang))
+
+
 # ── bodies ──
 def body_index(lang, single=False):
     S = single
     stats = "".join(f'<div><b>{E(a)}</b><span>{E(b)}</span></div>' for a, b in T["stats"][lang])
-    badges = "".join(f'<div class="bdg">{ico("badge")}<span>{E(L(t, lang))}</span></div>' for t, _ in CREDS)
+    badges = "".join(f'<div class="bdg">{ico("tv" if n == 0 else "badge")}<span>{E(L(t, lang))}</span></div>' for n, t in enumerate(TRUST))
+    vids = "".join(f'<div class="vtile rv">{vcard(c, lang, VIDEOS[c]["title"][lang])}<h3>{E(VIDEOS[c]["title"][lang])}</h3></div>' for c in HOME_VIDEOS)
     caps = "".join(f'<div class="cap rv"><div class="capi">{ico(k)}</div><span class="num">0{n+1}</span><h3>{E(L(t, lang))}</h3><p>{E(L(d, lang))}</p></div>'
                    for n, (k, t, d) in enumerate(CAPS))
-    tiles = "".join(f'<a class="tile t{n} rv" href="{link("solutions", lang, lang, S)}{"" if S else "#" + i["id"]}" style="--img:url(../img/{i["img"]})">'
+    tiles = "".join(f'<a class="tile t{n} rv" href="{link("solutions", lang, lang, S)}{"" if S else "#" + i["id"]}" style="--img:url(../{i["vimg"] or "img/" + i["img"]})">'
                     f'<div class="tc"><h3>{E(L(i["t"], lang))}</h3><p>{E(L(i["d"], lang))}</p><span class="go">{E(STR["more"][lang])}{ico("arrow")}</span></div></a>'
                     for n, i in enumerate(INDUSTRIES))
     pts = "".join(f'<li>{ico(ic)}{E(p)}</li>' for ic, p in zip(["plane", "video", "chat", "wrench"], SEA_POINTS[lang]))
-    feats = "".join(f'<a class="pc rv" href="{link("projects", lang, lang, S)}"><div class="pci">{img(p["imgs"][0], lang, L(p["t"], lang))}</div>'
+    feats = "".join(f'<a class="pc rv" href="{link("projects", lang, lang, S)}"><div class="pci">{pthumb(p, lang)}</div>'
                     f'<div class="pct"><span class="kick">{E(L(p["ind"], lang))}</span><h3>{E(L(p["t"], lang))}</h3><p>{E(L(p["d"], lang)[0])}</p></div></a>' for p in PROJECTS[:3])
     steps = "".join(f'<div class="st rv"><b>{k+1:02d}</b><h4>{E(a)}</h4><p>{E(b)}</p></div>' for k, (a, b) in enumerate(T["steps"][lang]))
-    return (f'<section class="hero" style="--bg:url(../img/site/hero-line.jpg)">{GRID_SVG}<div class="wrap heroin">'
+    hv = "" if S else (f'<video class="hbg" autoplay muted loop playsinline preload="auto" poster="{pre(lang)}assets/video/hero.jpg">'
+                       f'<source src="{pre(lang)}assets/video/hero.mp4" type="video/mp4"></video>')
+    return (f'<section class="hero" style="--bg:url(../video/hero.jpg)">{hv}{GRID_SVG}<div class="wrap heroin">'
             f'<div class="htxt"><span class="kick light">{E(T["hero_kicker"][lang])}</span><h1>{E(T["hero_h1"][lang])}</h1><p>{E(T["hero_p"][lang])}</p>'
             f'<div class="hbtns"><a class="btn lg" href="{link("contact", lang, lang, S)}">{E(T["cta"][lang])}{ico("arrow")}</a>'
             f'<a class="ghost lg" href="{link("equipment", lang, lang, S)}">{E(T["hero_btn2"][lang])}</a></div></div>'
-            f'<div class="hcards"><div class="hc a">{img("eq/ptc-line-b.jpg", lang, "")}</div><div class="hc b">{img("eq/vision-laser-marking.jpg", lang, "")}</div>'
-            f'<div class="hc c">{img("eq/laser-weld-cell.jpg", lang, "")}</div></div></div>'
+            f'<div class="hcards"><div class="hc a">{vcard("D02", lang, VIDEOS["D02"]["title"][lang], "vc bare")}</div>'
+            f'<div class="hc b">{vcard("C01", lang, VIDEOS["C01"]["title"][lang], "vc bare")}</div>'
+            f'<div class="hc c">{vcard("E03", lang, VIDEOS["E03"]["title"][lang], "vc bare")}</div></div></div>'
             f'<div class="wrap"><div class="kpis">{stats}</div></div></section>'
             f'<section class="trust"><div class="wrap trin"><span class="tlab">{E(STR["trusted"][lang])}</span><div class="bdgs">{badges}</div></div></section>'
             f'<section class="sec"><div class="wrap"><div class="shead rv"><span class="kick">{E(CAPS_H[lang])}</span><h2>{E(CAPS_SUB[lang])}</h2></div><div class="caps">{caps}</div></div></section>'
+            f'<section class="sec vids"><div class="wrap"><div class="shead row rv"><div><span class="kick light">{E(VSTR["vid_k"][lang])}</span><h2>{E(VSTR["vid_h"][lang])}</h2></div>'
+            f'<a class="more light" href="{link("equipment", lang, lang, S)}{"" if S else "#video"}">{E(VSTR["watch_all"][lang])}{ico("arrow")}</a></div><div class="vgrid">{vids}</div></div></section>'
             f'<section class="sec alt"><div class="wrap"><div class="shead rv"><span class="kick">{E(STR["ind_h"][lang])}</span><h2>{E(STR["ind_sub"][lang])}</h2></div><div class="bento">{tiles}</div></div></section>'
+            + media_band(lang) +
             f'<section class="sea"><div class="wrap seain"><div class="seat rv"><span class="kick light">{E(STR["k_sea"][lang])}</span><h2>{E(SEA_H[lang])}</h2><p>{E(SEA_P[lang])}</p><ul class="pts">{pts}</ul>'
             f'<p class="note">{E(SEA_NOTE[lang])}</p></div><div class="seam rv">{sea_map(lang)}</div></div></section>'
+            + export_band(lang) +
             f'<section class="sec"><div class="wrap"><div class="shead row rv"><div><span class="kick">{E(STR["k_feat"][lang])}</span><h2>{E(T["feat_h"][lang])}</h2></div>'
             f'<a class="more" href="{link("projects", lang, lang, S)}">{E(STR["all_prj"][lang])}{ico("arrow")}</a></div><div class="pcs">{feats}</div></div></section>'
             f'<section class="sec alt"><div class="wrap"><div class="shead rv"><span class="kick">{E(T["how_h"][lang])}</span><h2>{E(T["how_sub"][lang])}</h2></div><div class="steps">{steps}</div></div></section>')
 
 
 def body_solutions(lang, single=False):
-    eqbycat = {"appliances": ["dryer", "shaver", "brush", "test"], "vision": ["elec"], "locks": ["line"], "ev": ["line", "stamp"], "packaging": ["stamp", "brush"], "garment": []}
+    eqbycat = {"appliances": ["dryer", "care"], "vision": ["elec", "test"], "locks": ["lock"], "ev": ["auto"], "packaging": ["pack"], "garment": []}
     out = [pagehead(T["sol_h"][lang], T["sol_sub"][lang], lang, "site/workshop-2.jpg")]
     for n, i in enumerate(INDUSTRIES):
-        names = [e for e in EQ if e[0] in eqbycat[i["id"]]][:6]
-        lis = "".join(f"<li>{E(e[3] if lang == 'en' else e[4] if lang == 'vi' else e[2])}</li>" for e in names)
-        out.append(f'<section class="ind{" rev" if n % 2 else ""}" id="{i["id"]}"><div class="wrap indin"><div class="indi rv">{img(i["img"], lang, L(i["t"], lang))}</div>'
+        names = sorted([m for m in MACHINES if m["cat"] in eqbycat[i["id"]]], key=lambda m: m["vid"] is None)[:6]
+        lis = "".join(f"<li>{E(m[lang])}</li>" for m in names)
+        vc = INDUSTRY_VIDEO.get(i["id"])
+        pic = vcard(vc, lang, VIDEOS[vc]["title"][lang], "vc wide") if vc else img(i["img"], lang, L(i["t"], lang))
+        out.append(f'<section class="ind{" rev" if n % 2 else ""}" id="{i["id"]}"><div class="wrap indin"><div class="indi rv">{pic}</div>'
                    f'<div class="indt rv"><span class="kick">{n+1:02d}</span><h2>{E(L(i["t"], lang))}</h2><p>{E(L(i["d"], lang))}</p>{"<ul class=chk>" + lis + "</ul>" if lis else ""}'
                    f'<a class="more" href="{link("contact", lang, lang, single)}">{E(T["quote"][lang])}{ico("arrow")}</a></div></div></section>')
     return "".join(out)
 
 
-CAT_ICO = {"dryer": "assembly", "shaver": "assembly", "brush": "assembly", "test": "test",
-           "elec": "wrench", "stamp": "laser", "line": "assembly"}
+CAT_ICO = {"dryer": "assembly", "care": "assembly", "pack": "laser", "auto": "assembly", "lock": "laser", "elec": "wrench", "test": "test"}
+VISION = [("vision-hot-stamp-defect.jpg", {"en": "Hot-stamping defect detection", "vi": "Phát hiện lỗi ép nhũ", "zh": "烫金瑕疵检测"}),
+          ("vision-laser-marking.jpg", {"en": "Vision-guided laser marking", "vi": "Khắc laser định vị bằng camera", "zh": "视觉定位激光打标"}),
+          ("vision-assembly.jpg", {"en": "Vision-guided assembly", "vi": "Lắp ráp định vị bằng camera", "zh": "视觉定位组装"}),
+          ("vision-screwdriving.jpg", {"en": "Vision-guided screw-driving", "vi": "Bắt vít định vị bằng camera", "zh": "视觉定位打螺丝"}),
+          ("vision-glue-inspection.jpg", {"en": "Glue bead inspection", "vi": "Kiểm tra đường keo", "zh": "喷胶外观检测"}),
+          ("vision-sorting.jpg", {"en": "Multi-material sorting", "vi": "Phân loại nhiều loại vật liệu", "zh": "多物料分选"})]
 
 
 def body_equipment(lang, single=False):
-    filt = f'<button class="on" data-f="*">{E(STR["all"][lang])}</button>' + "".join(f'<button data-f="{c}">{E(L(n, lang))}</button>' for c, n in CATS) + \
-           f'<button data-f="vis">{E(STR["vision_title"][lang])}</button>'
-    cards, bare = [], []
-    for e in EQ:
-        name = e[3] if lang == "en" else e[4] if lang == "vi" else e[2]
-        cat = dict(CATS)[e[0]]
-        ph = img("eq/" + e[1], lang, name) if e[1] else f'<div class="noph">{ico(CAT_ICO[e[0]])}<span>{E(STR["noph"][lang])}</span></div>'
-        (cards if e[1] else bare).append(f'<div class="eq" data-c="{e[0]}"><div class="eqi">{ph}</div><div class="eqt"><span class="kick sm">{E(L(cat, lang))}</span><h3>{E(name)}</h3></div></div>')
-    vis = [("vision-hot-stamp-defect.jpg", {"en": "Hot-stamping defect detection", "vi": "Phát hiện lỗi ép nhũ", "zh": "烫金瑕疵检测"}),
-           ("vision-laser-marking.jpg", {"en": "Vision-guided laser marking", "vi": "Khắc laser định vị bằng camera", "zh": "视觉定位激光打标"}),
-           ("vision-assembly.jpg", {"en": "Vision-guided assembly", "vi": "Lắp ráp định vị bằng camera", "zh": "视觉定位组装"}),
-           ("vision-screwdriving.jpg", {"en": "Vision-guided screw-driving", "vi": "Bắt vít định vị bằng camera", "zh": "视觉定位打螺丝"}),
-           ("vision-glue-inspection.jpg", {"en": "Glue bead inspection", "vi": "Kiểm tra đường keo", "zh": "喷胶外观检测"}),
-           ("vision-sorting.jpg", {"en": "Multi-material sorting", "vi": "Phân loại nhiều loại vật liệu", "zh": "多物料分选"})]
-    for f, t in vis:
-        cards.append(f'<div class="eq" data-c="vis"><div class="eqi">{img("eq/" + f, lang, L(t, lang))}</div><div class="eqt"><span class="kick sm">{E(STR["vision_title"][lang])}</span><h3>{E(L(t, lang))}</h3></div></div>')
-    cards += bare  # machines with photos first, so the grid opens strong
-    return (pagehead(L(PAGE_TITLES["equipment"], lang), STR["eq_sub"][lang], lang, "eq/toothbrush-assembly-test-line.jpg") +
-            f'<section class="sec"><div class="wrap"><div class="filters">{filt}</div><div class="eqgrid">{"".join(cards)}</div></div></section>')
+    fl = dict(FILTERS)
+    filt = (f'<button class="on" data-f="*">{E(STR["all"][lang])}</button><button data-f="video" class="vf">{ico("play")}{E(VSTR["with_video"][lang])}</button>'
+            + "".join(f'<button data-f="{c}">{E(L(n, lang))}</button>' for c, n in FILTERS) + f'<button data-f="vis">{E(STR["vision_title"][lang])}</button>')
+    cards = []
+    def rank(m):  # featured clips first, then sharper footage, then photos, then placeholders
+        v = VIDEOS.get(m["vid"]) if m["vid"] else None
+        return (v is None, not (v and v["featured"]), -(max(v["width"], v["height"]) if v else 0), m["img"] is None)
+    for m in sorted(MACHINES, key=rank):
+        if m["vid"]:
+            ph = vcard(m["vid"], lang, m[lang], "vc fill")
+        elif m["img"]:
+            ph = img("eq/" + m["img"], lang, m[lang])
+        else:
+            ph = f'<div class="noph">{ico(CAT_ICO[m["cat"]])}<span>{E(STR["noph"][lang])}</span></div>'
+        cards.append(f'<div class="eq{" hasv" if m["vid"] else ""}" data-c="{m["cat"]}"><div class="eqi">{ph}</div>'
+                     f'<div class="eqt"><span class="kick sm">{E(L(fl[m["cat"]], lang))}</span><h3>{E(m[lang])}</h3></div></div>')
+    nvid = sum(1 for m in MACHINES if m["vid"])
+    cards[nvid:nvid] = [f'<div class="eq" data-c="vis"><div class="eqi">{img("eq/" + f, lang, L(t, lang))}</div><div class="eqt"><span class="kick sm">{E(STR["vision_title"][lang])}</span><h3>{E(L(t, lang))}</h3></div></div>' for f, t in VISION]
+    sub = VSTR["eq_sub"][lang].format(n=len(MACHINES), v=nvid)
+    return (pagehead(L(PAGE_TITLES["equipment"], lang), sub, lang, "site/workshop-hq.jpg") +
+            f'<section class="sec"><div class="wrap"><div id="video" class="anchor"></div><div class="filters">{filt}</div><div class="eqgrid">{"".join(cards)}</div></div></section>')
 
 
 def body_projects(lang, single=False):
     out = [pagehead(L(PAGE_TITLES["projects"], lang), STR["prj_sub"][lang], lang, "eq/ptc-line-a.jpg")]
     for n, p in enumerate(PROJECTS):
-        pics = "".join(img(i, lang, L(p["t"], lang)) for i in p["imgs"])
+        pics = (vcard(p["vid"], lang, L(p["t"], lang), "vc fill") if p.get("vid") else "") + "".join(img(i, lang, L(p["t"], lang)) for i in p["imgs"])
+        npics = len(p["imgs"]) + (1 if p.get("vid") else 0)
         lis = "".join(f"<li>{E(x)}</li>" for x in L(p["d"], lang))
-        out.append(f'<section class="prj{" rev" if n % 2 else ""}"><div class="wrap prjin"><div class="pics n{len(p["imgs"])} rv">{pics}</div>'
+        out.append(f'<section class="prj{" rev" if n % 2 else ""}"><div class="wrap prjin"><div class="pics n{npics}{" hv" if p.get("vid") else ""} rv">{pics}</div>'
                    f'<div class="prjt rv"><span class="kick">{E(L(p["ind"], lang))}</span><h2>{E(L(p["t"], lang))}</h2><ul class="chk">{lis}</ul></div></div></section>')
     return "".join(out)
 
@@ -282,8 +340,11 @@ def body_innovation(lang, single=False):
     c = PAT_COLS[lang]
     rows = "".join(f'<tr><td class="mono">{no}</td><td>{E(L(t, lang))}</td><td>{E(L(PAT_TYPE[ty], lang))}</td>'
                    f'<td><span class="st-{stt}">{E(L(PAT_STATUS[stt], lang))}</span></td></tr>' for no, ty, stt, t in PATENTS)
+    wall = "".join(f'<a class="cw rv" href="#" data-img="{pre(lang)}assets/img/{f}" data-title="{E(L(t, lang))}">{img(f, lang, L(t, lang))}<span>{E(L(t, lang))}</span></a>' for f, t in CERTWALL)
     return (pagehead(L(PAGE_TITLES["innovation"], lang), INNOV_SUB[lang], lang, "eq/vision-laser-marking.jpg") +
             f'<section class="sec"><div class="wrap"><div class="shead rv"><span class="kick">{E(STR["k_creds"][lang])}</span><h2>{E(CREDS_H[lang])}</h2></div><div class="creds">{creds}</div></div></section>'
+            f'<section class="sec alt"><div class="wrap"><div class="shead rv"><span class="kick">{E(VSTR["certwall_k"][lang])}</span><h2>{E(VSTR["certwall_h"][lang])}</h2><p class="lead">{E(VSTR["certwall_note"][lang])}</p></div><div class="cwall">{wall}</div></div></section>'
+            + media_band(lang) +
             f'<section class="sec alt"><div class="wrap"><div class="shead rv"><span class="kick">{E(CAPS_H[lang])}</span><h2>{E(CAPS_SUB[lang])}</h2></div><div class="caps">{caps}</div></div></section>'
             f'<section class="sec"><div class="wrap"><div class="shead rv"><span class="kick">{E(STR["k_pat"][lang])}</span><h2>{E(PATENTS_H[lang])}</h2></div>'
             f'<div class="tbl rv"><table><tr><th>{c[0]}</th><th>{c[1]}</th><th>{c[2]}</th><th>{c[3]}</th></tr>{rows}</table></div></div></section>')
@@ -293,14 +354,18 @@ def body_about(lang, single=False):
     paras = "".join(f"<p>{E(x)}</p>" for x in ABOUT["p"][lang])
     vals = "".join(f'<div class="val rv"><b>{k+1:02d}</b><h3>{E(a)}</h3><p>{E(b)}</p></div>' for k, (a, b) in enumerate(ABOUT["values"][lang]))
     tl = "".join(f'<div class="tl rv"><b>{y}</b><p>{E(L(t, lang))}</p></div>' for y, t in TIMELINE)
-    gal = "".join(img(f"site/{g}.jpg", lang, "") for g in ["factory-entrance", "workshop-1", "workshop-2", "design-office", "office", "honour-wall"])
+    gal = "".join(f'<a href="#" data-img="{pre(lang)}assets/img/site/{g}.jpg" data-title="{E(STR["plant_h"][lang])}">{img(f"site/{g}.jpg", lang, "")}</a>'
+                  for g in ["entrance-hq", "reception", "rnd-1", "rnd-2", "workshop-hq", "workshop-3", "workshop-4", "corridor", "honour-wall-2"])
     stats = "".join(f'<div><b>{E(a)}</b><span>{E(b)}</span></div>' for a, b in T["stats"][lang])
-    return (pagehead(L(ABOUT["h"], lang), "", lang, "site/factory-entrance.jpg") +
-            f'<section class="sec"><div class="wrap about"><div class="rv">{paras}</div><div class="abimg rv">{img("site/honour-wall.jpg", lang, "")}</div></div>'
+    return (pagehead(L(ABOUT["h"], lang), "", lang, "site/entrance-hq.jpg") +
+            f'<section class="sec"><div class="wrap about"><div class="rv">{paras}</div><div class="abimg rv">{img("site/honour-wall-2.jpg", lang, "")}</div></div>'
             f'<div class="wrap"><div class="kpis dark">{stats}</div></div></section>'
+            f'<section class="sec tour"><div class="wrap tourin"><div class="rv">{vcard("K01", lang, VSTR["tour_h"][lang], "vc wide")}</div>'
+            f'<div class="rv"><span class="kick light">{E(VSTR["tour_k"][lang])}</span><h2>{E(VSTR["tour_h"][lang])}</h2><p>{E(VSTR["tour_p"][lang])}</p></div></div></section>'
+            + media_band(lang) +
             f'<section class="sec alt"><div class="wrap"><div class="shead rv"><span class="kick">{E(STR["k_tl"][lang])}</span><h2>{E(TIMELINE_H[lang])}</h2></div><div class="tline">{tl}</div></div></section>'
             f'<section class="sec"><div class="wrap"><div class="shead rv"><span class="kick">{E(STR["k_why"][lang])}</span><h2>{E(STR["why_h"][lang])}</h2></div><div class="vals">{vals}</div></div></section>'
-            f'<section class="sec alt"><div class="wrap"><div class="shead rv"><span class="kick">{E(STR["k_plant"][lang])}</span><h2>{E(STR["plant_h"][lang])}</h2></div><div class="gallery">{gal}</div></div></section>')
+            f'<section class="sec alt"><div class="wrap"><div class="shead rv"><span class="kick">{E(STR["k_plant"][lang])}</span><h2>{E(STR["plant_h"][lang])}</h2></div><div class="gallery g9">{gal}</div></div></section>')
 
 
 def body_contact(lang, single=False):
@@ -346,12 +411,19 @@ def build_previews():
         if rel not in cache:
             cache[rel] = "data:image/jpeg;base64," + base64.b64encode((ROOT / "assets" / "img" / rel).read_bytes()).decode()
         return m.group(1) + cache[rel]
+    def vinline(rel):
+        if rel not in cache:
+            cache[rel] = "data:image/jpeg;base64," + base64.b64encode((ROOT / "assets" / rel).read_bytes()).decode()
+        return cache[rel]
     for lang in LANGS:
         parts = [head("index", lang, inline=True), header("index", lang, single=True), "<main>"]
         for page in PAGES:
             parts.append(f'<div id="{page}" class="anchor"></div>' + BODY[page](lang, single=True))
         parts.append("</main>" + footer(lang, single=True) + js(lang, inline=True) + "</body></html>")
         s = "".join(parts)
+        s = re.sub(r'data-img="(?:\.\./)?assets/img/([^"]+)"', lambda m: f'data-img="{DOMAIN}/assets/img/{m.group(1)}"', s)
+        s = re.sub(r'((?:src="|poster="|url\())(?:\.\./)?(?:assets/)?(video/[^")]+\.jpg)', lambda m: m.group(1) + vinline(m.group(2)), s)
+        s = re.sub(r'(?:\.\./)?assets/video/([A-Z0-9]+\.mp4)', DOMAIN + r'/assets/video/\1', s)
         s = re.sub(r'((?:src="|href="|url\())(?:\.\./)?(?:assets/)?img/([^")]+)', inline, s)
         (out / f"longteng_preview_{lang}.html").write_text(s, encoding="utf-8")
     print("previews written")

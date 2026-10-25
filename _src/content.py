@@ -368,3 +368,169 @@ INNOV_SUB = {"en": "Independent engineering, protected by patents and recognised
              "vi": "Năng lực kỹ thuật độc lập, được bảo hộ bằng sáng chế và được các chương trình quốc gia, cấp tỉnh công nhận.",
              "zh": "自主研发能力，由专利保护，并获国家与省级认定。"}
 PAGE_TITLES["innovation"] = {"en": "Innovation & recognition", "vi": "Công nghệ & chứng nhận", "zh": "技术与荣誉"}
+
+# ── v3 additions (company photos, videos and certificates received 2026-10-25) ──
+import json as _json, pathlib as _pl
+VIDEOS = {v["code"]: v for v in _json.loads((_pl.Path(__file__).with_name("media.json")).read_text(encoding="utf-8"))}
+
+
+def clip_len(code):
+    d = VIDEOS[code]["duration_s"]
+    return round(d) if d <= 34 else 30
+
+
+FILTERS = [
+    ("dryer", {"en": "Hair-dryer components", "vi": "Linh kiện máy sấy tóc", "zh": "电吹风零部件"}),
+    ("care", {"en": "Personal & oral care", "vi": "Chăm sóc cá nhân & răng miệng", "zh": "个护与口腔护理"}),
+    ("pack", {"en": "Cosmetic packaging & printing", "vi": "Bao bì mỹ phẩm & in ấn", "zh": "化妆品包材与印刷"}),
+    ("auto", {"en": "EV & automotive", "vi": "Xe điện & ô tô", "zh": "新能源与汽车"}),
+    ("lock", {"en": "Smart locks & hardware", "vi": "Khóa thông minh & kim khí", "zh": "智能锁与五金"}),
+    ("elec", {"en": "Electronics & appliances", "vi": "Điện tử & đồ gia dụng", "zh": "电子电器"}),
+    ("test", {"en": "Testing & life tests", "vi": "Kiểm tra & thử tuổi thọ", "zh": "检测与寿命试验"}),
+]
+_OLD2NEW = {"dryer": "dryer", "shaver": "care", "brush": "care", "test": "test", "elec": "elec", "stamp": "pack"}
+_SPECIAL = {31: "auto", 33: "lock", 34: "auto"}
+MACHINES = []
+for _i, _e in enumerate(EQ):
+    _v = next((c for c, v in VIDEOS.items() if v["catalogue_index"] == _i), None)
+    MACHINES.append({"cat": _SPECIAL.get(_i, _OLD2NEW.get(_e[0])), "img": _e[1], "vid": _v, "zh": _e[2], "en": _e[3], "vi": _e[4]})
+for _c, _v in VIDEOS.items():
+    if _v["catalogue_index"] is None and _v["site_filter"] not in ("company", "media"):
+        MACHINES.append({"cat": _v["site_filter"], "img": None, "vid": _c, **_v["title"]})
+
+HOME_VIDEOS = ["D01", "C01", "A01", "E03", "B01", "C02"]
+INDUSTRY_VIDEO = {"appliances": "A01", "vision": "F01", "locks": "E03", "ev": "D01", "packaging": "C02"}
+
+VSTR = {
+    "vid_k": {"en": "Machines in action", "vi": "Máy móc đang vận hành", "zh": "设备实拍"},
+    "vid_h": {"en": "Real footage from our plant and our customers' factories",
+              "vi": "Video thực tế từ nhà máy của chúng tôi và nhà máy khách hàng",
+              "zh": "来自龙腾工厂与客户现场的真实视频"},
+    "watch_all": {"en": "Watch all videos", "vi": "Xem tất cả video", "zh": "观看全部视频"},
+    "with_video": {"en": "With video", "vi": "Có video", "zh": "有视频"},
+    "play": {"en": "Play video", "vi": "Phát video", "zh": "播放视频"},
+    "close": {"en": "Close", "vi": "Đóng", "zh": "关闭"},
+    "eq_sub": {"en": "{n} machine types designed and built, grouped by application — {v} of them on video. Every machine is customised to your product.",
+               "vi": "{n} loại máy đã thiết kế và chế tạo, phân theo ứng dụng — {v} loại có video. Mỗi máy đều được tùy biến theo sản phẩm của bạn.",
+               "zh": "已设计制造的 {n} 类设备，按应用分组，其中 {v} 类有实拍视频；每台设备都按您的产品定制。"},
+    "certwall_k": {"en": "Certificates", "vi": "Giấy chứng nhận", "zh": "证书"},
+    "certwall_h": {"en": "Certificates and patent grants", "vi": "Giấy chứng nhận và bằng sáng chế", "zh": "资质证书与专利证书"},
+    "certwall_note": {"en": "Click a certificate to enlarge it. Originals are available for audit on request.",
+                      "vi": "Nhấn vào giấy chứng nhận để phóng to. Bản gốc được cung cấp khi đánh giá nhà cung cấp.",
+                      "zh": "点击证书可放大查看；供应商审核时可提供原件。"},
+    "tour_k": {"en": "Factory tour", "vi": "Tham quan nhà máy", "zh": "工厂实拍"},
+    "tour_h": {"en": "Walk through our R&D and assembly workshop", "vi": "Tham quan xưởng R&D và lắp ráp", "zh": "走进研发中心与装配车间"},
+    "tour_p": {"en": "Every machine is designed, assembled and tested here before it ships — and you are welcome to visit, or to join the factory acceptance test by live video.",
+               "vi": "Mỗi máy đều được thiết kế, lắp ráp và chạy thử tại đây trước khi giao — quý khách có thể đến thăm hoặc tham gia nghiệm thu qua video trực tuyến.",
+               "zh": "每台设备都在这里完成设计、装配与测试后才发货——欢迎到厂参观，或通过实时视频参加出厂验收。"},
+}
+
+TRUST = [
+    {"en": "Featured on CCTV", "vi": "Lên sóng CCTV", "zh": "央视专访"},
+    {"en": "National High-Tech Enterprise", "vi": "Doanh nghiệp Công nghệ cao cấp quốc gia", "zh": "国家高新技术企业"},
+    {"en": "ISO 9001:2015 certified", "vi": "Chứng nhận ISO 9001:2015", "zh": "ISO 9001:2015 认证"},
+    {"en": "Innovative SME of Guangdong", "vi": "Doanh nghiệp đổi mới sáng tạo Quảng Đông", "zh": "广东省创新型中小企业"},
+    {"en": "9 granted patents", "vi": "9 bằng sáng chế", "zh": "9 件授权专利"},
+]
+
+CREDS.insert(1, ({"en": "ISO 9001:2015 quality management", "vi": "Hệ thống quản lý chất lượng ISO 9001:2015", "zh": "ISO 9001:2015 质量管理体系"},
+                 {"en": "Certificate ZGTC22Q01563R0 · valid to 31 Mar 2028", "vi": "Chứng chỉ ZGTC22Q01563R0 · hiệu lực đến 31/03/2028", "zh": "证书号 ZGTC22Q01563R0 · 有效期至 2028 年 3 月 31 日"}))
+
+CERTWALL = [
+    ("cert/hnte.jpg", {"en": "National High-Tech Enterprise", "vi": "Doanh nghiệp Công nghệ cao", "zh": "国家高新技术企业证书"}),
+    ("cert/iso9001-en.jpg", {"en": "ISO 9001:2015 certificate", "vi": "Chứng chỉ ISO 9001:2015", "zh": "ISO 9001:2015 证书"}),
+    ("cert/trademark.jpg", {"en": "Trademark registration «LT»", "vi": "Đăng ký nhãn hiệu «LT»", "zh": "商标注册证"}),
+    ("cert/pat-CN221571564U.jpg", {"en": "Patent CN221571564U", "vi": "Bằng CN221571564U", "zh": "专利 CN221571564U"}),
+    ("cert/pat-CN221714756U.jpg", {"en": "Patent CN221714756U", "vi": "Bằng CN221714756U", "zh": "专利 CN221714756U"}),
+    ("cert/pat-CN221423656U.jpg", {"en": "Patent CN221423656U", "vi": "Bằng CN221423656U", "zh": "专利 CN221423656U"}),
+    ("cert/pat-CN221910615U.jpg", {"en": "Patent CN221910615U", "vi": "Bằng CN221910615U", "zh": "专利 CN221910615U"}),
+    ("cert/pat-CN221791677U.jpg", {"en": "Patent CN221791677U", "vi": "Bằng CN221791677U", "zh": "专利 CN221791677U"}),
+    ("cert/pat-CN221565210U.jpg", {"en": "Patent CN221565210U", "vi": "Bằng CN221565210U", "zh": "专利 CN221565210U"}),
+    ("cert/pat-CN218311948U.jpg", {"en": "Patent CN218311948U", "vi": "Bằng CN218311948U", "zh": "专利 CN218311948U"}),
+]
+
+MEDIA = {
+    "k": {"en": "In the media", "vi": "Truyền thông", "zh": "媒体报道"},
+    "h": {"en": "Featured on CCTV", "vi": "Được giới thiệu trên CCTV", "zh": "央视专访"},
+    "p": {"en": "China Central Television (CCTV) interviewed our general manager, Cao Chengpei, for its series “Rising National Brands” — on how Longteng helps manufacturers upgrade their production with automation.",
+          "vi": "Đài Truyền hình Trung ương Trung Quốc (CCTV) đã phỏng vấn Tổng giám đốc Tào Thành Bồi (Cao Chengpei) trong chuyên mục “Thương hiệu dân tộc vươn lên”, về cách Longteng giúp các nhà sản xuất nâng cấp sản xuất bằng tự động hóa.",
+          "zh": "中央电视台《崛起的民族品牌》专题节目专访总经理曹城培，讲述龙腾如何以自动化助力制造企业转型升级。"},
+    "points": {"en": ["Full-lifecycle service: diagnosis, design, manufacturing, installation & commissioning, and data support after start-up.",
+                      "Modular quick-change design — one product changeover cut from 4 hours to 20 minutes.",
+                      "A process knowledge base of 2,000+ entries, built from the parameters and lessons of past projects."],
+               "vi": ["Dịch vụ trọn vòng đời: khảo sát nhu cầu, thiết kế, chế tạo, lắp đặt – chạy thử và hỗ trợ dữ liệu sau vận hành.",
+                      "Thiết kế mô-đun thay nhanh — thời gian chuyển đổi một sản phẩm giảm từ 4 giờ xuống 20 phút.",
+                      "Kho tri thức quy trình hơn 2.000 mục, tích lũy từ thông số và kinh nghiệm của các dự án đã thực hiện."],
+               "zh": ["全生命周期服务：需求诊断、方案设计、设备制造、安装调试与数据运维。",
+                      "模块化快速换线设计——一次换型从 4 小时缩短到 20 分钟。",
+                      "积累 2000 余条数据的制造知识库，沉淀历次项目的工艺参数与经验。"]},
+    "note": {"en": "Programme: “Rising National Brands” (崛起的民族品牌), CCTV.", "vi": "Chương trình: “Thương hiệu dân tộc vươn lên” (崛起的民族品牌), CCTV.", "zh": "节目：中央电视台《崛起的民族品牌》。"},
+}
+
+EXPORT = {
+    "k": {"en": "Export-ready", "vi": "Sẵn sàng xuất khẩu", "zh": "出口就绪"},
+    "h": {"en": "Built for factories in Southeast Asia and Europe", "vi": "Dành cho nhà máy ở Đông Nam Á và châu Âu", "zh": "面向东南亚与欧洲工厂"},
+    "p": {"en": "Our customers include plants of a Japanese home-appliance group in China and Thailand and of a European electrical-equipment group, and production equipment has been delivered to Vietnam. Every export project follows the same routine.",
+          "vi": "Khách hàng của chúng tôi gồm các nhà máy của một tập đoàn điện gia dụng Nhật Bản tại Trung Quốc và Thái Lan, và của một tập đoàn thiết bị điện châu Âu; thiết bị sản xuất đã được giao tới Việt Nam. Mọi dự án xuất khẩu đều theo cùng một quy trình.",
+          "zh": "客户包括某日系家电集团在中国与泰国的工厂、某欧洲电气集团的工厂，生产设备已交付越南。每个出口项目都遵循同一套流程。"},
+    "items": [
+        ("badge", {"en": "ISO 9001:2015 quality system", "vi": "Hệ thống chất lượng ISO 9001:2015", "zh": "ISO 9001:2015 质量体系"},
+         {"en": "Design, build and inspection run under a certified quality management system.", "vi": "Thiết kế, chế tạo và kiểm tra vận hành theo hệ thống quản lý chất lượng được chứng nhận.", "zh": "设计、制造与检验在认证的质量管理体系下运行。"}),
+        ("video", {"en": "FAT on site or by live video", "vi": "Nghiệm thu FAT trực tiếp hoặc qua video", "zh": "出厂验收可到场或视频见证"},
+         {"en": "Run your own parts on the machine in Guangzhou before it ships.", "vi": "Chạy thử bằng chính chi tiết của bạn tại Quảng Châu trước khi giao.", "zh": "发货前在广州用您的零件试机。"}),
+        ("chat", {"en": "English & Vietnamese support", "vi": "Hỗ trợ tiếng Anh & tiếng Việt", "zh": "英文与越南文支持"},
+         {"en": "Quotations, manuals and operator screens in English; Vietnamese on request.", "vi": "Báo giá, hướng dẫn và màn hình vận hành bằng tiếng Anh; tiếng Việt theo yêu cầu.", "zh": "报价、说明书与操作界面提供英文，越南文可按需提供。"}),
+        ("plane", {"en": "Shipping & export documents", "vi": "Vận chuyển & chứng từ xuất khẩu", "zh": "运输与出口单证"},
+         {"en": "CIF to Hai Phong, Ho Chi Minh City, Bangkok or European ports, with certificate of origin.", "vi": "Giao CIF đến Hải Phòng, TP. HCM, Bangkok hoặc cảng châu Âu, kèm C/O.", "zh": "可按 CIF 发运至海防、胡志明市、曼谷或欧洲港口，提供原产地证。"}),
+    ],
+}
+
+T["stats"] = {"en": [("2019", "Founded in Guangzhou"), ("National", "High-Tech Enterprise (2025)"), ("ISO 9001", "Certified quality system"), ("9", "Granted patents"), ("50+", "Machine types designed & built")],
+              "vi": [("2019", "Thành lập tại Quảng Châu"), ("Quốc gia", "Doanh nghiệp công nghệ cao (2025)"), ("ISO 9001", "Hệ thống chất lượng được chứng nhận"), ("9", "Bằng sáng chế được cấp"), ("50+", "Loại máy đã thiết kế & chế tạo")],
+              "zh": [("2019", "成立于广州"), ("国家级", "高新技术企业（2025）"), ("ISO 9001", "质量管理体系认证"), ("9 件", "授权专利"), ("50+", "已设计制造的设备类型")]}
+T["hero_kicker"] = {"en": "Non-standard automation · Engineered in Guangzhou · For factories in Southeast Asia and Europe",
+                    "vi": "Tự động hóa phi tiêu chuẩn · Thiết kế tại Quảng Châu · Cho nhà máy ở Đông Nam Á và châu Âu",
+                    "zh": "非标自动化 · 广州研发制造 · 服务东南亚与欧洲工厂"}
+T["hero_p"] = {"en": "Assembly, testing, CCD vision inspection, laser welding and hot stamping — custom machines and lines for appliance, personal-care, cosmetics-packaging, EV-component, lock and electronics manufacturers. Designed and proven in our Guangzhou plant, installed and supported at your factory in Southeast Asia and Europe.",
+               "vi": "Lắp ráp, kiểm tra, kiểm tra bằng camera CCD, hàn laser và ép nhũ nóng — máy và dây chuyền theo yêu cầu cho nhà sản xuất điện gia dụng, sản phẩm chăm sóc cá nhân, bao bì mỹ phẩm, linh kiện xe điện, khóa và điện tử. Thiết kế và chạy thử tại nhà máy Quảng Châu, lắp đặt và hỗ trợ tại nhà máy của bạn ở Đông Nam Á và châu Âu.",
+               "zh": "装配、检测、CCD 视觉检测、激光焊接与烫印——为小家电、个护、化妆品包材、新能源汽车零部件、锁具与电子制造商定制单机与整线。在广州工厂完成设计与验证，到您在东南亚与欧洲的工厂安装调试并长期服务。"}
+DESC = {"en": "Longteng Automation (Guangzhou) builds custom assembly, test, CCD vision-inspection, laser-welding and hot-stamping machines and complete lines for factories in Vietnam, Southeast Asia and Europe. ISO 9001:2015, National High-Tech Enterprise, featured on CCTV.",
+        "vi": "Longteng Automation (Quảng Châu) chế tạo máy lắp ráp, kiểm tra, kiểm tra bằng camera CCD, hàn laser, ép nhũ nóng và dây chuyền hoàn chỉnh theo yêu cầu cho nhà máy tại Việt Nam, Đông Nam Á và châu Âu. ISO 9001:2015, Doanh nghiệp Công nghệ cao, được giới thiệu trên CCTV.",
+        "zh": "龙腾自动化（广州）为越南、东南亚与欧洲工厂定制装配、检测、CCD 视觉检测、激光焊接与烫印设备及整线。ISO 9001:2015 认证，国家高新技术企业，央视专访企业。"}
+TIMELINE[4] = ("2025", {"en": "ISO 9001:2015 certified; invention patent for an industrial-robot clamping mechanism acquired; Innovative SME of Guangdong; National High-Tech Enterprise",
+                        "vi": "Đạt chứng nhận ISO 9001:2015; nhận chuyển nhượng sáng chế cơ cấu kẹp robot công nghiệp; doanh nghiệp đổi mới sáng tạo Quảng Đông; Doanh nghiệp Công nghệ cao cấp quốc gia",
+                        "zh": "通过 ISO 9001:2015 认证；受让工业机器人夹持机构发明专利；广东省创新型中小企业；国家高新技术企业"})
+TIMELINE[5] = ("2026", {"en": "Featured on CCTV; trilingual export website launched for customers in Southeast Asia and Europe",
+                        "vi": "Được giới thiệu trên CCTV; ra mắt website ba ngôn ngữ cho khách hàng Đông Nam Á và châu Âu",
+                        "zh": "接受央视专访；上线面向东南亚与欧洲客户的三语外贸网站"})
+ABOUT["p"] = {
+    "en": ["Guangzhou Longteng Automation Equipment Co., Ltd. was founded in May 2019 in Panyu District, Guangzhou. The company registered its own trademark at the start and began as a design team; in September 2019 it opened its own production base in the Shibi industrial area and has designed and built its machines in-house since then.",
+           "We build fixtures, automatic assembly and test equipment, hot-stamping, pad-printing and screen-printing machines, CCD appearance-inspection systems and complete assembly lines for small appliances, electronics, cosmetics, food, medical devices, garments and automotive parts.",
+           "Our general manager, Cao Chengpei, brings three decades of hands-on experience in precision manufacturing. Longteng is a National High-Tech Enterprise, runs an ISO 9001:2015 certified quality system and holds nine granted patents."],
+    "vi": ["Công ty TNHH Thiết bị Tự động hóa Longteng Quảng Châu được thành lập vào tháng 5/2019 tại quận Phiên Ngung (Panyu), Quảng Châu. Công ty đăng ký nhãn hiệu riêng ngay từ đầu và khởi đầu là một nhóm thiết kế; từ tháng 9/2019 công ty có xưởng sản xuất riêng tại khu công nghiệp Thạch Bích (Shibi) và tự thiết kế, chế tạo máy kể từ đó.",
+           "Chúng tôi chế tạo đồ gá, thiết bị lắp ráp và kiểm tra tự động, máy ép nhũ nóng, in tampon và in lụa, hệ thống kiểm tra ngoại quan bằng camera CCD và dây chuyền lắp ráp hoàn chỉnh cho điện gia dụng nhỏ, điện tử, mỹ phẩm, thực phẩm, thiết bị y tế, may mặc và linh kiện ô tô.",
+           "Tổng giám đốc Tào Thành Bồi (Cao Chengpei) có ba mươi năm kinh nghiệm thực tế trong sản xuất chính xác. Longteng là Doanh nghiệp Công nghệ cao cấp quốc gia, vận hành hệ thống chất lượng đạt chứng nhận ISO 9001:2015 và sở hữu 9 bằng sáng chế đã được cấp."],
+    "zh": ["广州龙腾自动化设备有限公司成立于 2019 年 5 月，位于广州市番禺区。公司成立之初即注册了自有品牌商标，最初以设计团队、外发生产的形式经营；2019 年 9 月在石壁街屏山工业区建立自有生产基地，此后自主设计研发、自主生产。",
+           "公司主营小家电、电子、化妆品、食品、医疗器械、服装、汽车零部件等制造行业的工装夹具、自动组装检测设备及生产线，烫印、移印、丝印自动化设备，CCD 外观检测设备与电子制造自动组立生产线。",
+           "总经理曹城培在精密制造领域深耕三十年。公司是国家高新技术企业，通过 ISO 9001:2015 质量管理体系认证，拥有授权专利 9 件。"]}
+PROJECTS[0]["vid"] = "D01"
+PROJECTS[0]["d"] = {k: v + [x] for (k, v), x in zip(PROJECTS[0]["d"].items(), [
+    "Typical middle-section design: about 25 m × 6 m, linked by module-transfer robots, with curing tunnel ovens, automatic screw-driving with torque and angle monitoring, AOI and label printing.",
+    "Thiết kế đoạn giữa điển hình: khoảng 25 m × 6 m, nối bằng robot chuyển mô-đun, có lò sấy đường hầm, bắt vít tự động giám sát mô-men và góc, AOI và in nhãn.",
+    "中段典型方案：约 25 米 × 6 米，由模组搬运机械手串联，含固化隧道炉、带扭矩与角度监控的自动锁螺丝、AOI 检测与自动贴标。"])}
+PROJECTS[1]["vid"] = "E01"
+PROJECTS[2]["vid"] = "B01"
+PROJECTS.insert(1, {"vid": "D02", "imgs": [],
+    "t": {"en": "Automotive air-PTC heater cores: automatic production line, commissioned on site", "vi": "Lõi sưởi PTC không khí cho ô tô: dây chuyền tự động, chạy thử tại nhà máy khách hàng", "zh": "汽车暖风 PTC 发热芯：自动生产线（客户现场调试）"},
+    "ind": {"en": "EV & automotive", "vi": "Xe điện & ô tô", "zh": "新能源与汽车"},
+    "d": {"en": ["Automatic production of corrugated-fin heater cores for vehicle cabin heating.", "A companion assembly line for heater units was commissioned at the customer's plant by our engineers.", "Both lines carry part tracking from station to station."],
+          "vi": ["Sản xuất tự động lõi sưởi dạng lá sóng cho hệ thống sưởi cabin ô tô.", "Dây chuyền lắp ráp bộ sưởi đi kèm đã được kỹ sư của chúng tôi chạy thử tại nhà máy khách hàng.", "Cả hai dây chuyền đều theo dõi sản phẩm qua từng trạm."],
+          "zh": ["自动生产车用暖风波纹条发热芯。", "配套的发热组件组装线由我们的工程师在客户现场完成调试。", "两条线都在工位间追踪产品。"]}})
+PROJECTS.insert(4, {"vid": "C01", "imgs": [],
+    "t": {"en": "Cosmetic packaging: lipstick mechanism assembly and cap hot stamping", "vi": "Bao bì mỹ phẩm: lắp ráp cơ cấu son môi và ép nhũ nắp", "zh": "化妆品包材：口红推出组件组立与瓶盖烫金"},
+    "ind": {"en": "Cosmetic packaging", "vi": "Bao bì mỹ phẩm", "zh": "化妆品包材"},
+    "d": {"en": ["Automatic assembly of lipstick swivel mechanisms from bowl-fed parts.", "Automatic hot stamping of round pump caps and shaped mascara caps.", "Pad-printing and rotary screen-printing machines for decoration."],
+          "vi": ["Lắp ráp tự động cơ cấu xoay son môi từ chi tiết cấp bằng phễu rung.", "Ép nhũ nóng tự động cho nắp bơm tròn và nắp mascara dạng đặc biệt.", "Máy in tampon và in lụa bàn xoay để trang trí."],
+          "zh": ["振动盘供料，自动组立口红推出组件。", "圆形泵盖与异形睫毛膏盖自动烫金。", "配套移印机与转盘丝印机用于装饰印刷。"]}})
+for _ind in INDUSTRIES:  # sharper stills from the new footage for the industry tiles
+    _ind["vimg"] = {"appliances": "video/B01.jpg", "locks": "video/E01.jpg", "ev": "video/D01.jpg", "packaging": "video/C02.jpg"}.get(_ind["id"])
