@@ -68,7 +68,7 @@ T = {
 
 # ── industries ────────────────────────────────────────────────────────────
 INDUSTRIES = [
-    {"id": "appliances", "img": "eq/toothbrush-assembly-test-line.jpg",
+    {"id": "appliances", "img": "site/hero-line.jpg",
      "t": {"en": "Small appliances & personal care", "vi": "Điện gia dụng nhỏ & chăm sóc cá nhân", "zh": "小家电与个护电器"},
      "d": {"en": "Hair dryers, shavers, trimmers, clippers and electric toothbrushes: riveting, press-fit, screw-driving, assembly lines, airtight, waterproof and life testing.",
            "vi": "Máy sấy tóc, máy cạo râu, máy tỉa, tông đơ và bàn chải điện: tán đinh, ép, bắt vít, dây chuyền lắp ráp, kiểm tra kín khí, chống nước và tuổi thọ.",
@@ -267,3 +267,104 @@ PAGE_TITLES = {
 DESC = {"en": "Longteng Automation builds custom assembly, test, vision-inspection, laser-welding and hot-stamping equipment and complete lines for factories in Vietnam and worldwide.",
         "vi": "Longteng Automation chế tạo thiết bị lắp ráp, kiểm tra, kiểm tra bằng camera, hàn laser, ép nhũ nóng và dây chuyền hoàn chỉnh theo yêu cầu cho nhà máy tại Việt Nam.",
         "zh": "龙腾自动化为越南及海外工厂定制装配、检测、视觉检测、激光焊接与烫印设备及整线。"}
+
+# ── v2 additions (premium redesign, 2026-10-25) ───────────────────────────
+T["nav"] = {"en": ["Home", "Solutions", "Equipment", "Projects", "Innovation", "About", "Contact"],
+            "vi": ["Trang chủ", "Giải pháp", "Thiết bị", "Dự án", "Công nghệ", "Giới thiệu", "Liên hệ"],
+            "zh": ["首页", "行业方案", "设备产品", "项目案例", "技术与荣誉", "关于我们", "联系我们"]}
+T["hero_kicker"] = {"en": "Non-standard automation · Engineered in Guangzhou · Delivered across Southeast Asia",
+                    "vi": "Tự động hóa phi tiêu chuẩn · Thiết kế tại Quảng Châu · Triển khai khắp Đông Nam Á",
+                    "zh": "非标自动化 · 广州研发制造 · 服务东南亚"}
+T["hero_h1"] = {"en": "Precision automation that turns your product into a production line",
+                "vi": "Tự động hóa chính xác — biến sản phẩm của bạn thành dây chuyền sản xuất",
+                "zh": "以精密自动化，把您的产品变成一条高效产线"}
+T["hero_p"] = {"en": "Assembly, testing, CCD vision inspection, laser welding and hot stamping — custom lines for appliance, electronics, EV-component, lock and packaging manufacturers. Designed and proven in our Guangzhou plant, installed and supported at your factory in Vietnam and across Southeast Asia.",
+               "vi": "Lắp ráp, kiểm tra, kiểm tra bằng camera CCD, hàn laser và ép nhũ nóng — dây chuyền theo yêu cầu cho nhà sản xuất điện gia dụng, điện tử, linh kiện xe điện, khóa và bao bì. Thiết kế và chạy thử tại nhà máy Quảng Châu, lắp đặt và hỗ trợ tại nhà máy của bạn ở Việt Nam và Đông Nam Á.",
+               "zh": "装配、检测、CCD 视觉检测、激光焊接与烫印——为小家电、电子、新能源汽车零部件、锁具与包装制造商定制整线。在广州工厂完成设计与验证，到您在越南及东南亚的工厂安装调试并长期服务。"}
+T["hero_btn2"] = {"en": "Explore our equipment", "vi": "Khám phá thiết bị", "zh": "浏览设备"}
+T["cta"] = {"en": "Talk to an engineer", "vi": "Trao đổi với kỹ sư", "zh": "联系工程师"}
+T["quote"] = {"en": "Request a quote", "vi": "Yêu cầu báo giá", "zh": "获取报价"}
+
+CAPS_H = {"en": "Core technologies", "vi": "Công nghệ cốt lõi", "zh": "核心技术"}
+CAPS_SUB = {"en": "Four engineering capabilities, combined into machines and complete lines for your product.",
+            "vi": "Bốn năng lực kỹ thuật, kết hợp thành máy và dây chuyền hoàn chỉnh cho sản phẩm của bạn.",
+            "zh": "四项工程能力，组合成为您的产品量身定制的单机与整线。"}
+CAPS = [
+    ("assembly", {"en": "Precision assembly", "vi": "Lắp ráp chính xác", "zh": "精密装配"},
+     {"en": "Riveting, press-fit, screw-driving, gluing and robot-cell assembly for small parts and sub-assemblies.",
+      "vi": "Tán đinh, ép, bắt vít, tra keo và lắp ráp bằng robot cho chi tiết nhỏ và cụm lắp.",
+      "zh": "铆接、压装、锁螺丝、点胶与机器人工作站，覆盖小零件与组件装配。"}),
+    ("vision", {"en": "CCD vision inspection", "vi": "Kiểm tra bằng camera CCD", "zh": "CCD 视觉检测"},
+     {"en": "Appearance defects, positioning, guided assembly, glue-bead inspection and multi-material sorting.",
+      "vi": "Lỗi ngoại quan, định vị, lắp ráp theo camera, kiểm tra đường keo và phân loại vật liệu.",
+      "zh": "外观瑕疵、定位、视觉引导组装、点胶检测与多物料分选。"}),
+    ("laser", {"en": "Laser & surface processing", "vi": "Gia công laser & bề mặt", "zh": "激光与表面工艺"},
+     {"en": "Laser welding and marking, hot stamping, pad printing and silk-screen automation.",
+      "vi": "Hàn và khắc laser, ép nhũ nóng, in tampon và in lụa tự động.",
+      "zh": "激光焊接与打标、烫印、移印与丝印自动化。"}),
+    ("test", {"en": "Testing & traceability", "vi": "Kiểm tra & truy xuất", "zh": "检测与追溯"},
+     {"en": "Airtight, waterproof, life, hi-pot and functional testing, with part scanning at every station.",
+      "vi": "Kiểm tra kín khí, chống nước, tuổi thọ, cao áp và chức năng, quét mã tại mỗi trạm.",
+      "zh": "气密、防水、寿命、耐压与功能测试，各工位扫码追溯。"}),
+]
+
+CREDS_H = {"en": "Recognition & certification", "vi": "Chứng nhận & ghi nhận", "zh": "资质与荣誉"}
+CREDS = [
+    ({"en": "National High-Tech Enterprise", "vi": "Doanh nghiệp Công nghệ cao cấp quốc gia", "zh": "国家高新技术企业"},
+     {"en": "Certificate GR202544005832 · issued 19 Dec 2025", "vi": "Giấy chứng nhận GR202544005832 · cấp ngày 19/12/2025", "zh": "证书编号 GR202544005832 · 2025 年 12 月 19 日发证"}),
+    ({"en": "Innovative SME of Guangdong Province", "vi": "Doanh nghiệp vừa và nhỏ đổi mới sáng tạo tỉnh Quảng Đông", "zh": "广东省创新型中小企业"},
+     {"en": "Recognised 2025", "vi": "Công nhận năm 2025", "zh": "2025 年认定"}),
+    ({"en": "Technology-based SME", "vi": "Doanh nghiệp vừa và nhỏ dựa trên công nghệ", "zh": "科技型中小企业"},
+     {"en": "Registered 2023 · 2024 · 2025", "vi": "Đăng ký các năm 2023 · 2024 · 2025", "zh": "2023、2024、2025 年连续入库"}),
+    ({"en": "9 granted patents", "vi": "9 bằng sáng chế đã được cấp", "zh": "9 件授权专利"},
+     {"en": "8 utility models and 1 invention; 4 invention applications under examination", "vi": "8 giải pháp hữu ích và 1 sáng chế; 4 đơn sáng chế đang thẩm định", "zh": "实用新型 8 件、发明 1 件；另有 4 件发明专利在实审"}),
+    ({"en": "Registered trademark «LT»", "vi": "Nhãn hiệu đã đăng ký «LT»", "zh": "注册商标「LT」"},
+     {"en": "Class 7 (machinery) · Reg. No. 55741827", "vi": "Nhóm 7 (máy móc) · Số đăng ký 55741827", "zh": "第 7 类机械设备 · 注册号 55741827"}),
+]
+
+PATENTS_H = {"en": "Patent portfolio", "vi": "Danh mục sáng chế", "zh": "专利一览"}
+PAT_COLS = {"en": ["Publication No.", "Title", "Type", "Status"], "vi": ["Số công bố", "Tên", "Loại", "Tình trạng"], "zh": ["公告号", "名称", "类型", "状态"]}
+PAT_TYPE = {"inv": {"en": "Invention", "vi": "Sáng chế", "zh": "发明"}, "um": {"en": "Utility model", "vi": "Giải pháp hữu ích", "zh": "实用新型"}}
+PAT_STATUS = {"g": {"en": "Granted", "vi": "Đã cấp", "zh": "已授权"}, "e": {"en": "Under examination", "vi": "Đang thẩm định", "zh": "实质审查中"}}
+PATENTS = [
+    ("CN111267132B", "inv", "g", {"en": "Clamping mechanism for industrial robots", "vi": "Cơ cấu kẹp cho robot công nghiệp", "zh": "一种用于工业机器人的夹持机构"}),
+    ("CN222035448U", "um", "g", {"en": "PTC heater wrapping equipment", "vi": "Thiết bị bọc keo bộ gia nhiệt PTC", "zh": "PTC 加热器包胶设备"}),
+    ("CN221910615U", "um", "g", {"en": "Inner and outer barrel fitting device for pen-type shavers", "vi": "Thiết bị lắp ống trong và ngoài cho máy cạo râu dạng bút", "zh": "笔式剃须刀内外筒安装装置"}),
+    ("CN221791677U", "um", "g", {"en": "Aluminium tube threading device", "vi": "Thiết bị luồn ống nhôm", "zh": "铝管穿装装置"}),
+    ("CN221714756U", "um", "g", {"en": "Automatic glue-dispensing equipment for thermostats", "vi": "Thiết bị tra keo tự động cho bộ điều nhiệt", "zh": "温控器自动点胶设备"}),
+    ("CN221571564U", "um", "g", {"en": "Hair-dryer performance testing device", "vi": "Thiết bị kiểm tra hiệu năng máy sấy tóc", "zh": "电吹风性能检测装置"}),
+    ("CN221565210U", "um", "g", {"en": "Film-winding device for tube-threading machines", "vi": "Cơ cấu cuộn màng cho máy luồn ống", "zh": "穿管机卷膜装置"}),
+    ("CN221423656U", "um", "g", {"en": "PTC heater component shaping equipment", "vi": "Thiết bị tạo hình cụm sưởi PTC", "zh": "PTC 暖风机组件整形设备"}),
+    ("CN218311948U", "um", "g", {"en": "Automatic forming machine for diode rectifier bridges", "vi": "Máy tạo hình tự động cầu chỉnh lưu điốt", "zh": "二极管整流桥自动成型机"}),
+    ("CN118768729A", "inv", "e", {"en": "Laser welding equipment for lock bodies", "vi": "Thiết bị hàn laser cho thân khóa", "zh": "一种用于锁体焊接的激光焊接设备"}),
+    ("CN118269023A", "inv", "e", {"en": "Forming fixture for PTC heating-element production lines", "vi": "Đồ gá tạo hình cho dây chuyền sản xuất phần tử gia nhiệt PTC", "zh": "一种 PTC 加热件生产流水线成型治具"}),
+    ("CN117798656A", "inv", "e", {"en": "Automatic assembly equipment for USB boxes", "vi": "Thiết bị lắp ráp tự động hộp USB", "zh": "一种 USB 盒子自动组装设备"}),
+    ("CN117719148A", "inv", "e", {"en": "Nozzle bending equipment for oral irrigators", "vi": "Thiết bị uốn vòi máy tăm nước", "zh": "一种冲牙器喷嘴弯曲设备"}),
+]
+
+SEA_H = {"en": "Built for Southeast Asia", "vi": "Dành cho Đông Nam Á", "zh": "面向东南亚"}
+SEA_P = {"en": "Our engineers fly out from Guangzhou to install, commission and train on site. Factory acceptance tests can be witnessed in person or by live video, and every line ships with remote diagnostics and a spare-parts kit.",
+         "vi": "Kỹ sư của chúng tôi bay từ Quảng Châu đến lắp đặt, chạy thử và đào tạo tại chỗ. Nghiệm thu tại xưởng có thể chứng kiến trực tiếp hoặc qua video trực tuyến; mỗi dây chuyền đều có chẩn đoán từ xa và bộ phụ tùng.",
+         "zh": "工程师从广州出发，到现场安装调试与培训。出厂验收可到场或通过实时视频见证；每条产线都配远程诊断与备件包。"}
+SEA_POINTS = {"en": ["About 2 hours' flight to Hanoi", "Live-video factory acceptance tests", "English, Vietnamese and Chinese support", "Remote diagnosis and spare-parts kits"],
+              "vi": ["Khoảng 2 giờ bay đến Hà Nội", "Nghiệm thu tại xưởng qua video trực tuyến", "Hỗ trợ tiếng Anh, tiếng Việt và tiếng Trung", "Chẩn đoán từ xa và bộ phụ tùng"],
+              "zh": ["至河内航程约 2 小时", "出厂验收可视频见证", "英文、越南文、中文支持", "远程诊断与备件包"]}
+CITIES = [("Guangzhou", "Quảng Châu", "广州", 113.26, 23.13, ""), ("Hanoi", "Hà Nội", "河内", 105.85, 21.03, "≈2h"),
+          ("Ho Chi Minh City", "TP. Hồ Chí Minh", "胡志明市", 106.70, 10.78, "≈3h"), ("Bangkok", "Bangkok", "曼谷", 100.50, 13.76, "≈3h"),
+          ("Kuala Lumpur", "Kuala Lumpur", "吉隆坡", 101.69, 3.14, "≈4h"), ("Jakarta", "Jakarta", "雅加达", 106.85, -6.21, "≈5h"),
+          ("Manila", "Manila", "马尼拉", 120.98, 14.60, "≈2h")]
+SEA_NOTE = {"en": "Approximate direct flight times from Guangzhou.", "vi": "Thời gian bay thẳng ước tính từ Quảng Châu.", "zh": "自广州直飞的大致航程。"}
+
+TIMELINE_H = {"en": "Milestones", "vi": "Các mốc phát triển", "zh": "发展历程"}
+TIMELINE = [
+    ("2019.05", {"en": "Founded in Guangzhou; own trademark registered", "vi": "Thành lập tại Quảng Châu; đăng ký nhãn hiệu riêng", "zh": "在广州成立，注册自有商标"}),
+    ("2019.09", {"en": "Own production base opened in Panyu; in-house design and manufacturing", "vi": "Mở xưởng sản xuất riêng tại Phiên Ngung; tự thiết kế và chế tạo", "zh": "番禺自有生产基地投用，自主设计与制造"}),
+    ("2023", {"en": "First utility-model patent granted; registered as a Technology-based SME", "vi": "Được cấp bằng giải pháp hữu ích đầu tiên; đăng ký doanh nghiệp vừa và nhỏ dựa trên công nghệ", "zh": "首件实用新型专利授权；入库科技型中小企业"}),
+    ("2024", {"en": "Seven more utility-model patents granted", "vi": "Được cấp thêm 7 bằng giải pháp hữu ích", "zh": "再获 7 件实用新型专利授权"}),
+    ("2025", {"en": "Invention patent for an industrial-robot clamping mechanism acquired; Innovative SME of Guangdong; National High-Tech Enterprise", "vi": "Nhận chuyển nhượng sáng chế cơ cấu kẹp robot công nghiệp; doanh nghiệp đổi mới sáng tạo tỉnh Quảng Đông; Doanh nghiệp Công nghệ cao cấp quốc gia", "zh": "受让工业机器人夹持机构发明专利；广东省创新型中小企业；国家高新技术企业"}),
+    ("2026", {"en": "Trilingual export website launched for Southeast Asian customers", "vi": "Ra mắt website ba ngôn ngữ cho khách hàng Đông Nam Á", "zh": "上线面向东南亚客户的三语外贸网站"}),
+]
+INNOV_SUB = {"en": "Independent engineering, protected by patents and recognised by national and provincial programmes.",
+             "vi": "Năng lực kỹ thuật độc lập, được bảo hộ bằng sáng chế và được các chương trình quốc gia, cấp tỉnh công nhận.",
+             "zh": "自主研发能力，由专利保护，并获国家与省级认定。"}
+PAGE_TITLES["innovation"] = {"en": "Innovation & recognition", "vi": "Công nghệ & chứng nhận", "zh": "技术与荣誉"}
