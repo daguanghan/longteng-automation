@@ -534,3 +534,117 @@ PROJECTS.insert(4, {"vid": "C01", "imgs": [],
           "zh": ["振动盘供料，自动组立口红推出组件。", "圆形泵盖与异形睫毛膏盖自动烫金。", "配套移印机与转盘丝印机用于装饰印刷。"]}})
 for _ind in INDUSTRIES:  # sharper stills from the new footage for the industry tiles
     _ind["vimg"] = {"appliances": "video/B01.jpg", "locks": "video/E01.jpg", "ev": "video/D01.jpg", "packaging": "video/C02.jpg"}.get(_ind["id"])
+
+# ── v4 additions (AI vision sorting machines and IC layout-design registration, 2026-10-31) ──
+FILTERS.append(("sort", {"en": "AI vision sorting", "vi": "Phân loại bằng thị giác AI", "zh": "AI 智能分选"}))
+SORTERS = [
+    {"cat": "sort", "img": "ai-sorter-single.jpg", "vid": None,
+     "zh": "单通道 AI 智能分拣机（散件分选）", "en": "Single-channel AI vision sorting machine for loose small parts",
+     "vi": "Máy phân loại thông minh AI một kênh cho chi tiết rời cỡ nhỏ"},
+    {"cat": "sort", "img": "ai-sorter-dual.jpg", "vid": None,
+     "zh": "双通道 AI 智能分拣机（散件分选）", "en": "Dual-channel AI vision sorting machine for loose small parts",
+     "vi": "Máy phân loại thông minh AI hai kênh cho chi tiết rời cỡ nhỏ"},
+]
+MACHINES.extend(SORTERS)
+
+SORT = {
+    "k": {"en": "New · AI vision sorting", "vi": "Mới · Phân loại bằng thị giác AI", "zh": "新品 · AI 智能分选"},
+    "h": {"en": "AI vision sorting machines for loose small parts", "vi": "Máy phân loại thông minh bằng thị giác AI cho chi tiết rời cỡ nhỏ", "zh": "散件专项 AI 智能分选机"},
+    "lead": {"en": "Lift feeding, high-speed CCD imaging, AI recognition and pneumatic sorting in one unmanned flow. The machines sort by shape, colour and size and reject short-shot and missing-mould parts, so every part is inspected instead of a sample.",
+             "vi": "Cấp liệu nâng, chụp ảnh CCD tốc độ cao, nhận dạng bằng AI và phân loại bằng khí nén trong một quy trình không cần người vận hành. Máy phân loại theo hình dạng, màu sắc, kích thước và loại bỏ chi tiết ép thiếu, thiếu khuôn — kiểm tra 100% thay cho lấy mẫu thủ công.",
+             "zh": "自动提升上料、高速 CCD 成像、AI 识别与气动分拣一体化，全流程无人化。按形状、颜色、尺寸分选，并剔除缺料、缺模零件，以 100% 全检替代人工抽检。"},
+    "apps": [("sort-app-blocks.jpg", {"en": "Building-block bricks", "vi": "Khối xếp hình", "zh": "积木零件"}),
+             ("sort-app-toys.jpg", {"en": "Baby & children's toys", "vi": "Đồ chơi trẻ em", "zh": "婴童玩具"}),
+             ("sort-app-hardware.jpg", {"en": "Screws, nuts & hardware", "vi": "Vít, đai ốc & kim khí", "zh": "螺丝螺母等五金件"}),
+             ("sort-app-trims.jpg", {"en": "Garment buttons & trims", "vi": "Cúc & phụ liệu may mặc", "zh": "纽扣、饰品等服装辅料"}),
+             ("sort-app-gears.jpg", {"en": "Plastic moulded parts", "vi": "Chi tiết nhựa ép phun", "zh": "塑料胶件"})],
+    "models": [
+        {"img": "eq/ai-sorter-single.jpg",
+         "k": {"en": "Single-channel", "vi": "Một kênh", "zh": "单通道"},
+         "t": {"en": "Single-channel AI sorting machine", "vi": "Máy phân loại AI một kênh", "zh": "单通道智能分拣机"},
+         "d": {"en": ["11,000–15,000 parts/h for parts up to 20 × 20 mm; 7,000–11,000 parts/h for larger parts.",
+                      "14 outlets as standard; the number of outlets is built to your sorting categories.",
+                      "Sorting accuracy ≥99.5% (algorithm ≥99.9%); parts of 1–50 g from 8 × 8 × 2 mm to 80 × 60 × 15 mm in plastic, low-elasticity rubber or metal.",
+                      "3,780 × 800 × 1,120 mm · 220 V AC, 600 W · compressed air 16 L/min at ≥0.4 MPa.",
+                      "Industrial colour CCD with global shutter, 22-inch touch screen and an industrial PC with an AI accelerator (GPU); sorting data is logged in real time."],
+               "vi": ["11.000–15.000 chi tiết/giờ với chi tiết đến 20 × 20 mm; 7.000–11.000 chi tiết/giờ với chi tiết lớn hơn.",
+                      "Tiêu chuẩn 14 cửa ra; số cửa ra được thiết kế theo số nhóm phân loại của bạn.",
+                      "Độ chính xác phân loại ≥99,5% (thuật toán ≥99,9%); chi tiết 1–50 g, từ 8 × 8 × 2 mm đến 80 × 60 × 15 mm, bằng nhựa, cao su đàn hồi thấp hoặc kim loại.",
+                      "3.780 × 800 × 1.120 mm · 220 V AC, 600 W · khí nén 16 L/phút ở ≥0,4 MPa.",
+                      "Camera CCD công nghiệp màu màn trập toàn cục, màn hình cảm ứng 22 inch và máy tính công nghiệp có card tăng tốc AI (GPU); dữ liệu phân loại được ghi lại theo thời gian thực."],
+               "zh": ["物料尺寸 ≤20 × 20 mm 时 11,000–15,000 件/小时；更大物料 7,000–11,000 件/小时。",
+                      "常规 14 个料口，可按分拣类别定制料口数量。",
+                      "分拣准确率 ≥99.5%（算法准确率 ≥99.9%）；适用 1–50 g、8 × 8 × 2 mm 至 80 × 60 × 15 mm 的塑料件、低弹性橡胶件和金属件。",
+                      "外形 3780 × 800 × 1120 mm · 220 V AC，600 W · 耗气量 16 L/min（气压 ≥0.4 MPa）。",
+                      "工业 CCD 彩色全局快门相机、22 寸触摸屏、内置高性能 GPU 的 AI 运算工控机；实时记录分拣数据。"]}},
+        {"img": "eq/ai-sorter-dual.jpg",
+         "k": {"en": "Dual-channel", "vi": "Hai kênh", "zh": "双通道"},
+         "t": {"en": "Dual-channel AI sorting machine", "vi": "Máy phân loại AI hai kênh", "zh": "双通道智能分拣机"},
+         "d": {"en": ["20,000–25,000 parts/h for parts up to 20 × 20 mm; 14,000–20,000 parts/h for larger parts.",
+                      "Two parallel channels, each controlled independently — for example, large and small parts sorted at the same time.",
+                      "26 outlets as standard (13 per side), customisable to your sorting categories.",
+                      "3,770 × 1,940 × 1,560 mm · 220 V AC, 1,200 W · compressed air 24 L/min at ≥0.4 MPa.",
+                      "Same vision system, accuracy and part range as the single-channel machine."],
+               "vi": ["20.000–25.000 chi tiết/giờ với chi tiết đến 20 × 20 mm; 14.000–20.000 chi tiết/giờ với chi tiết lớn hơn.",
+                      "Hai kênh song song, điều khiển độc lập — ví dụ phân loại đồng thời chi tiết lớn và chi tiết nhỏ.",
+                      "Tiêu chuẩn 26 cửa ra (13 cửa mỗi bên), tùy biến theo số nhóm phân loại.",
+                      "3.770 × 1.940 × 1.560 mm · 220 V AC, 1.200 W · khí nén 24 L/phút ở ≥0,4 MPa.",
+                      "Hệ thống camera, độ chính xác và phạm vi chi tiết giống máy một kênh."],
+               "zh": ["物料尺寸 ≤20 × 20 mm 时 20,000–25,000 件/小时；更大物料 14,000–20,000 件/小时。",
+                      "双通道并行分拣，两条通道可独立控制，例如大小件同时分离。",
+                      "常规单边 13 口、共 26 口，可按分拣类别定制。",
+                      "外形 3770 × 1940 × 1560 mm · 220 V AC，1200 W · 耗气量 24 L/min（气压 ≥0.4 MPa）。",
+                      "视觉系统、准确率与适用物料范围同单通道机型。"]}},
+    ],
+    "note": {"en": "Throughput figures are laboratory test results; actual rates depend on the parts. Send us samples, or bring them to our Guangzhou plant, for a test run on the machine.",
+             "vi": "Năng suất là kết quả thử nghiệm trong phòng thí nghiệm; năng suất thực tế tùy thuộc vào chi tiết. Hãy gửi mẫu cho chúng tôi hoặc mang mẫu đến nhà máy Quảng Châu để chạy thử trên máy.",
+             "zh": "以上产能为实验环境测试结果，实际效率因物料而异。欢迎寄送样件或携带样件到广州工厂上机测试。"},
+}
+
+INDUSTRIES[1]["t"] = {"en": "Electronics, vision inspection & AI sorting", "vi": "Điện tử, kiểm tra bằng camera & phân loại AI", "zh": "电子、视觉检测与 AI 分选"}
+INDUSTRIES[1]["d"] = {"en": "CCD vision for defect detection, positioning, guided assembly and screw-driving, and glue inspection; AI vision sorting machines for loose small parts — toy and building-block parts, screws and nuts, garment trims and plastic moulded parts; PCB soldering and component forming.",
+                      "vi": "Camera CCD phát hiện lỗi ngoại quan, định vị, lắp ráp và bắt vít theo camera, kiểm tra keo; máy phân loại bằng thị giác AI cho chi tiết rời cỡ nhỏ — chi tiết đồ chơi và khối xếp hình, vít và đai ốc, phụ liệu may mặc, chi tiết nhựa ép phun; hàn bo mạch và tạo hình linh kiện.",
+                      "zh": "CCD 视觉用于外观瑕疵检测、定位、视觉引导组装与锁螺丝、点胶检测；散件 AI 智能分选机用于玩具与积木零件、螺丝螺母、服装辅料和塑料胶件；电路板焊接与元件整形。"}
+INDUSTRIES[2]["d"] = {"en": "Laser welding, assembly and orbital riveting lines for smart-lock bodies and metal sub-assemblies; AI vision sorting of screws, nuts and other small metal parts.",
+                      "vi": "Dây chuyền hàn laser, lắp ráp và tán xoay cho thân khóa thông minh và cụm chi tiết kim loại; phân loại vít, đai ốc và chi tiết kim loại nhỏ bằng thị giác AI.",
+                      "zh": "智能锁锁体与金属组件的激光焊接、组装与旋铆生产线；螺丝、螺母等小五金件的 AI 视觉分选。"}
+INDUSTRIES[5]["d"] = {"en": "Production-line equipment for garment factories, already delivered and installed in Vietnam; AI vision sorting of buttons and trims. Longteng also holds a registered integrated-circuit layout design for the digital signal processor of a shirt-placket sewing, folding and ironing machine.",
+                      "vi": "Thiết bị dây chuyền cho nhà máy may, đã giao và lắp đặt tại Việt Nam; phân loại cúc và phụ liệu bằng thị giác AI. Longteng còn sở hữu thiết kế bố trí mạch tích hợp đã đăng ký cho bộ xử lý tín hiệu số của máy may, gấp và ủi nẹp áo sơ mi tích hợp.",
+                      "zh": "服装工厂生产线设备，已在越南交付并安装；纽扣、饰品等辅料的 AI 视觉分选。公司另持有「衬衣门禁车缝折烫一体机数字信号处理器」集成电路布图设计登记。"}
+CAPS[1] = ("vision", {"en": "CCD vision & AI sorting", "vi": "Camera CCD & phân loại AI", "zh": "CCD 视觉与 AI 分选"},
+           {"en": "Appearance defects, positioning, guided assembly, glue-bead inspection, and AI sorting of loose small parts by shape, colour, size and moulding defects.",
+            "vi": "Lỗi ngoại quan, định vị, lắp ráp theo camera, kiểm tra đường keo, và phân loại chi tiết rời bằng AI theo hình dạng, màu sắc, kích thước và lỗi ép.",
+            "zh": "外观瑕疵、定位、视觉引导组装、点胶检测，以及按形状、颜色、尺寸与缺模缺料对散件进行 AI 分选。"})
+T["hero_p"] = {"en": "Assembly, testing, CCD vision inspection, AI vision sorting, laser welding and hot stamping — custom machines and lines for appliance, personal-care, cosmetics-packaging, EV-component, lock, toy and electronics manufacturers. Designed and proven in our Guangzhou plant, installed and supported at your factory in Southeast Asia and Europe.",
+               "vi": "Lắp ráp, kiểm tra, kiểm tra bằng camera CCD, phân loại bằng thị giác AI, hàn laser và ép nhũ nóng — máy và dây chuyền theo yêu cầu cho nhà sản xuất điện gia dụng, sản phẩm chăm sóc cá nhân, bao bì mỹ phẩm, linh kiện xe điện, khóa, đồ chơi và điện tử. Thiết kế và chạy thử tại nhà máy Quảng Châu, lắp đặt và hỗ trợ tại nhà máy của bạn ở Đông Nam Á và châu Âu.",
+               "zh": "装配、检测、CCD 视觉检测、AI 智能分选、激光焊接与烫印——为小家电、个护、化妆品包材、新能源汽车零部件、锁具、玩具与电子制造商定制单机与整线。在广州工厂完成设计与验证，到您在东南亚与欧洲的工厂安装调试并长期服务。"}
+DESC = {"en": "Longteng Automation (Guangzhou) builds custom assembly, test, CCD vision-inspection, AI vision-sorting, laser-welding and hot-stamping machines and complete lines for factories in Vietnam, Southeast Asia and Europe. ISO 9001:2015, National High-Tech Enterprise, featured on CCTV.",
+        "vi": "Longteng Automation (Quảng Châu) chế tạo máy lắp ráp, kiểm tra, kiểm tra bằng camera CCD, phân loại bằng thị giác AI, hàn laser, ép nhũ nóng và dây chuyền hoàn chỉnh theo yêu cầu cho nhà máy tại Việt Nam, Đông Nam Á và châu Âu. ISO 9001:2015, Doanh nghiệp Công nghệ cao, được giới thiệu trên CCTV.",
+        "zh": "龙腾自动化（广州）为越南、东南亚与欧洲工厂定制装配、检测、CCD 视觉检测、AI 智能分选、激光焊接与烫印设备及整线。ISO 9001:2015 认证，国家高新技术企业，央视专访企业。"}
+
+IC_REG = {"en": "Registered IC layout design", "vi": "Thiết kế bố trí mạch tích hợp đã đăng ký", "zh": "集成电路布图设计登记"}
+CREDS.insert(5, (IC_REG,
+                 {"en": "Reg. No. BS.265562864 · certificate issued 27 Oct 2026 · DSP for a shirt-placket sewing, folding and ironing machine",
+                  "vi": "Số đăng ký BS.265562864 · cấp ngày 27/10/2026 · bộ xử lý tín hiệu số cho máy may, gấp và ủi nẹp áo sơ mi",
+                  "zh": "登记号 BS.265562864 · 2026 年 10 月 27 日发证 · 衬衣门禁车缝折烫一体机数字信号处理器"}))
+CERTWALL.insert(3, ("cert/ic-layout-design.jpg", {"en": "IC layout-design registration", "vi": "Đăng ký thiết kế bố trí mạch tích hợp", "zh": "集成电路布图设计登记证书"}))
+VSTR["certwall_h"] = {"en": "Certificates, patents and IC layout-design registration", "vi": "Giấy chứng nhận, bằng sáng chế và đăng ký thiết kế bố trí mạch tích hợp", "zh": "资质证书、专利证书与集成电路布图设计登记证书"}
+PATENTS_H = {"en": "Patents and IC layout design", "vi": "Sáng chế và thiết kế bố trí mạch tích hợp", "zh": "专利与集成电路布图设计"}
+PAT_COLS = {"en": ["Publication / Reg. No.", "Title", "Type", "Status"], "vi": ["Số công bố / đăng ký", "Tên", "Loại", "Tình trạng"], "zh": ["公告号／登记号", "名称", "类型", "状态"]}
+PAT_TYPE["ic"] = {"en": "IC layout design", "vi": "Thiết kế bố trí mạch tích hợp", "zh": "集成电路布图设计"}
+PAT_STATUS["r"] = {"en": "Registered", "vi": "Đã đăng ký", "zh": "已登记"}
+PATENTS.insert(1, ("BS.265562864", "ic", "r", {"en": "Digital signal processor for a shirt-placket sewing, folding and ironing machine",
+                                               "vi": "Bộ xử lý tín hiệu số cho máy may, gấp và ủi nẹp áo sơ mi tích hợp",
+                                               "zh": "衬衣门禁车缝折烫一体机数字信号处理器"}))
+INNOV_SUB = {"en": "Independent engineering, protected by patents and a registered IC layout design, and recognised by national and provincial programmes.",
+             "vi": "Năng lực kỹ thuật độc lập, được bảo hộ bằng sáng chế và thiết kế bố trí mạch tích hợp đã đăng ký, được các chương trình quốc gia, cấp tỉnh công nhận.",
+             "zh": "自主研发能力，由专利与集成电路布图设计专有权保护，并获国家与省级认定。"}
+TIMELINE[5] = ("2026", {"en": "Featured on CCTV; integrated-circuit layout design registered (certificate issued in October); trilingual export website launched for customers in Southeast Asia and Europe",
+                        "vi": "Được giới thiệu trên CCTV; đăng ký thiết kế bố trí mạch tích hợp (cấp giấy chứng nhận tháng 10); ra mắt website ba ngôn ngữ cho khách hàng Đông Nam Á và châu Âu",
+                        "zh": "接受央视专访；集成电路布图设计获准登记（10 月颁证）；上线面向东南亚与欧洲客户的三语外贸网站"})
+ABOUT["p"]["en"][1] = "We build fixtures, automatic assembly and test equipment, hot-stamping, pad-printing and screen-printing machines, CCD appearance-inspection systems, AI vision sorting machines for loose small parts and complete assembly lines for small appliances, electronics, toys, cosmetics, food, medical devices, garments and automotive parts."
+ABOUT["p"]["vi"][1] = "Chúng tôi chế tạo đồ gá, thiết bị lắp ráp và kiểm tra tự động, máy ép nhũ nóng, in tampon và in lụa, hệ thống kiểm tra ngoại quan bằng camera CCD, máy phân loại chi tiết rời bằng thị giác AI và dây chuyền lắp ráp hoàn chỉnh cho điện gia dụng nhỏ, điện tử, đồ chơi, mỹ phẩm, thực phẩm, thiết bị y tế, may mặc và linh kiện ô tô."
+ABOUT["p"]["zh"][1] = "公司主营小家电、电子、玩具、化妆品、食品、医疗器械、服装、汽车零部件等制造行业的工装夹具、自动组装检测设备及生产线，烫印、移印、丝印自动化设备，CCD 外观检测设备、散件 AI 智能分选设备与电子制造自动组立生产线。"
+ABOUT["p"]["en"][2] = "Our general manager, Cao Chengpei, brings three decades of hands-on experience in precision manufacturing. Longteng is a National High-Tech Enterprise, runs an ISO 9001:2015 certified quality system, holds nine granted patents and a registered integrated-circuit layout design."
+ABOUT["p"]["vi"][2] = "Tổng giám đốc Tào Thành Bồi (Cao Chengpei) có ba mươi năm kinh nghiệm thực tế trong sản xuất chính xác. Longteng là Doanh nghiệp Công nghệ cao cấp quốc gia, vận hành hệ thống chất lượng đạt chứng nhận ISO 9001:2015, sở hữu 9 bằng sáng chế đã được cấp và một thiết kế bố trí mạch tích hợp đã đăng ký."
+ABOUT["p"]["zh"][2] = "总经理曹城培在精密制造领域深耕三十年。公司是国家高新技术企业，通过 ISO 9001:2015 质量管理体系认证，拥有授权专利 9 件、集成电路布图设计专有权 1 项。"

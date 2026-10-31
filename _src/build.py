@@ -276,10 +276,10 @@ def body_index(lang, single=False):
 
 
 def body_solutions(lang, single=False):
-    eqbycat = {"appliances": ["dryer", "care"], "vision": ["elec", "test"], "locks": ["lock"], "ev": ["auto"], "packaging": ["pack"], "garment": []}
+    eqbycat = {"appliances": ["dryer", "care"], "vision": ["sort", "elec", "test"], "locks": ["lock", "sort"], "ev": ["auto"], "packaging": ["pack"], "garment": ["sort"]}
     out = [pagehead(T["sol_h"][lang], T["sol_sub"][lang], lang, "site/workshop-2.jpg")]
     for n, i in enumerate(INDUSTRIES):
-        names = sorted([m for m in MACHINES if m["cat"] in eqbycat[i["id"]]], key=lambda m: m["vid"] is None)[:6]
+        names = sorted([m for m in MACHINES if m["cat"] in eqbycat[i["id"]]], key=lambda m: m["vid"] is None and m["cat"] != "sort")[:6]
         lis = "".join(f"<li>{E(m[lang])}</li>" for m in names)
         vc = INDUSTRY_VIDEO.get(i["id"])
         pic = vcard(vc, lang, VIDEOS[vc]["title"][lang], "vc wide") if vc else img(i["img"], lang, L(i["t"], lang))
@@ -289,7 +289,7 @@ def body_solutions(lang, single=False):
     return "".join(out)
 
 
-CAT_ICO = {"dryer": "assembly", "care": "assembly", "pack": "laser", "auto": "assembly", "lock": "laser", "elec": "wrench", "test": "test"}
+CAT_ICO = {"dryer": "assembly", "care": "assembly", "pack": "laser", "auto": "assembly", "lock": "laser", "elec": "wrench", "test": "test", "sort": "vision"}
 VISION = [("vision-hot-stamp-defect.jpg", {"en": "Hot-stamping defect detection", "vi": "Phát hiện lỗi ép nhũ", "zh": "烫金瑕疵检测"}),
           ("vision-laser-marking.jpg", {"en": "Vision-guided laser marking", "vi": "Khắc laser định vị bằng camera", "zh": "视觉定位激光打标"}),
           ("vision-assembly.jpg", {"en": "Vision-guided assembly", "vi": "Lắp ráp định vị bằng camera", "zh": "视觉定位组装"}),
@@ -318,8 +318,20 @@ def body_equipment(lang, single=False):
     nvid = sum(1 for m in MACHINES if m["vid"])
     cards[nvid:nvid] = [f'<div class="eq" data-c="vis"><div class="eqi">{img("eq/" + f, lang, L(t, lang))}</div><div class="eqt"><span class="kick sm">{E(STR["vision_title"][lang])}</span><h3>{E(L(t, lang))}</h3></div></div>' for f, t in VISION]
     sub = VSTR["eq_sub"][lang].format(n=len(MACHINES), v=nvid)
-    return (pagehead(L(PAGE_TITLES["equipment"], lang), sub, lang, "site/workshop-hq.jpg") +
+    return (pagehead(L(PAGE_TITLES["equipment"], lang), sub, lang, "site/workshop-hq.jpg") + sort_spotlight(lang, single) +
             f'<section class="sec"><div class="wrap"><div id="video" class="anchor"></div><div class="filters">{filt}</div><div class="eqgrid">{"".join(cards)}</div></div></section>')
+
+
+def sort_spotlight(lang, single=False):
+    apps = "".join(f'<a class="cw rv" href="#" data-img="{pre(lang)}assets/img/eq/{f}" data-title="{E(L(t, lang))}">{img("eq/" + f, lang, L(t, lang))}<span>{E(L(t, lang))}</span></a>' for f, t in SORT["apps"])
+    out = [f'<section class="sec alt" id="ai-sorting"><div class="wrap"><div class="shead rv"><span class="kick">{E(L(SORT["k"], lang))}</span><h2>{E(L(SORT["h"], lang))}</h2>'
+           f'<p class="lead">{E(L(SORT["lead"], lang))}</p></div><div class="cwall">{apps}</div></div></section>']
+    for n, m in enumerate(SORT["models"]):
+        lis = "".join(f"<li>{E(x)}</li>" for x in L(m["d"], lang)) + f'<li>{E(L(SORT["note"], lang))}</li>'
+        out.append(f'<section class="prj{" rev" if n % 2 else ""}"><div class="wrap prjin"><div class="pics n1 rv">{img(m["img"], lang, L(m["t"], lang))}</div>'
+                   f'<div class="prjt rv"><span class="kick">{E(L(m["k"], lang))}</span><h2>{E(L(m["t"], lang))}</h2><ul class="chk">{lis}</ul>'
+                   f'<a class="more" href="{link("contact", lang, lang, single)}">{E(T["quote"][lang])}{ico("arrow")}</a></div></div></section>')
+    return "".join(out)
 
 
 def body_projects(lang, single=False):
@@ -334,12 +346,12 @@ def body_projects(lang, single=False):
 
 
 def body_innovation(lang, single=False):
-    creds = "".join(f'<div class="cred rv"><div class="credi">{ico("badge" if k != 3 else "patent")}</div><h3>{E(L(t, lang))}</h3><p>{E(L(d, lang))}</p></div>'
+    creds = "".join(f'<div class="cred rv"><div class="credi">{ico("patent" if t is IC_REG or t["en"].endswith("granted patents") else "badge")}</div><h3>{E(L(t, lang))}</h3><p>{E(L(d, lang))}</p></div>'
                     for k, (t, d) in enumerate(CREDS))
     caps = "".join(f'<div class="cap rv"><div class="capi">{ico(k)}</div><span class="num">0{n+1}</span><h3>{E(L(t, lang))}</h3><p>{E(L(d, lang))}</p></div>' for n, (k, t, d) in enumerate(CAPS))
     c = PAT_COLS[lang]
     rows = "".join(f'<tr><td class="mono">{no}</td><td>{E(L(t, lang))}</td><td>{E(L(PAT_TYPE[ty], lang))}</td>'
-                   f'<td><span class="st-{stt}">{E(L(PAT_STATUS[stt], lang))}</span></td></tr>' for no, ty, stt, t in PATENTS)
+                   f'<td><span class="st-{"g" if stt == "r" else stt}">{E(L(PAT_STATUS[stt], lang))}</span></td></tr>' for no, ty, stt, t in PATENTS)
     wall = "".join(f'<a class="cw rv" href="#" data-img="{pre(lang)}assets/img/{f}" data-title="{E(L(t, lang))}">{img(f, lang, L(t, lang))}<span>{E(L(t, lang))}</span></a>' for f, t in CERTWALL)
     return (pagehead(L(PAGE_TITLES["innovation"], lang), INNOV_SUB[lang], lang, "eq/vision-laser-marking.jpg") +
             f'<section class="sec"><div class="wrap"><div class="shead rv"><span class="kick">{E(STR["k_creds"][lang])}</span><h2>{E(CREDS_H[lang])}</h2></div><div class="creds">{creds}</div></div></section>'
