@@ -601,20 +601,21 @@ SORT = {
              "zh": "以上产能为实验环境测试结果，实际效率因物料而异。欢迎寄送样件或携带样件到广州工厂上机测试。"},
 }
 
+INDUSTRIES[1]["img"] = "eq/ai-sorter-single.jpg"
 INDUSTRIES[1]["t"] = {"en": "Electronics, vision inspection & AI sorting", "vi": "Điện tử, kiểm tra bằng camera & phân loại AI", "zh": "电子、视觉检测与 AI 分选"}
-INDUSTRIES[1]["d"] = {"en": "CCD vision for defect detection, positioning, guided assembly and screw-driving, and glue inspection; AI vision sorting machines for loose small parts — toy and building-block parts, screws and nuts, garment trims and plastic moulded parts; PCB soldering and component forming.",
-                      "vi": "Camera CCD phát hiện lỗi ngoại quan, định vị, lắp ráp và bắt vít theo camera, kiểm tra keo; máy phân loại bằng thị giác AI cho chi tiết rời cỡ nhỏ — chi tiết đồ chơi và khối xếp hình, vít và đai ốc, phụ liệu may mặc, chi tiết nhựa ép phun; hàn bo mạch và tạo hình linh kiện.",
-                      "zh": "CCD 视觉用于外观瑕疵检测、定位、视觉引导组装与锁螺丝、点胶检测；散件 AI 智能分选机用于玩具与积木零件、螺丝螺母、服装辅料和塑料胶件；电路板焊接与元件整形。"}
-INDUSTRIES[2]["d"] = {"en": "Laser welding, assembly and orbital riveting lines for smart-lock bodies and metal sub-assemblies; AI vision sorting of screws, nuts and other small metal parts.",
-                      "vi": "Dây chuyền hàn laser, lắp ráp và tán xoay cho thân khóa thông minh và cụm chi tiết kim loại; phân loại vít, đai ốc và chi tiết kim loại nhỏ bằng thị giác AI.",
-                      "zh": "智能锁锁体与金属组件的激光焊接、组装与旋铆生产线；螺丝、螺母等小五金件的 AI 视觉分选。"}
-INDUSTRIES[5]["d"] = {"en": "Production-line equipment for garment factories, already delivered and installed in Vietnam; AI vision sorting of buttons and trims. Longteng also holds a registered integrated-circuit layout design for the digital signal processor of a shirt-placket sewing, folding and ironing machine.",
-                      "vi": "Thiết bị dây chuyền cho nhà máy may, đã giao và lắp đặt tại Việt Nam; phân loại cúc và phụ liệu bằng thị giác AI. Longteng còn sở hữu thiết kế bố trí mạch tích hợp đã đăng ký cho bộ xử lý tín hiệu số của máy may, gấp và ủi nẹp áo sơ mi tích hợp.",
-                      "zh": "服装工厂生产线设备，已在越南交付并安装；纽扣、饰品等辅料的 AI 视觉分选。公司另持有「衬衣门禁车缝折烫一体机数字信号处理器」集成电路布图设计登记。"}
+INDUSTRIES[1]["d"] = {"en": "CCD vision for defect detection, positioning, guided assembly and glue inspection; AI sorting of toy, hardware, garment-trim and plastic parts; PCB soldering and component forming.",
+                      "vi": "Camera CCD phát hiện lỗi, định vị, lắp ráp theo camera và kiểm tra keo; phân loại bằng AI chi tiết đồ chơi, kim khí, phụ liệu may và nhựa; hàn bo mạch và tạo hình linh kiện.",
+                      "zh": "CCD 视觉用于瑕疵检测、定位、视觉引导组装与点胶检测；玩具、五金、服装辅料与塑料件的 AI 分选；电路板焊接与元件整形。"}
+INDUSTRIES[2]["d"] = {"en": "Laser welding, assembly and orbital riveting lines for smart-lock bodies and metal sub-assemblies; AI sorting of screws and nuts.",
+                      "vi": "Dây chuyền hàn laser, lắp ráp và tán xoay cho thân khóa thông minh và cụm chi tiết kim loại; phân loại vít, đai ốc bằng AI.",
+                      "zh": "智能锁锁体与金属组件的激光焊接、组装与旋铆生产线；螺丝螺母 AI 分选。"}
+INDUSTRIES[5]["d"] = {"en": "Garment-line equipment delivered and installed in Vietnam; AI sorting of buttons and trims; our own registered IC layout design for a shirt-placket machine.",
+                      "vi": "Thiết bị dây chuyền may đã giao và lắp đặt tại Việt Nam; phân loại cúc và phụ liệu bằng AI; thiết kế bố trí mạch tích hợp đã đăng ký cho máy may nẹp áo sơ mi.",
+                      "zh": "服装生产线设备已在越南交付安装；纽扣饰品 AI 分选；衬衣门禁车缝折烫一体机信号处理器集成电路布图设计已登记。"}
 CAPS[1] = ("vision", {"en": "CCD vision & AI sorting", "vi": "Camera CCD & phân loại AI", "zh": "CCD 视觉与 AI 分选"},
-           {"en": "Appearance defects, positioning, guided assembly, glue-bead inspection, and AI sorting of loose small parts by shape, colour, size and moulding defects.",
-            "vi": "Lỗi ngoại quan, định vị, lắp ráp theo camera, kiểm tra đường keo, và phân loại chi tiết rời bằng AI theo hình dạng, màu sắc, kích thước và lỗi ép.",
-            "zh": "外观瑕疵、定位、视觉引导组装、点胶检测，以及按形状、颜色、尺寸与缺模缺料对散件进行 AI 分选。"})
+           {"en": "Appearance defects, positioning, guided assembly, glue-bead inspection and AI sorting of loose parts.",
+            "vi": "Lỗi ngoại quan, định vị, lắp ráp theo camera, kiểm tra đường keo và phân loại chi tiết rời bằng AI.",
+            "zh": "外观瑕疵、定位、视觉引导组装、点胶检测与散件 AI 分选。"})
 T["hero_p"] = {"en": "Assembly, testing, CCD vision inspection, AI vision sorting, laser welding and hot stamping — custom machines and lines for appliance, personal-care, cosmetics-packaging, EV-component, lock, toy and electronics manufacturers. Designed and proven in our Guangzhou plant, installed and supported at your factory in Southeast Asia and Europe.",
                "vi": "Lắp ráp, kiểm tra, kiểm tra bằng camera CCD, phân loại bằng thị giác AI, hàn laser và ép nhũ nóng — máy và dây chuyền theo yêu cầu cho nhà sản xuất điện gia dụng, sản phẩm chăm sóc cá nhân, bao bì mỹ phẩm, linh kiện xe điện, khóa, đồ chơi và điện tử. Thiết kế và chạy thử tại nhà máy Quảng Châu, lắp đặt và hỗ trợ tại nhà máy của bạn ở Đông Nam Á và châu Âu.",
                "zh": "装配、检测、CCD 视觉检测、AI 智能分选、激光焊接与烫印——为小家电、个护、化妆品包材、新能源汽车零部件、锁具、玩具与电子制造商定制单机与整线。在广州工厂完成设计与验证，到您在东南亚与欧洲的工厂安装调试并长期服务。"}
@@ -624,17 +625,17 @@ DESC = {"en": "Longteng Automation (Guangzhou) builds custom assembly, test, CCD
 
 IC_REG = {"en": "Registered IC layout design", "vi": "Thiết kế bố trí mạch tích hợp đã đăng ký", "zh": "集成电路布图设计登记"}
 CREDS.insert(5, (IC_REG,
-                 {"en": "Reg. No. BS.265562864 · certificate issued 27 Oct 2026 · DSP for a shirt-placket sewing, folding and ironing machine",
-                  "vi": "Số đăng ký BS.265562864 · cấp ngày 27/10/2026 · bộ xử lý tín hiệu số cho máy may, gấp và ủi nẹp áo sơ mi",
-                  "zh": "登记号 BS.265562864 · 2026 年 10 月 27 日发证 · 衬衣门禁车缝折烫一体机数字信号处理器"}))
+                 {"en": "Reg. No. BS.265562864 · certificate issued 27 Oct 2026",
+                  "vi": "Số đăng ký BS.265562864 · cấp ngày 27/10/2026",
+                  "zh": "登记号 BS.265562864 · 2026 年 10 月 27 日发证"}))
 CERTWALL.insert(3, ("cert/ic-layout-design.jpg", {"en": "IC layout-design registration", "vi": "Đăng ký thiết kế bố trí mạch tích hợp", "zh": "集成电路布图设计登记证书"}))
 VSTR["certwall_h"] = {"en": "Certificates, patents and IC layout-design registration", "vi": "Giấy chứng nhận, bằng sáng chế và đăng ký thiết kế bố trí mạch tích hợp", "zh": "资质证书、专利证书与集成电路布图设计登记证书"}
 PATENTS_H = {"en": "Patents and IC layout design", "vi": "Sáng chế và thiết kế bố trí mạch tích hợp", "zh": "专利与集成电路布图设计"}
 PAT_COLS = {"en": ["Publication / Reg. No.", "Title", "Type", "Status"], "vi": ["Số công bố / đăng ký", "Tên", "Loại", "Tình trạng"], "zh": ["公告号／登记号", "名称", "类型", "状态"]}
 PAT_TYPE["ic"] = {"en": "IC layout design", "vi": "Thiết kế bố trí mạch tích hợp", "zh": "集成电路布图设计"}
 PAT_STATUS["r"] = {"en": "Registered", "vi": "Đã đăng ký", "zh": "已登记"}
-PATENTS.insert(1, ("BS.265562864", "ic", "r", {"en": "Digital signal processor for a shirt-placket sewing, folding and ironing machine",
-                                               "vi": "Bộ xử lý tín hiệu số cho máy may, gấp và ủi nẹp áo sơ mi tích hợp",
+PATENTS.insert(1, ("BS.265562864", "ic", "r", {"en": "DSP for a shirt-placket sewing, folding and ironing machine",
+                                               "vi": "Bộ xử lý tín hiệu số cho máy may, gấp, ủi nẹp áo sơ mi",
                                                "zh": "衬衣门禁车缝折烫一体机数字信号处理器"}))
 INNOV_SUB = {"en": "Independent engineering, protected by patents and a registered IC layout design, and recognised by national and provincial programmes.",
              "vi": "Năng lực kỹ thuật độc lập, được bảo hộ bằng sáng chế và thiết kế bố trí mạch tích hợp đã đăng ký, được các chương trình quốc gia, cấp tỉnh công nhận.",

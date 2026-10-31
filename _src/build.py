@@ -279,7 +279,7 @@ def body_solutions(lang, single=False):
     eqbycat = {"appliances": ["dryer", "care"], "vision": ["sort", "elec", "test"], "locks": ["lock", "sort"], "ev": ["auto"], "packaging": ["pack"], "garment": ["sort"]}
     out = [pagehead(T["sol_h"][lang], T["sol_sub"][lang], lang, "site/workshop-2.jpg")]
     for n, i in enumerate(INDUSTRIES):
-        names = sorted([m for m in MACHINES if m["cat"] in eqbycat[i["id"]]], key=lambda m: m["vid"] is None and m["cat"] != "sort")[:6]
+        names = sorted([m for m in MACHINES if m["cat"] in eqbycat[i["id"]]], key=lambda m: (m["cat"] != "sort", m["vid"] is None))[:6]
         lis = "".join(f"<li>{E(m[lang])}</li>" for m in names)
         vc = INDUSTRY_VIDEO.get(i["id"])
         pic = vcard(vc, lang, VIDEOS[vc]["title"][lang], "vc wide") if vc else img(i["img"], lang, L(i["t"], lang))
