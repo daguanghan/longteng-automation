@@ -10,7 +10,7 @@ from content import *
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 DOMAIN = "https://longtengautomation.com"
-DRAFT = True  # keep noindex until the company approves the content
+DRAFT = False
 PAGES = ["index", "solutions", "equipment", "projects", "innovation", "about", "contact"]
 E = html.escape
 
