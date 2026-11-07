@@ -731,7 +731,7 @@ RFQ = {
 }
 
 
-# ── careers band at the foot of the About page (2026-11-07). Not in the top nav. ──
+# ── careers page (2026-11-07). Top nav follows Arup: Markets, Services, Projects, Insights, About, Careers, Contact; the logo is Home. ──
 # Longteng has no Vietnam or Singapore entity yet: these are work locations, never "offices".
 CAREERS = {
     "nav": {"en": "Careers", "vi": "Tuyển dụng", "zh": "招贤纳士"},
@@ -779,4 +779,29 @@ CAREERS = {
     "btn": {"en": "Send your CV", "vi": "Gửi CV", "zh": "投递简历"},
     "subj": {"en": "Job application", "vi": "Ứng tuyển", "zh": "应聘"},
 }
+
+CAREERS.update({
+    "sub": {"en": "Join us in China, Vietnam and Singapore.", "vi": "Gia nhập cùng chúng tôi tại Trung Quốc, Việt Nam và Singapore.", "zh": "在中国、越南和新加坡，加入我们。"},
+    "roles_h": {"en": "Open roles", "vi": "Vị trí đang tuyển", "zh": "招聘岗位"},
+    "why_h": {"en": "Why Longteng", "vi": "Vì sao chọn Longteng", "zh": "为什么加入龙腾"},
+    "life_h": {"en": "Life at Longteng", "vi": "Làm việc tại Longteng", "zh": "在龙腾工作"},
+    "how_h": {"en": "How to apply", "vi": "Cách ứng tuyển", "zh": "如何申请"},
+    "why": [({"en": "A new problem every time", "vi": "Mỗi máy là một bài toán mới", "zh": "每台都是新题目"},
+             {"en": "Every machine is custom. From process analysis to site commissioning, you see your own design run.", "vi": "Mỗi máy đều được thiết kế riêng. Từ phân tích quy trình đến chạy thử tại hiện trường, bạn thấy thiết kế của mình hoạt động.", "zh": "每台设备都是定制。从工艺分析到现场调试，你能看到自己的设计跑起来。"}),
+            ({"en": "Work on site abroad", "vi": "Làm việc tại hiện trường nước ngoài", "zh": "走到海外现场"},
+             {"en": "Equipment goes to plants in Southeast Asia, and engineering and service roles travel with it.", "vi": "Thiết bị được giao đến các nhà máy ở Đông Nam Á, và các vị trí kỹ thuật, dịch vụ đi cùng thiết bị.", "zh": "设备交付到东南亚工厂，工程和服务岗位有机会到客户现场工作。"}),
+            ({"en": "Grow with the team", "vi": "Phát triển cùng đội ngũ", "zh": "和团队一起成长"},
+             {"en": "The team is expanding into new markets. People who join early take on more responsibility.", "vi": "Đội ngũ đang mở rộng sang thị trường mới. Người gia nhập sớm sẽ đảm nhận nhiều trách nhiệm hơn.", "zh": "团队正在走向新市场，早加入的人能承担更大的责任。"})],
+    "steps": [({"en": "Send your CV", "vi": "Gửi CV", "zh": "发送简历"},
+               {"en": "Put the role and your location in the subject line.", "vi": "Ghi vị trí và nơi ở trong tiêu đề email.", "zh": "邮件标题写应聘岗位和所在地。"}),
+              ({"en": "First conversation", "vi": "Trao đổi ban đầu", "zh": "初步沟通"},
+               {"en": "A call or online chat about your experience and goals.", "vi": "Trao đổi qua điện thoại hoặc trực tuyến về kinh nghiệm và mong muốn.", "zh": "电话或线上了解经历和期望。"}),
+              ({"en": "Interview", "vi": "Phỏng vấn chuyên môn", "zh": "专业面谈"},
+               {"en": "A deeper talk with the engineering or business lead.", "vi": "Trao đổi sâu với người phụ trách kỹ thuật hoặc kinh doanh.", "zh": "与工程或业务负责人深入交流。"}),
+              ({"en": "Offer", "vi": "Xác nhận tuyển dụng", "zh": "确认录用"},
+               {"en": "We confirm the role, location and start date.", "vi": "Xác nhận vị trí, địa điểm và ngày bắt đầu.", "zh": "确认岗位、地点和入职时间。"})],
+})
+PAGE_TITLES["careers"] = CAREERS["nav"]
+for _l in T["nav"]:
+    T["nav"][_l].insert(-1, CAREERS["nav"][_l])
 

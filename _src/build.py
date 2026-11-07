@@ -12,7 +12,7 @@ from content import *
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 DOMAIN = "https://longtengautomation.com"
 DRAFT = False
-PAGES = ["index", "solutions", "equipment", "projects", "innovation", "about", "contact"]
+PAGES = ["index", "solutions", "equipment", "projects", "innovation", "about", "careers", "contact"]
 E = html.escape
 
 
@@ -158,7 +158,7 @@ def head(page, lang, inline=False):
 def header(page, lang, single=False):
     over = " over" if page == "index" and not single else ""
     nav = "".join(f'<a href="{link(p, lang, lang, single)}"{" class=cur" if p == page and not single else ""}>{E(lab)}</a>'
-                  for p, lab in zip(PAGES, T["nav"][lang]))
+                  for p, lab in zip(PAGES, T["nav"][lang]) if p != "index")
     sw = "".join(f'<a href="{("longteng_preview_" + l + ".html") if single else link(page, l, lang)}"{" class=on" if l == lang else ""}>{LANG_LABEL[l]}</a>' for l in LANGS)
     draft = f'<div class="draft">{E(T["draft"][lang])}</div>' if DRAFT else ""
     return (f'<body class="p-{page}">{draft}<header class="hd{over}"><div class="wrap hdin">'
@@ -170,7 +170,6 @@ def header(page, lang, single=False):
 
 def footer(lang, single=False):
     cols = "".join(f'<a href="{link(p, lang, lang, single)}">{E(lab)}</a>' for p, lab in zip(PAGES, T["nav"][lang]))
-    cols += f'<a href="{link("about", lang, lang, single)}#careers">{E(L(CAREERS["nav"], lang))}</a>'
     creds = "".join(f"<li>{E(L(t, lang))}</li>" for t, _ in CREDS[:3])
     return (f'<section class="ctaband"><div class="wrap ctain"><div><span class="kick light">{E(T["hero_kicker"][lang].split(" · ")[0])}</span>'
             f'<h2>{E(T["cta_band_h"][lang])}</h2><p>{E(T["cta_band_p"][lang])}</p></div>'
@@ -424,7 +423,7 @@ def body_contact(lang, single=False):
             f'<section class="sec alt"><div class="wrap narrow"><div class="shead rv"><span class="kick">FAQ</span><h2>{E(STR["faq_h"][lang])}</h2></div><div class="faq">{faq}</div></div></section>')
 
 
-def careers_band(lang):
+def body_careers(lang, single=False):
     C, R = CAREERS, lambda k: L(CAREERS[k], lang)
     st = T["stats"][lang]; n = sum(len(r[2]) for r in C["regions"])
     tiles = [st[0], st[1], st[4], (R("vn_k"), R("vn_v")), (str(n), R("open"))]
@@ -434,14 +433,21 @@ def careers_band(lang):
         jobs = "".join(f'<div class="job"><b>{E(L(t, lang))}</b><p>{E(L(d, lang))}</p></div>' for t, d in r[2])
         return f'<div class="jobreg rv"><h3>{E(L(r[0], lang))}<small>{E(L(r[1], lang))}</small></h3>{jobs}</div>'
     a, b, c = C["regions"]
+    cards = lambda rows: "".join(f'<div class="val rv"><b>{k + 1:02d}</b><h3>{E(L(t, lang))}</h3><p>{E(L(d, lang))}</p></div>' for k, (t, d) in enumerate(rows))
+    gal = "".join(f'<a href="#" data-img="{pre(lang)}assets/img/site/{g}.jpg" data-title="{E(R("life_h"))}">{img(f"site/{g}.jpg", lang, "")}</a>'
+                  for g in ["rnd-1", "design-office", "workshop-hq", "workshop-3", "rnd-2", "workshop-4"])
     href = f'mailto:{EMAIL}?subject={quote(R("subj"))}'
-    return (f'<section class="sec careers"><div id="careers" class="anchor"></div><div class="wrap"><div class="shead rv"><span class="kick">{E(R("nav"))}</span><h2>{E(R("h"))}</h2><p>{E(R("p"))}</p></div>'
-            f'<div class="kpis dark rv">{kp}</div><div class="jobs"><div class="jobcol">{reg(a)}</div><div class="jobcol">{reg(b)}{reg(c)}</div></div>'
+    return (pagehead(R("nav"), R("sub"), lang, "site/workshop-hq.jpg") +
+            f'<section class="sec careers"><div class="wrap"><div class="shead rv"><h2>{E(R("h"))}</h2><p>{E(R("p"))}</p></div><div class="kpis dark rv">{kp}</div></div></section>'
+            f'<section class="sec alt"><div class="wrap"><div class="shead rv"><h2>{E(R("roles_h"))}</h2></div><div class="jobs"><div class="jobcol">{reg(a)}</div><div class="jobcol">{reg(b)}{reg(c)}</div></div></div></section>'
+            f'<section class="sec"><div class="wrap"><div class="shead rv"><h2>{E(R("why_h"))}</h2></div><div class="vals c3">{cards(C["why"])}</div></div></section>'
+            f'<section class="sec alt"><div class="wrap"><div class="shead rv"><h2>{E(R("life_h"))}</h2></div><div class="gallery rv">{gal}</div></div></section>'
+            f'<section class="sec"><div class="wrap"><div class="shead rv"><h2>{E(R("how_h"))}</h2></div><div class="vals c4">{cards(C["steps"])}</div>'
             f'<div class="jobapply rv"><p>{E(R("apply").format(mail=EMAIL))}</p><a class="btn" href="{href}">{E(R("btn"))}{ico("arrow")}</a></div></div></section>')
 
 
 BODY = {"index": body_index, "solutions": body_solutions, "equipment": body_equipment, "projects": body_projects,
-        "innovation": body_innovation, "about": lambda lang, single=False: body_about(lang, single) + careers_band(lang), "contact": body_contact}
+        "innovation": body_innovation, "about": body_about, "careers": body_careers, "contact": body_contact}
 
 
 def js(lang, inline=False):
