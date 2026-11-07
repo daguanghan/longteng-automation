@@ -433,3 +433,41 @@ nav#nav a:hover:after,nav#nav a.cur:after{right:0}
 .xscta small{flex:1 1 200px;color:#9fb0c8;font-size:13px;line-height:1.45}
 .xs p.xsnote{margin-top:16px;color:#8ea0ba;font-size:12.5px}
 @media(max-width:960px){.xsin{grid-template-columns:1fr;gap:32px}.xsth{grid-template-columns:repeat(2,1fr)}}
+
+/* quick-message form on the Contact page */
+.rfq[hidden],.rfqdone[hidden]{display:none}
+.rfq label.full{justify-content:stretch}
+.rfq textarea{resize:vertical}
+.rfqh h3{font-size:22px;font-weight:800;color:var(--navy);letter-spacing:-.2px}
+.rfqh p{margin-top:6px;color:var(--muted);font-size:14.5px}
+.chips{border:0;padding:0;margin:0;min-width:0}
+.chips legend{padding:0;margin-bottom:10px;font-size:13px;font-weight:600;color:#33425a}
+.chips legend small{margin-left:8px;font-size:12px;font-weight:500;color:var(--muted)}
+.chips>div{display:flex;flex-wrap:wrap;gap:8px}
+.rfq label.chip{display:inline-block;position:relative;font-weight:600;cursor:pointer}
+.chip input{position:absolute;opacity:0;width:1px;height:1px;padding:0;border:0}
+.chip span{display:block;padding:8px 15px;border:1px solid #d7deea;border-radius:999px;background:#fff;color:#33425a;font-size:13.5px;line-height:1.3;transition:.15s}
+.chip:hover span{border-color:var(--blue);color:var(--blue)}
+.chip input:checked+span{background:var(--navy);border-color:var(--navy);color:#fff}
+.chip input:focus-visible+span{outline:none;box-shadow:0 0 0 4px rgba(29,99,214,.22)}
+.rfqdone h3{font-size:20px;font-weight:800;color:var(--navy)}
+.rfqdone p{margin:8px 0 14px;color:var(--muted);font-size:14.5px;overflow-wrap:anywhere}
+.rfqdone textarea{width:100%;border:1px solid #d7deea;border-radius:10px;padding:12px 14px;font:inherit;font-size:14px;background:var(--soft);color:var(--ink);resize:vertical}
+.rfqact{display:flex;align-items:center;gap:16px;margin-top:14px;flex-wrap:wrap}
+.rfqback{border:0;background:none;padding:6px 2px;font:inherit;font-size:14px;font-weight:600;color:var(--blue);cursor:pointer}
+
+/* careers band at the foot of the About page */
+.careers .shead p{max-width:760px;margin-top:12px;color:var(--muted)}
+.careers .kpis{margin-top:28px}
+.jobs{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:24px;align-items:start}
+.jobcol{display:grid;gap:20px}
+.jobreg{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:26px 28px 14px}
+.jobreg h3{font-size:20px;font-weight:800;color:var(--navy);margin-bottom:10px}
+.jobreg h3 small{margin-left:10px;font-size:13px;font-weight:500;color:var(--muted)}
+.job{padding:12px 0;border-top:1px solid var(--line)}
+.job b{display:block;font-size:15px;font-weight:700;color:var(--ink);line-height:1.35}
+.job p{margin-top:3px;font-size:13.5px;line-height:1.45;color:var(--muted)}
+.jobapply{display:flex;align-items:center;gap:24px;margin-top:24px;padding:20px 26px;background:var(--soft);border-radius:var(--r)}
+.jobapply p{flex:1;font-size:14.5px;color:#33425a;overflow-wrap:anywhere}
+@media(max-width:960px){.jobs{grid-template-columns:1fr}.jobapply{flex-direction:column;align-items:flex-start;gap:14px}}
+

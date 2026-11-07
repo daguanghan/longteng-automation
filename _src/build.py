@@ -5,6 +5,7 @@ Run from the repo root:  python3 _src/build.py
 Writes 7 pages × 3 languages (English at root = x-default, /vi/, /zh/) and single-file previews in preview/.
 """
 import base64, html, pathlib, re, sys
+from urllib.parse import quote
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 from content import *
 
@@ -169,6 +170,7 @@ def header(page, lang, single=False):
 
 def footer(lang, single=False):
     cols = "".join(f'<a href="{link(p, lang, lang, single)}">{E(lab)}</a>' for p, lab in zip(PAGES, T["nav"][lang]))
+    cols += f'<a href="{link("about", lang, lang, single)}#careers">{E(L(CAREERS["nav"], lang))}</a>'
     creds = "".join(f"<li>{E(L(t, lang))}</li>" for t, _ in CREDS[:3])
     return (f'<section class="ctaband"><div class="wrap ctain"><div><span class="kick light">{E(T["hero_kicker"][lang].split(" · ")[0])}</span>'
             f'<h2>{E(T["cta_band_h"][lang])}</h2><p>{E(T["cta_band_p"][lang])}</p></div>'
@@ -396,13 +398,24 @@ def body_about(lang, single=False):
 
 
 def body_contact(lang, single=False):
-    f = CONTACT["fields"][lang]; cc = STR["contact_cards"][lang]
+    cc = STR["contact_cards"][lang]; R = lambda k: L(RFQ[k], lang)
     faq = "".join(f"<details><summary>{E(q)}</summary><p>{E(a)}</p></details>" for q, a in FAQ[lang])
-    form = (f'<form class="rfq" onsubmit="var d=new FormData(this),b=[];d.forEach(function(v,k){{b.push(k+\': \'+v)}});'
-            f'location.href=\'mailto:{EMAIL}?subject=\'+encodeURIComponent(\'RFQ – \'+(d.get(\'{E(f[0])}\')||\'\'))+\'&body=\'+encodeURIComponent(b.join(\'\\n\'));return false;">'
-            f'<label>{E(f[0])}<input name="{E(f[0])}" required></label><label>{E(f[1])}<input name="{E(f[1])}"></label>'
-            f'<label>{E(f[2])}<input name="{E(f[2])}" required></label><label>{E(f[3])}<input name="{E(f[3])}" required></label>'
-            f'<label class="full">{E(f[4])}<textarea name="{E(f[4])}" rows="5"></textarea></label><button class="btn lg full" type="submit">{E(f[5])}{ico("arrow")}</button></form>')
+
+    def chips(key, items):
+        c = "".join(f'<label class="chip"><input type="checkbox" value="{E(L(i, lang))}"><span>{E(L(i, lang))}</span></label>' for i in items)
+        return f'<fieldset class="full chips" data-l="{E(R(key))}"><legend>{E(R(key))}<small>{E(R("multi"))}</small></legend><div>{c}</div></fieldset>'
+    form = (f'<form class="rfq" data-to="{EMAIL}" data-subj="{E(R("subj"))}">'
+            f'<div class="rfqh full"><h3>{E(R("h"))}</h3><p>{E(R("p"))}</p></div>'
+            + chips("areas_l", RFQ["areas"]) +
+            f'<label>{E(R("name"))}<input name="name" data-l="{E(R("name"))}" required autocomplete="name"></label>'
+            f'<label>{E(R("contact"))}<input name="contact" data-l="{E(R("contact"))}" required></label>'
+            f'<label class="full">{E(R("company"))}<input name="company" data-l="{E(R("company"))}" required autocomplete="organization"></label>'
+            + chips("want_l", RFQ["wants"]) +
+            f'<label class="full">{E(R("msg"))}<textarea name="message" data-l="{E(R("msg_k"))}" rows="3" placeholder="{E(R("ph"))}"></textarea></label>'
+            f'<button class="btn lg full" type="submit">{E(R("send"))}{ico("arrow")}</button></form>'
+            f'<div class="rfqdone" hidden><h3>{E(R("done_h"))}</h3><p>{E(R("done_p").format(mail=EMAIL, phone=PHONE))}</p>'
+            f'<textarea readonly rows="8" aria-label="{E(R("msg_k"))}"></textarea>'
+            f'<div class="rfqact"><button type="button" class="btn sm rfqcopy" data-ok="{E(R("copied"))}">{E(R("copy"))}</button><button type="button" class="rfqback">{E(R("back"))}</button></div></div>')
     cards = (f'<div class="cc">{ico("mail")}<h4>{E(cc[0])}</h4><a href="mailto:{EMAIL}">{EMAIL}</a></div>'
              f'<div class="cc">{ico("phone")}<h4>{E(cc[1])}</h4><a href="tel:{PHONE_TEL}">{PHONE}</a></div>'
              f'<div class="cc">{ico("globe")}<h4>{E(cc[2])}</h4><p>{E(CONTACT["addr"][lang])}</p></div>')
@@ -411,8 +424,24 @@ def body_contact(lang, single=False):
             f'<section class="sec alt"><div class="wrap narrow"><div class="shead rv"><span class="kick">FAQ</span><h2>{E(STR["faq_h"][lang])}</h2></div><div class="faq">{faq}</div></div></section>')
 
 
+def careers_band(lang):
+    C, R = CAREERS, lambda k: L(CAREERS[k], lang)
+    st = T["stats"][lang]; n = sum(len(r[2]) for r in C["regions"])
+    tiles = [st[0], st[1], st[4], (R("vn_k"), R("vn_v")), (str(n), R("open"))]
+    kp = "".join(f'<div><b>{E(a)}</b><span>{E(b)}</span></div>' for a, b in tiles)
+
+    def reg(r):
+        jobs = "".join(f'<div class="job"><b>{E(L(t, lang))}</b><p>{E(L(d, lang))}</p></div>' for t, d in r[2])
+        return f'<div class="jobreg rv"><h3>{E(L(r[0], lang))}<small>{E(L(r[1], lang))}</small></h3>{jobs}</div>'
+    a, b, c = C["regions"]
+    href = f'mailto:{EMAIL}?subject={quote(R("subj"))}'
+    return (f'<section class="sec careers"><div id="careers" class="anchor"></div><div class="wrap"><div class="shead rv"><span class="kick">{E(R("nav"))}</span><h2>{E(R("h"))}</h2><p>{E(R("p"))}</p></div>'
+            f'<div class="kpis dark rv">{kp}</div><div class="jobs"><div class="jobcol">{reg(a)}</div><div class="jobcol">{reg(b)}{reg(c)}</div></div>'
+            f'<div class="jobapply rv"><p>{E(R("apply").format(mail=EMAIL))}</p><a class="btn" href="{href}">{E(R("btn"))}{ico("arrow")}</a></div></div></section>')
+
+
 BODY = {"index": body_index, "solutions": body_solutions, "equipment": body_equipment, "projects": body_projects,
-        "innovation": body_innovation, "about": body_about, "contact": body_contact}
+        "innovation": body_innovation, "about": lambda lang, single=False: body_about(lang, single) + careers_band(lang), "contact": body_contact}
 
 
 def js(lang, inline=False):

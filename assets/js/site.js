@@ -27,6 +27,31 @@
   btns.forEach(function (b) { b.addEventListener('click', function () { filter(b.getAttribute('data-f')); }); });
   if (btns.length && location.hash === '#video') filter('video');
 
+  // quick-message form: builds the email from the picked options; the panel covers visitors with no mail app
+  var rfq = document.querySelector('.rfq'), done = document.querySelector('.rfqdone');
+  if (rfq && done) {
+    var box = done.querySelector('textarea'), cp = done.querySelector('.rfqcopy'), cpText = cp.textContent;
+    rfq.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var lines = [];
+      rfq.querySelectorAll('[data-l]').forEach(function (n) {
+        var v = n.tagName === 'FIELDSET'
+          ? Array.prototype.map.call(n.querySelectorAll('input:checked'), function (c) { return c.value; }).join(', ')
+          : n.value.trim();
+        if (v) lines.push(n.getAttribute('data-l') + ': ' + v);
+      });
+      var body = lines.join('\n'), co = rfq.elements.company.value.trim();
+      box.value = body; cp.textContent = cpText; rfq.hidden = true; done.hidden = false;
+      location.href = 'mailto:' + rfq.getAttribute('data-to') + '?subject=' + encodeURIComponent(rfq.getAttribute('data-subj') + ' – ' + co) + '&body=' + encodeURIComponent(body);
+    });
+    cp.addEventListener('click', function () {
+      var ok = function () { cp.textContent = cp.getAttribute('data-ok'); };
+      var old = function () { box.select(); try { if (document.execCommand('copy')) ok(); } catch (x) {} };
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(box.value).then(ok, old); else old();
+    });
+    done.querySelector('.rfqback').addEventListener('click', function () { done.hidden = true; rfq.hidden = false; });
+  }
+
   // shared lightbox for video clips and certificate / photo enlargements
   var lb = document.getElementById('lb');
   function open(media, title, portrait) {
