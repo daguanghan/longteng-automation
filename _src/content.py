@@ -250,7 +250,7 @@ CONTACT = {
                "vi": ["Công ty", "Địa điểm nhà máy (tỉnh)", "Họ tên", "Email / Zalo / WhatsApp", "Sản phẩm, sản lượng mục tiêu mỗi giờ, quy trình hiện tại…", "Soạn email"],
                "zh": ["公司名称", "工厂所在省份", "联系人", "邮箱 / Zalo / WhatsApp", "产品、目标每小时产能、现有工艺……", "生成邮件"]},
     "labels": {"en": ["Email", "Phone", "Factory", "Languages"], "vi": ["Email", "Điện thoại", "Nhà máy", "Ngôn ngữ"], "zh": ["邮箱", "电话", "工厂地址", "沟通语言"]},
-    "addr": {"en": "Factory 1, No. 1, 4th Street, Pingshan Industrial Zone, Pingshan 2nd Village, Shibi Street, Panyu District, Guangzhou, Guangdong, China",
+    "addr": {"en": "Factory 1, No. 1 Fourth Street, Pingshan Industrial Zone, Pingshan Second Village, Shibi Street, Panyu District, Guangzhou, Guangdong, China",
              "vi": "Xưởng 1, Số 1, Phố 4, Khu công nghiệp Pingshan, thôn Pingshan 2, phường Thạch Bích (Shibi), quận Phiên Ngung (Panyu), Quảng Châu, Quảng Đông, Trung Quốc",
              "zh": "广东省广州市番禺区石壁街道屏山二村屏山工业区四街 1 号 1 厂"},
     "langs": {"en": "English · Tiếng Việt · 中文", "vi": "Tiếng Anh · Tiếng Việt · Tiếng Trung", "zh": "英文 · 越南文 · 中文"},
