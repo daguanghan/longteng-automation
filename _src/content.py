@@ -250,9 +250,9 @@ CONTACT = {
                "vi": ["Công ty", "Địa điểm nhà máy (tỉnh)", "Họ tên", "Email / Zalo / WhatsApp", "Sản phẩm, sản lượng mục tiêu mỗi giờ, quy trình hiện tại…", "Soạn email"],
                "zh": ["公司名称", "工厂所在省份", "联系人", "邮箱 / Zalo / WhatsApp", "产品、目标每小时产能、现有工艺……", "生成邮件"]},
     "labels": {"en": ["Email", "Phone", "Factory", "Languages"], "vi": ["Email", "Điện thoại", "Nhà máy", "Ngôn ngữ"], "zh": ["邮箱", "电话", "工厂地址", "沟通语言"]},
-    "addr": {"en": "Annex 107, No. 7, 4th Street, Ping'er Industrial Zone, Shibi Street, Panyu District, Guangzhou, Guangdong, China",
-             "vi": "Số 7 (phụ 107), Phố 4, Khu công nghiệp Ping'er, phường Thạch Bích (Shibi), quận Phiên Ngung (Panyu), Quảng Châu, Quảng Đông, Trung Quốc",
-             "zh": "广州市番禺区石壁街道屏二工业区四街 7 号附 107 号"},
+    "addr": {"en": "Factory 1, No. 1, 4th Street, Pingshan Industrial Zone, Pingshan 2nd Village, Shibi Street, Panyu District, Guangzhou, Guangdong, China",
+             "vi": "Xưởng 1, Số 1, Phố 4, Khu công nghiệp Pingshan, thôn Pingshan 2, phường Thạch Bích (Shibi), quận Phiên Ngung (Panyu), Quảng Châu, Quảng Đông, Trung Quốc",
+             "zh": "广东省广州市番禺区石壁街道屏山二村屏山工业区四街 1 号 1 厂"},
     "langs": {"en": "English · Tiếng Việt · 中文", "vi": "Tiếng Anh · Tiếng Việt · Tiếng Trung", "zh": "英文 · 越南文 · 中文"},
 }
 
@@ -649,3 +649,43 @@ ABOUT["p"]["zh"][1] = "公司主营小家电、电子、玩具、化妆品、食
 ABOUT["p"]["en"][2] = "Our general manager, Cao Chengpei, brings three decades of hands-on experience in precision manufacturing. Longteng is a National High-Tech Enterprise, runs an ISO 9001:2015 certified quality system, holds nine granted patents and a registered integrated-circuit layout design."
 ABOUT["p"]["vi"][2] = "Tổng giám đốc Tào Thành Bồi (Cao Chengpei) có ba mươi năm kinh nghiệm thực tế trong sản xuất chính xác. Longteng là Doanh nghiệp Công nghệ cao cấp quốc gia, vận hành hệ thống chất lượng đạt chứng nhận ISO 9001:2015, sở hữu 9 bằng sáng chế đã được cấp và một thiết kế bố trí mạch tích hợp đã đăng ký."
 ABOUT["p"]["zh"][2] = "总经理曹城培在精密制造领域深耕三十年。公司是国家高新技术企业，通过 ISO 9001:2015 质量管理体系认证，拥有授权专利 9 件、集成电路布图设计专有权 1 项。"
+
+
+# ── design sample on the Projects page (2026-11-07). Design stage only: never word it as delivered work ──
+SAMPLE = {
+    "k": {"en": "Design sample · Special equipment", "vi": "Mẫu thiết kế · Thiết bị chuyên dụng", "zh": "设计样例 · 特种装备"},
+    "h": {"en": "Aseptic sampling workstation for bulk food bags", "vi": "Trạm lấy mẫu vô trùng cho bao thực phẩm lớn", "zh": "大包装固态食品无菌抽样工作站"},
+    "tag": {"en": "Design stage, not yet delivered", "vi": "Giai đoạn thiết kế, chưa bàn giao", "zh": "设计阶段，尚未交付"},
+    "p": {"en": "LT-ASW shows how we handle a non-standard brief: process analysis first, then layout, a 3D machine model and a full walkthrough of the sampling sequence before any metal is cut.",
+          "vi": "LT-ASW cho thấy cách chúng tôi xử lý một yêu cầu phi tiêu chuẩn: phân tích quy trình trước, sau đó bố trí mặt bằng, dựng mô hình máy 3D và mô phỏng toàn bộ trình tự lấy mẫu trước khi gia công.",
+          "zh": "LT-ASW 展示我们做非标项目的方法：先分析工艺，再做布局和三维整机模型，把抽样全过程走通，然后才下料加工。"},
+    "d": {"en": ["One machine covers bag loading, surface treatment, sampling, portioning and labelling. It samples only; test instruments are outside its scope.",
+                 "Three modules ship separately: transfer chamber, aseptic chamber and outlet hatch.",
+                 "Aseptic chamber design: H14 HEPA one-way downflow, ISO Class 5 working zone, +30 Pa positive pressure.",
+                 "A robot arm works from camera positioning and randomly generated sampling points, with one sterilised tube per bag.",
+                 "Samples go into one to six sterile boxes by target weight. Each box is sealed, labelled with a tamper-evident seal and read back.",
+                 "Environment data, tool batches and key images are recorded automatically and cannot be edited after saving."],
+          "vi": ["Một máy đảm nhận đưa bao vào, xử lý bề mặt, lấy mẫu, chia phần và dán nhãn. Máy chỉ lấy mẫu, không bao gồm thiết bị xét nghiệm.",
+                 "Ba mô-đun vận chuyển rời: buồng chuyển, buồng vô trùng và cửa xuất mẫu.",
+                 "Thiết kế buồng vô trùng: lọc HEPA H14 thổi một chiều từ trên xuống, vùng làm việc ISO cấp 5, áp suất dương +30 Pa.",
+                 "Cánh tay robot làm việc theo định vị camera và các điểm lấy mẫu sinh ngẫu nhiên, mỗi bao dùng một ống lấy mẫu đã tiệt trùng.",
+                 "Mẫu được chia vào một đến sáu hộp vô trùng theo khối lượng mục tiêu. Mỗi hộp được đóng nắp, dán nhãn chống tháo và đọc lại mã.",
+                 "Dữ liệu môi trường, lô dụng cụ và hình ảnh chính được ghi tự động, không sửa được sau khi lưu."],
+          "zh": ["一台设备完成进袋、表面处理、抽取、分份和贴标。只做抽样，不含检测仪器。",
+                 "传递舱、无菌舱和舱口三段分体进场。",
+                 "无菌舱设计：H14 高效过滤单向下送风，工作区 ISO 5 级，舱内正压 +30 Pa。",
+                 "机械臂按相机定位和随机生成的抽取点作业，抽样管一袋一管，舱外灭菌。",
+                 "样品按目标重量分到一至六个无菌盒，封盖后贴防拆封标签，再读码校验。",
+                 "环境数据、器具批次和关键影像自动写入记录，保存后不能修改。"]},
+    "note": {"en": "Figures are design targets and change with the customer's specification. The video and 3D viewer are in Chinese.",
+             "vi": "Các thông số là mục tiêu thiết kế và thay đổi theo yêu cầu của khách hàng. Video và trình xem 3D bằng tiếng Trung.",
+             "zh": "数值为设计目标，按客户技术要求调整。"},
+    "cta": {"en": "Open the 3D model", "vi": "Mở mô hình 3D", "zh": "打开三维模型"},
+    "cta2": {"en": "Rotate, zoom and take the machine apart in your browser. Best on a computer.",
+             "vi": "Xoay, phóng to và tách rời máy ngay trên trình duyệt. Nên xem trên máy tính.",
+             "zh": "在浏览器里旋转、缩放和分解整机，建议用电脑打开。"},
+    "imgs": [("sample/modules.jpg", {"en": "Three modules", "vi": "Ba mô-đun", "zh": "三段分体"}),
+             ("sample/airflow.jpg", {"en": "One-way HEPA downflow", "vi": "Luồng khí HEPA một chiều", "zh": "单向下送风"}),
+             ("sample/tube.jpg", {"en": "Tube inserted at the bag corner", "vi": "Cắm ống từ góc bao", "zh": "袋角斜插抽样"}),
+             ("sample/hatch.jpg", {"en": "Sealed boxes at the hatch", "vi": "Hộp mẫu tại cửa xuất", "zh": "舱口贴标"})],
+}
