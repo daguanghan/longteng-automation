@@ -100,7 +100,7 @@ def add(spec_path, do_publish):
             o.update(count=len(imgs), w=w, h=h)
         elif it['type'] == 'video':
             tmp = os.path.join(tempfile.mkdtemp(), 'v.mp4')
-            subprocess.run(['ffmpeg', '-v', 'error', '-y', '-i', it['src'], '-vf', 'scale=-2:min(720\\,ih)', '-c:v', 'libx264', '-preset', 'slow', '-crf', '25',
+            subprocess.run(['ffmpeg', '-nostdin', '-v', 'error', '-y', '-i', it['src'], '-vf', 'scale=-2:min(720\\,ih)', '-c:v', 'libx264', '-preset', 'slow', '-crf', '25',
                             '-pix_fmt', 'yuv420p', '-movflags', '+faststart', '-an', tmp], check=True)
             b = open(tmp, 'rb').read(); seal(aes, b, os.path.join(dst, str(i), 'a.bin')); total += len(b)
         elif it['type'] == 'html':
