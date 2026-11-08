@@ -14,6 +14,7 @@ DOMAIN = "https://longtengautomation.com"
 DRAFT = False
 PAGES = ["index", "solutions", "equipment", "projects", "innovation", "about", "careers", "contact"]
 E = html.escape
+DEMO_LABEL = {"en": "Demo", "vi": "Demo", "zh": "方案演示"}  # 输口令查看的方案演示页 /demo/（不进顶部导航）
 
 
 def L(d, lang):
@@ -170,6 +171,7 @@ def header(page, lang, single=False):
 
 def footer(lang, single=False):
     cols = "".join(f'<a href="{link(p, lang, lang, single)}">{E(lab)}</a>' for p, lab in zip(PAGES, T["nav"][lang]))
+    cols += f'<a href="{DOMAIN + "/demo/" if single else pre(lang) + "demo/"}">{E(DEMO_LABEL[lang])}</a>'
     creds = "".join(f"<li>{E(L(t, lang))}</li>" for t, _ in CREDS[:3])
     return (f'<section class="ctaband"><div class="wrap ctain"><div><span class="kick light">{E(T["hero_kicker"][lang].split(" · ")[0])}</span>'
             f'<h2>{E(T["cta_band_h"][lang])}</h2><p>{E(T["cta_band_p"][lang])}</p></div>'
