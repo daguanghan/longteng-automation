@@ -1,22 +1,23 @@
 <!doctype html>
 <html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex,nofollow"><meta name="referrer" content="no-referrer"><meta name="theme-color" content="#06142b">
-<title>方案演示 · Demo | Longteng Automation</title><link rel="icon" href="../assets/img/site/logo-mark.jpg">
+<title>Demo | Longteng Automation</title><link rel="icon" href="../assets/img/site/logo-mark.jpg">
 <style>
 :root{--navy:#06142b;--navy2:#13284f;--org:#f08a24;--ink:#1d2433;--mut:#5b6679;--line:#dfe5ee;--bg:#f3f5f9}
-*{box-sizing:border-box}html,body{margin:0}body{font-family:"PingFang SC","Microsoft YaHei",system-ui,-apple-system,sans-serif;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%}
+*{box-sizing:border-box}html,body{margin:0}body{font-family:"PingFang SC","Microsoft YaHei",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%}
 a{color:inherit}.wrap{max-width:1000px;margin:0 auto;padding:0 16px}[hidden]{display:none!important}
 header{background:var(--navy);color:#fff}header .wrap{display:flex;align-items:center;gap:12px;min-height:60px}header img{height:36px;border-radius:6px;background:#fff;padding:2px}header b{display:block;font-size:15px;letter-spacing:.06em}header span{font-size:12px;color:#aebcd6}header .sp{flex:1}header a.home{font-size:13px;color:#cbd8ee;text-decoration:none}
-.gate{max-width:420px;margin:48px auto;background:#fff;border:1px solid var(--line);border-radius:14px;padding:26px 22px}
+.langs{display:flex;justify-content:center;gap:6px;margin:22px auto 0;max-width:420px}.langs button{all:unset;cursor:pointer;font-size:13px;padding:5px 12px;border-radius:16px;color:var(--navy2);background:#e6ebf3}.langs button.on{background:var(--navy2);color:#fff}
+.gate{max-width:420px;margin:14px auto 40px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:26px 22px}
 .gate small{color:var(--org);font-weight:600;letter-spacing:.12em;font-size:12px}.gate h1{margin:6px 0 6px;font-size:24px;color:var(--navy2)}.gate p{color:var(--mut);font-size:14px;line-height:1.7;margin:0 0 16px}
-input{width:100%;font:inherit;font-size:20px;letter-spacing:.12em;text-align:center;text-transform:uppercase;padding:12px;border:1px solid #c9d2df;border-radius:10px;background:#fff}
-button{font:inherit;font-size:16px;border:0;border-radius:10px;background:#1f62d0;color:#fff;padding:12px 18px;cursor:pointer;width:100%;margin-top:12px}button:disabled{opacity:.6}
+input{width:100%;font:inherit;font-size:20px;letter-spacing:.12em;text-align:center;text-transform:uppercase;padding:12px;border:1px solid #c9d2df;border-radius:10px;background:#fff}input::placeholder{letter-spacing:.04em;text-transform:none}
+button.go{font:inherit;font-size:16px;border:0;border-radius:10px;background:#1f62d0;color:#fff;padding:12px 18px;cursor:pointer;width:100%;margin-top:12px}button.go:disabled{opacity:.6}
 .err{color:#c0392b;font-size:14px;margin-top:10px;min-height:1em}.note{font-size:12px;color:var(--mut);line-height:1.8;margin-top:18px}
 h2{font-size:22px;color:var(--navy2);margin:24px 0 4px;line-height:1.35}h2 small{display:block;font-size:14px;color:var(--mut);font-weight:400;margin-top:4px}
 .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:18px 0 22px}
 .card{display:block;text-decoration:none;background:#fff;border:1px solid var(--line);border-left:4px solid var(--navy2);border-radius:10px;padding:16px}
 .card b{display:block;font-size:17px;color:var(--navy2);margin-bottom:4px}.card span{font-size:13px;color:var(--mut)}.card em{float:right;font-style:normal;font-size:12px;color:var(--org);font-weight:600}
-.bar{position:sticky;top:0;z-index:20;background:var(--navy);color:#fff}.bar .wrap{display:flex;align-items:center;gap:12px;height:48px}.bar a{text-decoration:none;font-size:14px;background:rgba(255,255,255,.12);padding:6px 11px;border-radius:7px}.bar b{font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bar{position:sticky;top:0;z-index:20;background:var(--navy);color:#fff}.bar .wrap{display:flex;align-items:center;gap:12px;height:48px}.bar a{text-decoration:none;font-size:14px;background:rgba(255,255,255,.12);padding:6px 11px;border-radius:7px;white-space:nowrap}.bar b{font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .pages{padding:14px 0 30px}.pg{background:#fff;margin:0 auto 6px;box-shadow:0 1px 4px rgba(0,0,0,.08);position:relative}.pg img{display:block;width:100%;height:100%;-webkit-touch-callout:none;user-select:none;pointer-events:none}
 .pn{font-size:12px;color:var(--mut);text-align:right;margin:0 auto 14px}
 .dark{background:#000;min-height:calc(100vh - 48px)}video{display:block;width:100%;max-height:calc(100vh - 48px);background:#000}
@@ -25,30 +26,66 @@ iframe{display:block;width:100%;height:calc(100vh - 48px);height:calc(100dvh - 4
 .wm{position:fixed;inset:0;pointer-events:none;z-index:50}
 footer{font-size:12px;color:var(--mut);border-top:1px solid var(--line);padding:16px 0 30px;line-height:1.8;margin-top:20px}
 body.v-dark{background:#000}body.v-dark footer{display:none}body.viewing>header{display:none}
+.bar .fsb{margin-left:auto;font:inherit;font-size:14px;color:#fff;background:#1f62d0;border:0;padding:6px 12px;border-radius:7px;cursor:pointer;white-space:nowrap}
+#show{position:fixed;inset:0;background:#000;z-index:100;display:flex;align-items:center;justify-content:center;-webkit-user-select:none;user-select:none;touch-action:pan-y}
+#show img{max-width:100%;max-height:100%;object-fit:contain;-webkit-touch-callout:none;pointer-events:none}
+#show .nav{position:absolute;top:0;bottom:0;width:38%;cursor:pointer}#show .prev{left:0}#show .next{right:0}
+#show .cnt{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);color:#dbe6f7;font-size:13px;background:rgba(0,0,0,.45);padding:3px 12px;border-radius:12px}
+#show .x,#pfsx{position:absolute;top:12px;right:12px;font:inherit;font-size:14px;color:#fff;background:rgba(255,255,255,.16);border:0;padding:7px 13px;border-radius:8px;cursor:pointer;z-index:2}
+#pfsx{position:fixed;z-index:120}body.pfs .bar{display:none}body.pfs .dark{position:fixed;inset:0;z-index:110;min-height:0}body.pfs video,body.pfs iframe{height:100vh;height:100dvh;max-height:none}
 </style></head>
 <body oncontextmenu="return false">
-<header><div class="wrap"><img src="../assets/img/site/logo-mark.jpg" alt=""><div><b>LONGTENG AUTOMATION</b><span>方案演示 · Demo</span></div><span class="sp"></span><a class="home" href="../zh/index.html">官网首页</a></div></header>
+<header><div class="wrap"><img src="../assets/img/site/logo-mark.jpg" alt=""><div><b>LONGTENG AUTOMATION</b><span data-t="sub"></span></div><span class="sp"></span><a class="home" id="home-link" data-t="site"></a></div></header>
 
-<section id="gate" class="wrap"><div class="gate">
-<small>方案演示 · DEMO</small><h1>请输入口令</h1>
-<p>请输入龙腾提供给您的口令，即可在线查看方案、演示影片和三维演示。<br><span style="font-size:12px">Enter the access code provided by Longteng.</span></p>
-<form id="f" autocomplete="off"><input id="code" name="code" maxlength="24" placeholder="口令" autocapitalize="characters" spellcheck="false" required><button id="go">查看</button><div class="err" id="err"></div></form>
-<div class="note">内容只供在线查看。如无口令或口令失效，请联系广州龙腾自动化设备有限公司：电话 133 0220 3440　sales@longtengautomation.com</div>
-</div></section>
+<section id="gate" class="wrap">
+<div class="langs" id="langs"><button data-l="zh">中文</button><button data-l="en">English</button><button data-l="vi">Tiếng Việt</button></div>
+<div class="gate"><small data-t="kick"></small><h1 data-t="h"></h1><p data-t="p"></p>
+<form id="f" autocomplete="off"><input id="code" name="code" maxlength="24" autocapitalize="characters" spellcheck="false" required><button class="go" id="go" data-t="go"></button><div class="err" id="err"></div></form>
+<div class="note" data-t="note"></div></div></section>
 
-<section id="home" hidden><main class="wrap"><h2 id="t"></h2><div class="cards" id="cards"></div>
-<p class="note">三维演示在手机上建议横屏观看；第一次打开需要载入，请稍候。</p></main></section>
-<section id="view" hidden><div class="bar"><div class="wrap"><a href="#/">← 返回</a><b id="vt"></b></div></div><div id="vc"></div></section>
-<footer class="wrap" id="ft">方案阶段资料，文中数值为设计目标，仅供贵方评审。<br>广州龙腾自动化设备有限公司　电话 133 0220 3440　sales@longtengautomation.com　longtengautomation.com</footer>
+<section id="home" hidden><main class="wrap"><h2 id="t"></h2><div class="cards" id="cards"></div><p class="note" data-t="tip"></p></main></section>
+<section id="view" hidden><div class="bar"><div class="wrap"><a href="#/" data-t="back"></a><b id="vt"></b><button class="fsb" id="fsb" hidden></button></div></div><div id="vc"></div></section>
+<div id="show" hidden><img id="simg" alt=""><div class="nav prev" id="sprev"></div><div class="nav next" id="snext"></div><div class="cnt" id="scnt"></div><button class="x" id="sx"></button></div>
+<button id="pfsx" hidden></button>
+<footer class="wrap"><span data-t="foot"></span><br>Guangzhou Longteng Automation Equipment Co., Ltd.　+86 133 0220 3440　sales@longtengautomation.com　longtengautomation.com</footer>
 <div class="wm" id="wm" hidden></div>
 
 <script>
 'use strict';
 // 口令 → PBKDF2（310000 次）→ 前 32 字节是解密钥匙，后 16 字节是方案文件夹编号。网站上只有加密文件，没有口令解不开，也看不出是哪份方案。
+const TX = {
+  zh: { title: '方案演示 · Demo | 龙腾自动化', sub: '方案演示 · Demo', site: '官网首页', kick: '方案演示 · DEMO', h: '请输入口令', p: '请输入龙腾提供给您的口令，即可在线查看方案、演示影片和三维演示。', ph: '口令', go: '查看',
+    note: '内容只供在线查看。如无口令或口令失效，请联系广州龙腾自动化设备有限公司：电话 133 0220 3440　sales@longtengautomation.com',
+    checking: '正在验证……', wrong: '口令不对，或这份方案已关闭。', net: '暂时打不开，请检查网络后再试。', short: '请输入完整的口令。', nosupport: '当前浏览器不支持，请换用系统浏览器打开。',
+    tip: '三维演示在手机上建议横屏观看；第一次打开需要载入，请稍候。', back: '← 返回', present: '全屏播放', fs: '全屏', exit: '退出全屏', pages: '页', video: '影片', d3: '三维', loading: '正在载入', loadfail: '载入失败，请返回后再试。', pagefail: '这一页载入失败，请刷新页面。',
+    foot: '方案资料，仅供贵方评审。', wm: '仅供贵方评审 · 龙腾自动化', home: '../zh/index.html' },
+  en: { title: 'Demo | Longteng Automation', sub: 'Proposal demo', site: 'Website', kick: 'DEMO', h: 'Enter your access code', p: 'Enter the access code provided by Longteng to view the proposal, demo video and 3D demonstration online.', ph: 'Access code', go: 'View',
+    note: 'Content is for online viewing only. If you have no code or it no longer works, please contact Guangzhou Longteng Automation Equipment Co., Ltd.: +86 133 0220 3440 · sales@longtengautomation.com',
+    checking: 'Checking…', wrong: 'Incorrect code, or this proposal has been closed.', net: 'Cannot open right now. Please check your connection and try again.', short: 'Please enter the full code.', nosupport: 'This browser is not supported. Please open the page in your system browser.',
+    tip: 'On a phone, turn it sideways for the 3D demo. The first load takes a moment.', back: '← Back', present: 'Present', fs: 'Full screen', exit: 'Exit', pages: 'pages', video: 'Video', d3: '3D', loading: 'Loading', loadfail: 'Failed to load. Please go back and try again.', pagefail: 'This page failed to load. Please refresh.',
+    foot: 'Proposal materials, for your review only.', wm: 'For review only · Longteng Automation', home: '../index.html' },
+  vi: { title: 'Demo | Longteng Automation', sub: 'Demo phương án', site: 'Trang chủ', kick: 'DEMO', h: 'Nhập mã truy cập', p: 'Nhập mã truy cập do Longteng cung cấp để xem trực tuyến phương án, video trình diễn và mô hình 3D.', ph: 'Mã truy cập', go: 'Xem',
+    note: 'Nội dung chỉ xem trực tuyến. Nếu chưa có mã hoặc mã không còn hiệu lực, vui lòng liên hệ Guangzhou Longteng Automation Equipment Co., Ltd.: +86 133 0220 3440 · sales@longtengautomation.com',
+    checking: 'Đang kiểm tra…', wrong: 'Mã không đúng, hoặc phương án này đã đóng.', net: 'Hiện không mở được. Vui lòng kiểm tra kết nối mạng và thử lại.', short: 'Vui lòng nhập đầy đủ mã.', nosupport: 'Trình duyệt này không được hỗ trợ. Vui lòng mở bằng trình duyệt của hệ thống.',
+    tip: 'Trên điện thoại, nên xoay ngang để xem mô hình 3D. Lần mở đầu cần chờ tải.', back: '← Quay lại', present: 'Trình chiếu', fs: 'Toàn màn hình', exit: 'Thoát', pages: 'trang', video: 'Video', d3: '3D', loading: 'Đang tải', loadfail: 'Tải không thành công. Vui lòng quay lại và thử lại.', pagefail: 'Trang này tải không thành công. Vui lòng tải lại.',
+    foot: 'Tài liệu phương án, chỉ dành cho quý khách xem xét.', wm: 'Chỉ để xem xét · Longteng Automation', home: '../vi/index.html' },
+};
 const SALT = new TextEncoder().encode('longteng-demo-v1'), ITER = 310000, $ = (id) => document.getElementById(id);
-let K = null, M = null, urls = [];
+let K = null, M = null, urls = [], L = 'zh';
+const t = (k) => TX[L][k];
 const norm = (s) => s.toUpperCase().replace(/[\s\-_]/g, '');
 const H = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
+function setLang(l) {
+  L = TX[l] ? l : 'en'; try { localStorage.setItem('ltdemo-lang', L); } catch (e) {}
+  document.documentElement.lang = { zh: 'zh-CN', en: 'en', vi: 'vi' }[L]; document.title = t('title');
+  document.querySelectorAll('[data-t]').forEach((el) => { el.textContent = t(el.dataset.t); });
+  $('code').placeholder = t('ph'); $('home-link').href = t('home');
+  document.querySelectorAll('#langs button').forEach((b) => b.classList.toggle('on', b.dataset.l === L));
+  if ($('err').textContent) $('err').textContent = ''; if (M) { watermark(); route(); }
+}
+document.querySelectorAll('#langs button').forEach((b) => (b.onclick = () => setLang(b.dataset.l)));
+(() => { const q = new URLSearchParams(location.search).get('lang'); let s = null; try { s = localStorage.getItem('ltdemo-lang'); } catch (e) {}
+  const nav = (navigator.language || '').toLowerCase(); setLang(q || s || (nav.startsWith('zh') ? 'zh' : nav.startsWith('vi') ? 'vi' : 'en')); })();
 async function derive(code) {
   const base = await crypto.subtle.importKey('raw', new TextEncoder().encode(code), 'PBKDF2', false, ['deriveBits']);
   const b = new Uint8Array(await crypto.subtle.deriveBits({ name: 'PBKDF2', hash: 'SHA-256', salt: SALT, iterations: ITER }, base, 384));
@@ -62,55 +99,99 @@ async function fetchBuf(path, prog) {
   const u = new Uint8Array(got); let o = 0; for (const p of parts) { u.set(p, o); o += p.length; } return u;
 }
 async function dec(path, prog) { const u = await fetchBuf(`d/${K.id}/${path}`, prog); return crypto.subtle.decrypt({ name: 'AES-GCM', iv: u.slice(0, 12) }, K.key, u.slice(12)); }
-function watermark(text) {
-  const svg = `<svg xmlns='http://www.w3.org/2000/svg' width='360' height='200'><text x='20' y='120' transform='rotate(-22 180 100)' font-family='PingFang SC,Microsoft YaHei,sans-serif' font-size='15' fill='rgba(128,140,160,0.16)'>${H(text)}</text></svg>`;
+function watermark() {
+  const text = M.wm ? `${M.wm} · ${t('wm')}` : t('wm');
+  const svg = `<svg xmlns='http://www.w3.org/2000/svg' width='380' height='200'><text x='20' y='120' transform='rotate(-22 190 100)' font-family='PingFang SC,Microsoft YaHei,sans-serif' font-size='15' fill='rgba(128,140,160,0.16)'>${H(text)}</text></svg>`;
   $('wm').style.backgroundImage = `url("data:image/svg+xml;utf8,${encodeURIComponent(svg)}")`; $('wm').hidden = false;
 }
 async function unlock(code, quiet) {
-  $('go').disabled = true; $('err').textContent = quiet ? '' : '正在验证……';
+  $('go').disabled = true; $('err').textContent = quiet ? '' : t('checking');
   try {
     K = await derive(norm(code)); M = JSON.parse(new TextDecoder().decode(await dec('m.bin')));
     try { sessionStorage.setItem('ltdemo', norm(code)); } catch (e) {}
-    watermark(`${M.wm || '仅供贵方评审'} · 龙腾自动化`); route();
+    $('err').textContent = ''; watermark(); route();
   } catch (e) {
-    K = null; try { sessionStorage.removeItem('ltdemo'); } catch (x) {}
-    if (!quiet) $('err').textContent = e.status === 404 || e.name === 'OperationError' ? '口令不对，或这份方案已关闭。' : '暂时打不开，请检查网络后再试。';
+    K = null; M = null; try { sessionStorage.removeItem('ltdemo'); } catch (x) {}
+    if (!quiet) $('err').textContent = e.status === 404 || e.name === 'OperationError' ? t('wrong') : t('net');
   } finally { $('go').disabled = false; }
 }
-$('f').onsubmit = (e) => { e.preventDefault(); if (norm($('code').value).length >= 6) unlock($("code").value); else $('err').textContent = '请输入完整的口令。'; };
+$('f').onsubmit = (e) => { e.preventDefault(); if (norm($('code').value).length >= 6) unlock($('code').value); else $('err').textContent = t('short'); };
 function clearUrls() { urls.forEach((u) => URL.revokeObjectURL(u)); urls = []; }
 const mk = (buf, type) => { const u = URL.createObjectURL(new Blob([buf], { type })); urls.push(u); return u; };
+let shown = '';
 function route() {
   if (!M) { $('gate').hidden = false; $('home').hidden = $('view').hidden = true; return; }
-  clearUrls(); document.body.classList.remove('v-dark', 'viewing'); $('gate').hidden = true;
+  const key = location.hash + '|' + L; $('gate').hidden = true;
   const m = location.hash.match(/^#\/v\/(\d+)$/), it = m && M.items[+m[1]];
   if (!it) {
+    clearUrls(); shown = key; document.body.classList.remove('v-dark', 'viewing', 'pfs'); $('fsb').hidden = true; $('pfsx').hidden = true;
     $('home').hidden = false; $('view').hidden = true;
     $('t').innerHTML = `${H(M.title)}<small>${H(M.subtitle || '')}</small>`;
-    $('cards').innerHTML = M.items.map((x, i) => `<a class="card" href="#/v/${i}"><em>${x.type === 'pages' ? x.count + ' 页' : x.type === 'video' ? '影片' : '三维'}</em><b>${H(x.title)}</b><span>${H(x.desc || '')}</span></a>`).join('');
+    $('cards').innerHTML = M.items.map((x, i) => `<a class="card" href="#/v/${i}"><em>${x.type === 'pages' ? `${x.count} ${t('pages')}` : x.type === 'video' ? t('video') : t('d3')}</em><b>${H(x.title)}</b><span>${H(x.desc || '')}</span></a>`).join('');
     return;
   }
-  const i = +m[1]; document.body.classList.add('viewing'); $('home').hidden = true; $('view').hidden = false; $('vt').textContent = it.title; const vc = $('vc'); window.scrollTo(0, 0);
+  $('vt').textContent = it.title; document.querySelector('.bar a').textContent = t('back');
+  const fsb = $('fsb'); fsb.hidden = false; fsb.textContent = it.type === 'pages' ? t('present') : t('fs'); $('sx').textContent = $('pfsx').textContent = t('exit');
+  fsb.onclick = () => (it.type === 'pages' ? openShow(+m[1], it) : goFull($('vc').querySelector('video,iframe'), it.type === 'video'));
+  if (shown.split('|')[0] === location.hash) { shown = key; return; }   // 只换语言时不重新载入内容
+  clearUrls(); shown = key; document.body.classList.remove('v-dark');
+  const i = +m[1]; document.body.classList.add('viewing'); $('home').hidden = true; $('view').hidden = false; const vc = $('vc'); window.scrollTo(0, 0);
   if (it.type === 'pages') {
     const w = it.w > it.h ? 1100 : 860;
     vc.innerHTML = `<div class="wrap pages">${Array.from({ length: it.count }, (_, k) => `<div class="pg" data-k="${k}" style="max-width:${w}px;aspect-ratio:${it.w}/${it.h}"></div><div class="pn" style="max-width:${w}px">${k + 1} / ${it.count}</div>`).join('')}</div>`;
     const io = new IntersectionObserver((es) => es.forEach(async (en) => {
       if (!en.isIntersecting || en.target.dataset.on) return; en.target.dataset.on = 1; io.unobserve(en.target);
-      try { const u = mk(await dec(`${i}/${String(+en.target.dataset.k + 1).padStart(3, '0')}.bin`), 'image/jpeg'); en.target.innerHTML = `<img src="${u}" alt="" draggable="false">`; } catch (e) { en.target.innerHTML = '<div class="load">这一页载入失败，请下拉刷新</div>'; }
+      try { const u = mk(await dec(`${i}/${String(+en.target.dataset.k + 1).padStart(3, '0')}.bin`), 'image/jpeg'); en.target.innerHTML = `<img src="${u}" alt="" draggable="false">`; } catch (e) { en.target.innerHTML = `<div class="load">${t('pagefail')}</div>`; }
     }), { rootMargin: '900px 0px' });
     vc.querySelectorAll('.pg').forEach((d) => io.observe(d));
   } else {
-    document.body.classList.add('v-dark'); vc.innerHTML = `<div class="dark"><div class="load" id="ld">正在载入……</div></div>`;
-    const prog = (p) => { const l = $('ld'); if (l) l.textContent = `正在载入 ${Math.round(p * 100)}%`; };
+    document.body.classList.add('v-dark'); vc.innerHTML = `<div class="dark"><div class="load" id="ld">${t('loading')}……</div></div>`;
+    const prog = (p) => { const l = $('ld'); if (l) l.textContent = `${t('loading')} ${Math.round(p * 100)}%`; };
     dec(`${i}/a.bin`, prog).then((buf) => {
       if (location.hash !== `#/v/${i}`) return;
       if (it.type === 'video') vc.firstChild.innerHTML = `<video src="${mk(buf, 'video/mp4')}" controls playsinline controlslist="nodownload noplaybackrate" disablepictureinpicture></video>`;
       else vc.firstChild.innerHTML = `<iframe src="${mk(buf, 'text/html')}" allow="fullscreen; autoplay" allowfullscreen></iframe>`;
-    }).catch(() => { const l = $('ld'); if (l) l.textContent = '载入失败，请返回后再试。'; });
+    }).catch(() => { const l = $('ld'); if (l) l.textContent = t('loadfail'); });
   }
 }
-addEventListener('hashchange', route);
-(async () => { if (!window.crypto || !crypto.subtle) { $('err').textContent = '当前浏览器不支持，请换用系统浏览器打开。'; return; }
+
+// ---- 全屏：汇报和 PDF 用一页一页的放映；影片、三维演示整块全屏。浏览器不支持时退一步铺满窗口（iPhone）。
+const fsNow = () => document.fullscreenElement || document.webkitFullscreenElement;
+function pseudo(on) { document.body.classList.toggle('pfs', on); $('pfsx').hidden = !on || !$('show').hidden; }
+function goFull(el, isVideo) {
+  if (!el) return;
+  try {
+    if (el.requestFullscreen) { el.requestFullscreen().catch(() => (isVideo && el.webkitEnterFullscreen ? el.webkitEnterFullscreen() : pseudo(true))); return; }
+    if (el.webkitRequestFullscreen) { el.webkitRequestFullscreen(); return; }
+    if (isVideo && el.webkitEnterFullscreen) { el.webkitEnterFullscreen(); return; }
+  } catch (e) {}
+  pseudo(true);
+}
+function exitFull() { if (fsNow()) (document.exitFullscreen || document.webkitExitFullscreen).call(document); pseudo(false); }
+$('pfsx').onclick = exitFull;
+let SS = null;
+function openShow(i, it) {
+  let k = 0; const pgs = [...document.querySelectorAll('.pg')]; for (const d of pgs) { if (d.getBoundingClientRect().bottom > 80) { k = +d.dataset.k; break; } }
+  SS = { i, it, k, cache: {} }; $('show').hidden = false; showPage(); goFull($('show'));
+}
+async function pageUrl(k) {
+  if (!SS.cache[k]) SS.cache[k] = dec(`${SS.i}/${String(k + 1).padStart(3, '0')}.bin`).then((b) => mk(b, 'image/jpeg'));
+  return SS.cache[k];
+}
+async function showPage() {
+  const k = SS.k, n = SS.it.count; $('scnt').textContent = `${k + 1} / ${n}`;
+  try { const u = await pageUrl(k); if (SS && SS.k === k) $('simg').src = u; } catch (e) {}
+  if (k + 1 < n) pageUrl(k + 1).catch(() => {});
+}
+function step(d) { if (!SS) return; const k = Math.min(SS.it.count - 1, Math.max(0, SS.k + d)); if (k !== SS.k) { SS.k = k; showPage(); } }
+function closeShow() { if (!SS) return; const k = SS.k; SS = null; $('show').hidden = true; $('simg').removeAttribute('src'); exitFull(); const d = document.querySelector(`.pg[data-k="${k}"]`); if (d) d.scrollIntoView(); }
+$('sprev').onclick = () => step(-1); $('snext').onclick = () => step(1); $('sx').onclick = closeShow;
+let tx = null; $('show').addEventListener('touchstart', (e) => { tx = e.touches[0].clientX; }, { passive: true });
+$('show').addEventListener('touchend', (e) => { if (tx === null) return; const dx = e.changedTouches[0].clientX - tx; tx = null; if (Math.abs(dx) > 40) step(dx < 0 ? 1 : -1); }, { passive: true });
+addEventListener('keydown', (e) => { if (!SS) return; if (['ArrowRight', 'ArrowDown', 'PageDown', ' ', 'Enter'].includes(e.key)) { e.preventDefault(); step(1); } else if (['ArrowLeft', 'ArrowUp', 'PageUp'].includes(e.key)) { e.preventDefault(); step(-1); } else if (e.key === 'Escape') closeShow(); });
+['fullscreenchange', 'webkitfullscreenchange'].forEach((ev) => document.addEventListener(ev, () => { if (!fsNow() && SS) closeShow(); }));
+addEventListener('hashchange', () => { if (SS) closeShow(); route(); });
+(async () => { if (!window.crypto || !crypto.subtle) { $('err').textContent = t('nosupport'); return; }
   let c = null; try { c = sessionStorage.getItem('ltdemo'); } catch (e) {} if (c) await unlock(c, true); route(); })();
 </script>
 </body></html>

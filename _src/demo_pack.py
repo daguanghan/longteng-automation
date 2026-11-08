@@ -101,7 +101,7 @@ def add(spec_path, do_publish):
         elif it['type'] == 'video':
             tmp = os.path.join(tempfile.mkdtemp(), 'v.mp4')
             subprocess.run(['ffmpeg', '-nostdin', '-v', 'error', '-y', '-i', it['src'], '-vf', 'scale=-2:min(720\\,ih)', '-c:v', 'libx264', '-preset', 'slow', '-crf', '25',
-                            '-pix_fmt', 'yuv420p', '-movflags', '+faststart', '-an', tmp], check=True)
+                            '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-b:a', '96k', '-movflags', '+faststart', tmp], check=True)   # 有讲解声音就保留
             b = open(tmp, 'rb').read(); seal(aes, b, os.path.join(dst, str(i), 'a.bin')); total += len(b)
         elif it['type'] == 'html':
             b = open(it['src'], 'rb').read(); seal(aes, b, os.path.join(dst, str(i), 'a.bin')); total += len(b)
