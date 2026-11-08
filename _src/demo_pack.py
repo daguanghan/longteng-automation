@@ -30,16 +30,18 @@ def ask_code():
     if os.environ.get('LTDEMO_CODE'):          # 只给自动测试用，不打印
         return norm(os.environ['LTDEMO_CODE'])
     print('口令规则：项目缩写 + 你记得住的 4 位数字（例如 PTC 加 4 位数字）。大小写、短横都不影响。输入时屏幕上不显示字符，是正常的。')
-    c = norm(getpass.getpass('请输入口令，然后按回车（直接回车会自动生成一个）：'))
-    if not c:
-        c = ''.join(secrets.choice(ALPHA) for _ in range(8))
-        print(f'\n自动生成的口令：{c[:4]}-{c[4:]}\n（只在这里显示一次，请记下或存进密码管理器；发给客户时可以写成 {c[:4]}-{c[4:]}）\n')
-        return c
-    if len(c) < 6 or not re.search(r'[A-Z]', c) or not re.search(r'\d', c):
-        sys.exit('口令至少 6 位，字母和数字都要有（例如项目缩写加 4 位数字）。请重新运行。')
-    if norm(getpass.getpass('再输入一次：')) != c:
-        sys.exit('两次输入不一样，没有做任何改动。')
-    return c
+    for n in range(3):
+        c = norm(getpass.getpass('请输入口令，然后按回车（直接回车会自动生成一个）：'))
+        if not c:
+            c = ''.join(secrets.choice(ALPHA) for _ in range(8))
+            print(f'\n自动生成的口令：{c[:4]}-{c[4:]}\n（只在这里显示一次，请记下或存进密码管理器；发给客户时可以写成 {c[:4]}-{c[4:]}）\n')
+            return c
+        if len(c) < 6 or not re.search(r'[A-Z]', c) or not re.search(r'\d', c):
+            print('口令至少 6 位，字母和数字都要有（例如项目缩写加 4 位数字），请重新输入。\n'); continue
+        if norm(getpass.getpass('再输入一次同样的口令：')) == c:
+            return c
+        print('两次输入不一样，请重新输入。\n')
+    sys.exit('没有设置成功，没有做任何改动。需要时再运行一次。')
 
 
 def pages(src, out):
