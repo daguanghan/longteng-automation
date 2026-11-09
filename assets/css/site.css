@@ -473,3 +473,7 @@ nav#nav a:hover:after,nav#nav a.cur:after{right:0}
 .vals.c3{grid-template-columns:repeat(3,1fr)}.vals.c4{grid-template-columns:repeat(4,1fr)}
 @media(max-width:960px){.vals.c3,.vals.c4{grid-template-columns:1fr}}
 
+/* Demo entry in the top nav */
+nav#nav a.navdemo{display:inline-flex;align-items:center;gap:5px}
+nav#nav a.navdemo .ico{width:14px;height:14px;stroke-width:2.2}
+

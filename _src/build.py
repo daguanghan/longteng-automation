@@ -14,7 +14,7 @@ DOMAIN = "https://longtengautomation.com"
 DRAFT = False
 PAGES = ["index", "solutions", "equipment", "projects", "innovation", "about", "careers", "contact"]
 E = html.escape
-DEMO_LABEL = {"en": "Demo", "vi": "Demo", "zh": "方案演示"}  # 输口令查看的方案演示页 /demo/（不进顶部导航）
+DEMO_LABEL = {"en": "Demo", "vi": "Demo", "zh": "方案演示"}  # 输口令查看的方案演示页 /demo/；11-09 本人令放进顶部导航（排在最后，带锁形图标）
 
 
 def L(d, lang):
@@ -74,6 +74,7 @@ def ico(name):
         "mail": '<rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/>',
         "play": '<path d="M7 4.5v15l13-7.5z" fill="currentColor" stroke="none"/>',
         "tv": '<rect x="2" y="5" width="20" height="13" rx="2"/><path d="M8 21h8M12 18v3"/>',
+        "lock": '<rect x="4.5" y="11" width="15" height="10" rx="2"/><path d="M8 11V7.5a4 4 0 0 1 8 0V11"/>',
     }
     return f'<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{P[name]}</svg>'
 
@@ -160,6 +161,7 @@ def header(page, lang, single=False):
     over = " over" if page == "index" and not single else ""
     nav = "".join(f'<a href="{link(p, lang, lang, single)}"{" class=cur" if p == page and not single else ""}>{E(lab)}</a>'
                   for p, lab in zip(PAGES, T["nav"][lang]) if p != "index")
+    nav += f'<a class="navdemo" href="{DOMAIN + "/demo/" if single else pre(lang) + "demo/"}?lang={lang}">{ico("lock")}{E(DEMO_LABEL[lang])}</a>'
     sw = "".join(f'<a href="{("longteng_preview_" + l + ".html") if single else link(page, l, lang)}"{" class=on" if l == lang else ""}>{LANG_LABEL[l]}</a>' for l in LANGS)
     draft = f'<div class="draft">{E(T["draft"][lang])}</div>' if DRAFT else ""
     return (f'<body class="p-{page}">{draft}<header class="hd{over}"><div class="wrap hdin">'
