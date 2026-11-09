@@ -10,7 +10,7 @@ header{background:var(--navy);color:#fff}header .wrap{display:flex;align-items:c
 .langs{display:flex;justify-content:center;gap:6px;margin:22px auto 0;max-width:420px}.langs button{all:unset;cursor:pointer;font-size:13px;padding:5px 12px;border-radius:16px;color:var(--navy2);background:#e6ebf3}.langs button.on{background:var(--navy2);color:#fff}
 .gate{max-width:420px;margin:14px auto 40px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:26px 22px}
 .gate small{color:var(--org);font-weight:600;letter-spacing:.12em;font-size:12px}.gate h1{margin:6px 0 6px;font-size:24px;color:var(--navy2)}.gate p{color:var(--mut);font-size:14px;line-height:1.7;margin:0 0 16px}
-input{width:100%;font:inherit;font-size:20px;letter-spacing:.12em;text-align:center;text-transform:uppercase;padding:12px;border:1px solid #c9d2df;border-radius:10px;background:#fff}input::placeholder{letter-spacing:.04em;text-transform:none}
+input{width:100%;font:inherit;font-size:20px;letter-spacing:.12em;text-align:center;padding:12px;border:1px solid #c9d2df;border-radius:10px;background:#fff}input::placeholder{letter-spacing:.02em;font-size:15px}
 button.go{font:inherit;font-size:16px;border:0;border-radius:10px;background:#1f62d0;color:#fff;padding:12px 18px;cursor:pointer;width:100%;margin-top:12px}button.go:disabled{opacity:.6}
 .err{color:#c0392b;font-size:14px;margin-top:10px;min-height:1em}.note{font-size:12px;color:var(--mut);line-height:1.8;margin-top:18px}
 h2{font-size:22px;color:var(--navy2);margin:24px 0 4px;line-height:1.35}h2 small{display:block;font-size:14px;color:var(--mut);font-weight:400;margin-top:4px}
@@ -40,7 +40,7 @@ body.v-dark{background:#000}body.v-dark footer{display:none}body.viewing>header{
 <section id="gate" class="wrap">
 <div class="langs" id="langs"><button data-l="zh">中文</button><button data-l="en">English</button><button data-l="vi">Tiếng Việt</button></div>
 <div class="gate"><small data-t="kick"></small><h1 data-t="h"></h1><p data-t="p"></p>
-<form id="f" autocomplete="off"><input id="code" name="code" maxlength="24" autocapitalize="characters" spellcheck="false" required><button class="go" id="go" data-t="go"></button><div class="err" id="err"></div></form>
+<form id="f" autocomplete="off"><input id="code" name="code" maxlength="24" autocapitalize="off" autocorrect="off" spellcheck="false" required><button class="go" id="go" data-t="go"></button><div class="err" id="err"></div></form>
 <div class="note" data-t="note"></div></div></section>
 
 <section id="home" hidden><main class="wrap"><h2 id="t"></h2><div class="cards" id="cards"></div><p class="note" data-t="tip"></p></main></section>
@@ -54,17 +54,17 @@ body.v-dark{background:#000}body.v-dark footer{display:none}body.viewing>header{
 'use strict';
 // 口令 → PBKDF2（310000 次）→ 前 32 字节是解密钥匙，后 16 字节是方案文件夹编号。网站上只有加密文件，没有口令解不开，也看不出是哪份方案。
 const TX = {
-  zh: { title: '方案演示 · Demo | 龙腾自动化', sub: '方案演示 · Demo', site: '官网首页', kick: '方案演示 · DEMO', h: '请输入口令', p: '请输入龙腾提供给您的口令，即可在线查看方案、演示影片和三维演示。', ph: '口令', go: '查看',
+  zh: { title: '方案演示 · Demo | 龙腾自动化', sub: '方案演示 · Demo', site: '官网首页', kick: '方案演示 · DEMO', h: '请输入口令', p: '请输入龙腾提供给您的口令，即可在线查看方案、演示影片和三维演示。', ph: '口令（不区分大小写）', go: '查看',
     note: '内容只供在线查看。如无口令或口令失效，请联系广州龙腾自动化设备有限公司：电话 133 0220 3440　sales@longtengautomation.com',
     checking: '正在验证……', wrong: '口令不对，或这份方案已关闭。', net: '暂时打不开，请检查网络后再试。', short: '请输入完整的口令。', nosupport: '当前浏览器不支持，请换用系统浏览器打开。',
     tip: '三维演示在手机上建议横屏观看；第一次打开需要载入，请稍候。', back: '← 返回', present: '全屏播放', fs: '全屏', exit: '退出全屏', pages: '页', video: '影片', d3: '三维', loading: '正在载入', loadfail: '载入失败，请返回后再试。', pagefail: '这一页载入失败，请刷新页面。',
     foot: '方案资料，仅供贵方评审。', wm: '仅供贵方评审 · 龙腾自动化', home: '../zh/index.html' },
-  en: { title: 'Demo | Longteng Automation', sub: 'Proposal demo', site: 'Website', kick: 'DEMO', h: 'Enter your access code', p: 'Enter the access code provided by Longteng to view the proposal, demo video and 3D demonstration online.', ph: 'Access code', go: 'View',
+  en: { title: 'Demo | Longteng Automation', sub: 'Proposal demo', site: 'Website', kick: 'DEMO', h: 'Enter your access code', p: 'Enter the access code provided by Longteng to view the proposal, demo video and 3D demonstration online.', ph: 'Access code (not case-sensitive)', go: 'View',
     note: 'Content is for online viewing only. If you have no code or it no longer works, please contact Guangzhou Longteng Automation Equipment Co., Ltd.: +86 133 0220 3440 · sales@longtengautomation.com',
     checking: 'Checking…', wrong: 'Incorrect code, or this proposal has been closed.', net: 'Cannot open right now. Please check your connection and try again.', short: 'Please enter the full code.', nosupport: 'This browser is not supported. Please open the page in your system browser.',
     tip: 'On a phone, turn it sideways for the 3D demo. The first load takes a moment.', back: '← Back', present: 'Present', fs: 'Full screen', exit: 'Exit', pages: 'pages', video: 'Video', d3: '3D', loading: 'Loading', loadfail: 'Failed to load. Please go back and try again.', pagefail: 'This page failed to load. Please refresh.',
     foot: 'Proposal materials, for your review only.', wm: 'For review only · Longteng Automation', home: '../index.html' },
-  vi: { title: 'Demo | Longteng Automation', sub: 'Demo phương án', site: 'Trang chủ', kick: 'DEMO', h: 'Nhập mã truy cập', p: 'Nhập mã truy cập do Longteng cung cấp để xem trực tuyến phương án, video trình diễn và mô hình 3D.', ph: 'Mã truy cập', go: 'Xem',
+  vi: { title: 'Demo | Longteng Automation', sub: 'Demo phương án', site: 'Trang chủ', kick: 'DEMO', h: 'Nhập mã truy cập', p: 'Nhập mã truy cập do Longteng cung cấp để xem trực tuyến phương án, video trình diễn và mô hình 3D.', ph: 'Mã truy cập (không phân biệt hoa thường)', go: 'Xem',
     note: 'Nội dung chỉ xem trực tuyến. Nếu chưa có mã hoặc mã không còn hiệu lực, vui lòng liên hệ Guangzhou Longteng Automation Equipment Co., Ltd.: +86 133 0220 3440 · sales@longtengautomation.com',
     checking: 'Đang kiểm tra…', wrong: 'Mã không đúng, hoặc phương án này đã đóng.', net: 'Hiện không mở được. Vui lòng kiểm tra kết nối mạng và thử lại.', short: 'Vui lòng nhập đầy đủ mã.', nosupport: 'Trình duyệt này không được hỗ trợ. Vui lòng mở bằng trình duyệt của hệ thống.',
     tip: 'Trên điện thoại, nên xoay ngang để xem mô hình 3D. Lần mở đầu cần chờ tải.', back: '← Quay lại', present: 'Trình chiếu', fs: 'Toàn màn hình', exit: 'Thoát', pages: 'trang', video: 'Video', d3: '3D', loading: 'Đang tải', loadfail: 'Tải không thành công. Vui lòng quay lại và thử lại.', pagefail: 'Trang này tải không thành công. Vui lòng tải lại.',
