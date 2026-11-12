@@ -809,3 +809,57 @@ PAGE_TITLES["careers"] = CAREERS["nav"]
 for _l in T["nav"]:
     T["nav"][_l].insert(-1, CAREERS["nav"][_l])
 
+
+# ── v5 additions (2026-11-12): lighting & electrical products, delivery and service in Vietnam, sample test run ──
+SAMPLE_CTA = {"en": "Send samples for a test run", "vi": "Gửi mẫu để chạy thử", "zh": "寄样件实测"}
+
+# Lighting is a target industry, not a reference: never word it as lighting customers or delivered lighting lines.
+# "d" shows on the home tile and on the Solutions page; "d2" continues it on the Solutions page only (the tile clips long text).
+# "pts" replaces the automatic machine list. "rel" points at existing catalogue entries: a vision-module photo, a machine photo or a clip code.
+# "cta" sends the entry's link to the sample-test block on the Contact page.
+INDUSTRIES.append({
+    "id": "lighting", "img": "eq/clipper-screwing-waterproof-test.jpg", "vimg": None,
+    "t": {"en": "Lighting & electrical products", "vi": "Chiếu sáng & thiết bị điện", "zh": "照明与电工产品"},
+    "d": {"en": "LED lamps, luminaires, drivers, switches and sockets share most of their assembly and inspection steps with the small appliances and electronics we build machines for.",
+          "vi": "Đèn LED, bộ đèn, driver, công tắc và ổ cắm có phần lớn công đoạn lắp ráp, kiểm tra giống với điện gia dụng nhỏ và điện tử mà chúng tôi đang chế tạo thiết bị.",
+          "zh": "LED 灯、灯具、驱动电源、开关插座的装配和检测工序，和我们长期做设备的小家电、电子产品大多相通。"},
+    "d2": {"en": "We do not replace a whole line: we build the stations that are hard to do by hand, and we prove each one with a test run on your samples.",
+           "vi": "Chúng tôi không thay cả dây chuyền: chúng tôi làm những trạm khó thực hiện bằng tay, và chứng minh từng trạm bằng chạy thử trên mẫu của quý khách.",
+           "zh": "我们不替换整条产线：只做人工难做的工位，每个工位先用贵方的样品实测。"},
+    "pts": {"en": ["Assembly stations: pressing, snap-fitting, automatic screw-driving",
+                   "CCD vision inspection: appearance, glue beads, printing, missing parts",
+                   "Airtight and waterproof testing",
+                   "Hot stamping and pad printing on housings",
+                   "AI sorting of screws and small plastic parts"],
+            "vi": ["Trạm lắp ráp: ép, cài khớp, bắt vít tự động",
+                   "Kiểm tra bằng camera CCD: ngoại quan, đường keo, chữ in, thiếu chi tiết",
+                   "Kiểm tra kín khí và chống nước",
+                   "Ép nhũ nóng và in tampon trên vỏ sản phẩm",
+                   "Phân loại vít và chi tiết nhựa nhỏ bằng AI"],
+            "zh": ["装配工位：压装、扣合、自动锁螺丝",
+                   "CCD 视觉检测：外观、点胶、印字、漏装",
+                   "气密与防水测试",
+                   "外壳烫印与移印",
+                   "螺丝和小塑料件的 AI 分选"]},
+    "rel": ["vision-screwdriving.jpg", "vision-glue-inspection.jpg", "airtight-waterproof-tester.jpg", "C04", "ai-sorter-single.jpg"],
+    "cta": SAMPLE_CTA,
+})
+
+# Longteng has no entity in Vietnam: no map and no flag in this section, and never "office", "branch" or "subsidiary".
+VIETNAM = {
+    "h": {"en": "Delivery and service in Vietnam", "vi": "Giao hàng và dịch vụ tại Việt Nam", "zh": "越南交付与服务"},
+    "p": {"en": "Machines are designed and built in our Guangzhou plant, shipped to Hai Phong or Ho Chi Minh City, and installed and commissioned on site by our technicians.",
+          "vi": "Thiết bị được thiết kế và chế tạo tại xưởng Quảng Châu, giao đến Hải Phòng hoặc TP. Hồ Chí Minh, và do kỹ thuật viên của chúng tôi lắp đặt, chạy thử tại nhà máy của quý khách.",
+          "zh": "设备在广州工厂设计制造，发运至海防或胡志明市，由我们的技术人员到场安装调试。"},
+    "steps": T["steps"],  # the same five approved steps as "How we work" and the printed brochure
+}
+
+# Sample test run: a card beside the quick-message form (anchor #sample-test) and one more "want" chip.
+SAMPLE_TEST = {
+    "h": {"en": "Test run on your samples", "vi": "Chạy thử trên mẫu của quý khách", "zh": "用贵方样件实测"},
+    "p": {"en": "Send us sample parts and we run them on our machines in Guangzhou, then return the video and the numbers. For the AI sorter: parts of 1–50 g, from 8×8×2 mm to 80×60×15 mm, in plastic, low-elasticity rubber or metal. Message us first and we will reply with the shipping address and how many pieces to send.",
+          "vi": "Gửi mẫu cho chúng tôi; chúng tôi chạy thử trên máy tại Quảng Châu rồi gửi lại video và số liệu. Với máy phân loại AI: chi tiết 1–50 g, kích thước từ 8×8×2 mm đến 80×60×15 mm, bằng nhựa, cao su đàn hồi thấp hoặc kim loại. Hãy nhắn cho chúng tôi trước, chúng tôi sẽ gửi địa chỉ nhận hàng và số lượng mẫu cần gửi.",
+          "zh": "把样件寄给我们，我们在广州的设备上实测，再把视频和数据发回。AI 分选机适用 1—50 克、8×8×2 毫米至 80×60×15 毫米的塑料、低弹性橡胶和金属件。请先留言，我们回复收件地址和需要的数量。"},
+}
+RFQ["wants"].insert(4, SAMPLE_CTA)  # before "Join the team"
+

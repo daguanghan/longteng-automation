@@ -111,7 +111,7 @@ nav#nav a:hover:after,nav#nav a.cur:after{right:0}
 .tile:before{content:"";position:absolute;inset:0;background:var(--img) center/cover;transition:transform .6s}
 .tile:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,20,43,.05) 20%,rgba(6,20,43,.92) 100%)}
 .tile:hover:before{transform:scale(1.07)}
-.tile.t0{grid-column:span 2;grid-row:span 2}.tile.t3,.tile.t4,.tile.t5{grid-column:span 2}
+.tile.t0{grid-column:span 2;grid-row:span 2}.tile.t3,.tile.t4{grid-column:span 2}
 .tc{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:22px 24px}
 .tc h3{font-size:20px;margin-bottom:6px}
 .tc p{font-size:13.5px;color:#cbd7ea;max-height:0;overflow:hidden;transition:max-height .4s}
@@ -476,4 +476,10 @@ nav#nav a:hover:after,nav#nav a.cur:after{right:0}
 /* Demo entry in the top nav */
 nav#nav a.navdemo{display:inline-flex;align-items:center;gap:5px}
 nav#nav a.navdemo .ico{width:14px;height:14px;stroke-width:2.2}
+
+/* v5: related-machines strip under an industry entry; sample-test card on the Contact page (anchor target under the sticky header) */
+.ind .cwall{margin-top:40px}
+.ind .cw img{height:auto;aspect-ratio:4/3;object-fit:cover}
+.ind .cw .vc{border-radius:6px}
+#sample-test{scroll-margin-top:96px}
 

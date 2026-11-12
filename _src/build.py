@@ -42,6 +42,11 @@ def img(path, lang, alt="", cls=""):
     return f'<img src="{pre(lang)}assets/img/{path}" alt="{E(alt)}" loading="lazy"{c}>'
 
 
+def sample_href(lang, single=False):
+    """The sample-test block on the Contact page, in the same language."""
+    return "#sample-test" if single else link("contact", lang, lang) + "#sample-test"
+
+
 def vposter(code, lang):
     return f"{pre(lang)}assets/video/{code}.jpg"
 
@@ -235,6 +240,15 @@ def export_band(lang):
             f'<p class="lead">{E(EXPORT["p"][lang])}</p></div><div class="xgrid">{cards}</div></div></section>')
 
 
+def vietnam_band(lang, single=False):
+    """Delivery and service in Vietnam: text, the five numbered steps and a link to the sample-test block. No map, no flag."""
+    V = VIETNAM
+    steps = "".join(f'<div class="val rv"><b>{k + 1:02d}</b><h3>{E(a)}</h3><p>{E(b)}</p></div>' for k, (a, b) in enumerate(V["steps"][lang]))
+    return (f'<section class="sec" id="vietnam"><div class="wrap"><div class="shead rv"><h2>{E(L(V["h"], lang))}</h2>'
+            f'<p class="lead">{E(L(V["p"], lang))}</p></div><div class="vals">{steps}</div>'
+            f'<div class="hbtns rv"><a class="btn lg" href="{sample_href(lang, single)}">{E(L(SAMPLE_CTA, lang))}{ico("arrow")}</a></div></div></section>')
+
+
 def pthumb(p, lang):
     if p.get("vid"):
         return f'<img src="{vposter(p["vid"], lang)}" alt="{E(L(p["t"], lang))}" loading="lazy">'
@@ -274,7 +288,7 @@ def body_index(lang, single=False):
             + media_band(lang) +
             f'<section class="sea"><div class="wrap seain"><div class="seat rv"><span class="kick light">{E(STR["k_sea"][lang])}</span><h2>{E(SEA_H[lang])}</h2><p>{E(SEA_P[lang])}</p><ul class="pts">{pts}</ul>'
             f'<p class="note">{E(SEA_NOTE[lang])}</p></div><div class="seam rv">{sea_map(lang)}</div></div></section>'
-            + export_band(lang) +
+            + vietnam_band(lang, S) + export_band(lang) +
             f'<section class="sec"><div class="wrap"><div class="shead row rv"><div><span class="kick">{E(STR["k_feat"][lang])}</span><h2>{E(T["feat_h"][lang])}</h2></div>'
             f'<a class="more" href="{link("projects", lang, lang, S)}">{E(STR["all_prj"][lang])}{ico("arrow")}</a></div><div class="pcs">{feats}</div></div></section>'
             f'<section class="sec alt"><div class="wrap"><div class="shead rv"><span class="kick">{E(T["how_h"][lang])}</span><h2>{E(T["how_sub"][lang])}</h2></div><div class="steps">{steps}</div></div></section>')
@@ -284,14 +298,31 @@ def body_solutions(lang, single=False):
     eqbycat = {"appliances": ["dryer", "care"], "vision": ["sort", "elec", "test"], "locks": ["lock", "sort"], "ev": ["auto"], "packaging": ["pack"], "garment": ["sort"]}
     out = [pagehead(T["sol_h"][lang], T["sol_sub"][lang], lang, "site/workshop-2.jpg")]
     for n, i in enumerate(INDUSTRIES):
-        names = sorted([m for m in MACHINES if m["cat"] in eqbycat[i["id"]]], key=lambda m: (m["cat"] != "sort", m["vid"] is None))[:6]
-        lis = "".join(f"<li>{E(m[lang])}</li>" for m in names)
+        if i.get("pts"):  # the entry brings its own points instead of the machine list
+            lis = "".join(f"<li>{E(x)}</li>" for x in L(i["pts"], lang))
+        else:
+            names = sorted([m for m in MACHINES if m["cat"] in eqbycat[i["id"]]], key=lambda m: (m["cat"] != "sort", m["vid"] is None))[:6]
+            lis = "".join(f"<li>{E(m[lang])}</li>" for m in names)
         vc = INDUSTRY_VIDEO.get(i["id"])
-        pic = vcard(vc, lang, VIDEOS[vc]["title"][lang], "vc wide") if vc else img(i["img"], lang, L(i["t"], lang))
+        alt = next((m[lang] for m in MACHINES if m["img"] and "eq/" + m["img"] == i["img"]), L(i["t"], lang))  # a catalogue photo keeps its machine name
+        pic = vcard(vc, lang, VIDEOS[vc]["title"][lang], "vc wide") if vc else img(i["img"], lang, alt)
+        desc = L(i["d"], lang) + (("" if lang == "zh" else " ") + L(i["d2"], lang) if i.get("d2") else "")
+        cta = (f'<a class="more" href="{sample_href(lang, single)}">{E(L(i["cta"], lang))}{ico("arrow")}</a>' if i.get("cta") else
+               f'<a class="more" href="{link("contact", lang, lang, single)}">{E(T["quote"][lang])}{ico("arrow")}</a>')
+        rel = f'<div class="wrap"><div class="cwall">{"".join(rel_card(r, lang) for r in i["rel"])}</div></div>' if i.get("rel") else ""
         out.append(f'<section class="ind{" rev" if n % 2 else ""}" id="{i["id"]}"><div class="wrap indin"><div class="indi rv">{pic}</div>'
-                   f'<div class="indt rv"><span class="kick">{n+1:02d}</span><h2>{E(L(i["t"], lang))}</h2><p>{E(L(i["d"], lang))}</p>{"<ul class=chk>" + lis + "</ul>" if lis else ""}'
-                   f'<a class="more" href="{link("contact", lang, lang, single)}">{E(T["quote"][lang])}{ico("arrow")}</a></div></div></section>')
+                   f'<div class="indt rv"><span class="kick">{n+1:02d}</span><h2>{E(L(i["t"], lang))}</h2><p>{E(desc)}</p>{"<ul class=chk>" + lis + "</ul>" if lis else ""}'
+                   f'{cta}</div></div>{rel}</section>')
     return "".join(out)
+
+
+def rel_card(ref, lang):
+    """One existing catalogue entry as a certificate-wall card: a clip code plays the clip, a photo opens enlarged."""
+    if ref in VIDEOS:
+        t = VIDEOS[ref]["title"][lang]
+        return f'<div class="cw rv">{vcard(ref, lang, t)}<span>{E(t)}</span></div>'
+    t = L(next((t for f, t in VISION if f == ref), None) or next(m for m in MACHINES if m["img"] == ref), lang)
+    return f'<a class="cw rv" href="#" data-img="{pre(lang)}assets/img/eq/{ref}" data-title="{E(t)}">{img("eq/" + ref, lang, t)}<span>{E(t)}</span></a>'
 
 
 CAT_ICO = {"dryer": "assembly", "care": "assembly", "pack": "laser", "auto": "assembly", "lock": "laser", "elec": "wrench", "test": "test", "sort": "vision"}
@@ -419,7 +450,8 @@ def body_contact(lang, single=False):
             f'<div class="rfqdone" hidden><h3>{E(R("done_h"))}</h3><p>{E(R("done_p").format(mail=EMAIL, phone=PHONE))}</p>'
             f'<textarea readonly rows="8" aria-label="{E(R("msg_k"))}"></textarea>'
             f'<div class="rfqact"><button type="button" class="btn sm rfqcopy" data-ok="{E(R("copied"))}">{E(R("copy"))}</button><button type="button" class="rfqback">{E(R("back"))}</button></div></div>')
-    cards = (f'<div class="cc">{ico("mail")}<h4>{E(cc[0])}</h4><a href="mailto:{EMAIL}">{EMAIL}</a></div>'
+    cards = (f'<div class="cc" id="sample-test">{ico("test")}<h4>{E(L(SAMPLE_TEST["h"], lang))}</h4><p>{E(L(SAMPLE_TEST["p"], lang))}</p></div>'
+             f'<div class="cc">{ico("mail")}<h4>{E(cc[0])}</h4><a href="mailto:{EMAIL}">{EMAIL}</a></div>'
              f'<div class="cc">{ico("phone")}<h4>{E(cc[1])}</h4><a href="tel:{PHONE_TEL}">{PHONE}</a></div>'
              f'<div class="cc">{ico("globe")}<h4>{E(cc[2])}</h4><p>{E(CONTACT["addr"][lang])}</p></div>')
     return (pagehead(L(CONTACT["h"], lang), L(CONTACT["sub"], lang), lang, "site/design-office.jpg") +
