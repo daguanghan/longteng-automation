@@ -340,11 +340,11 @@ def sort_spotlight(lang, single=False):
 
 
 def sample_band(lang):
-    """Design-stage sample: the clip runs 2:27, so vcard's 0:ss duration cannot be used."""
+    """Design-stage sample: the clip runs over a minute, so vcard's 0:ss duration cannot be used."""
     S, title = SAMPLE, L(SAMPLE["h"], lang)
     vid = (f'<button type="button" class="vc wide" data-src="{pre(lang)}assets/video/S01.mp4" data-title="{E(title)}" data-o="l" '
            f'aria-label="{E(VSTR["play"][lang])}: {E(title)}"><img src="{vposter("S01", lang)}" alt="{E(title)}" loading="lazy">'
-           f'<span class="play">{ico("play")}</span><span class="dur">2:27</span></button>')
+           f'<span class="play">{ico("play")}</span><span class="dur">{S["dur"]}</span></button>')
     lis = "".join(f"<li>{E(x)}</li>" for x in L(S["d"], lang))
     th = "".join(f'<a href="#" data-img="{pre(lang)}assets/img/{f}" data-title="{E(L(c, lang))}">{img(f, lang, L(c, lang))}<span>{E(L(c, lang))}</span></a>' for f, c in S["imgs"])
     return (f'<section class="sec tour xs"><div class="wrap"><div class="xsin"><div class="rv">{vid}<div class="xsth">{th}</div></div>'

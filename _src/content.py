@@ -651,7 +651,7 @@ ABOUT["p"]["vi"][2] = "Tổng giám đốc Tào Thành Bồi (Cao Chengpei) có 
 ABOUT["p"]["zh"][2] = "总经理曹城培在精密制造领域深耕三十年。公司是国家高新技术企业，通过 ISO 9001:2015 质量管理体系认证，拥有授权专利 9 件、集成电路布图设计专有权 1 项。"
 
 
-# ── design sample on the Projects page (2026-11-07). Design stage only: never word it as delivered work ──
+# ── design sample on the Projects page (2026-11-07; version B 2026-11-12). Design stage only: never word it as delivered work ──
 SAMPLE = {
     "k": {"en": "Design sample · Special equipment", "vi": "Mẫu thiết kế · Thiết bị chuyên dụng", "zh": "设计样例 · 特种装备"},
     "h": {"en": "Aseptic sampling workstation for bulk food bags", "vi": "Trạm lấy mẫu vô trùng cho bao thực phẩm lớn", "zh": "大包装固态食品无菌抽样工作站"},
@@ -660,23 +660,26 @@ SAMPLE = {
           "vi": "LT-ASW cho thấy cách chúng tôi xử lý một yêu cầu phi tiêu chuẩn: phân tích quy trình trước, sau đó bố trí mặt bằng, dựng mô hình máy 3D và mô phỏng toàn bộ trình tự lấy mẫu trước khi gia công.",
           "zh": "LT-ASW 展示我们做非标项目的方法：先分析工艺，再做布局和三维整机模型，把抽样全过程走通，然后才下料加工。"},
     "d": {"en": ["One machine covers bag loading, surface treatment, sampling, portioning and labelling. It samples only; test instruments are outside its scope.",
-                 "Three modules ship separately: transfer chamber, aseptic chamber and outlet hatch.",
+                 "Three modules ship separately: transfer chamber, aseptic chamber and outlet hatch. Overall size 3750 × 1300 × 2300 mm.",
+                 "Both faces of the bag are treated: spaced rollers move it back and forth under UV lamps and alcohol mist from above and below, reducing surface contamination before it enters the aseptic chamber.",
                  "Aseptic chamber design: H14 HEPA one-way downflow, ISO Class 5 working zone, +30 Pa positive pressure.",
-                 "A robot arm works from camera positioning and randomly generated sampling points, with one sterilised tube per bag.",
-                 "Samples go into one to six sterile boxes by target weight. Each box is sealed, labelled with a tamper-evident seal and read back.",
-                 "Environment data, tool batches and key images are recorded automatically and cannot be edited after saving."],
+                 "A robot arm works from camera positioning and randomly generated sampling points. A three-slot tube takes front, middle and rear samples in one insertion. Tubes are sterilised outside the machine, one per bag, and cleaned and disinfected again at an in-chamber station before use.",
+                 "The puncture is sealed automatically: a dispenser feeds a numbered film patch, and the robot picks it up by suction and presses it on. Samples go into one to six sterile boxes by target weight; each box is sealed, given a tamper-evident label and read back.",
+                 "Environment data, tool batches, patch numbers and key images are recorded automatically and cannot be edited after saving."],
           "vi": ["Một máy đảm nhận đưa bao vào, xử lý bề mặt, lấy mẫu, chia phần và dán nhãn. Máy chỉ lấy mẫu, không bao gồm thiết bị xét nghiệm.",
-                 "Ba mô-đun vận chuyển rời: buồng chuyển, buồng vô trùng và cửa xuất mẫu.",
+                 "Ba mô-đun vận chuyển rời: buồng chuyển, buồng vô trùng và cửa xuất mẫu. Kích thước tổng thể 3750 × 1300 × 2300 mm.",
+                 "Cả hai mặt bao đều được xử lý: con lăn cách quãng đưa bao tiến lùi dưới đèn UV và phun sương cồn từ phía trên lẫn phía dưới, giảm nhiễm bẩn bề mặt trước khi bao vào buồng vô trùng.",
                  "Thiết kế buồng vô trùng: lọc HEPA H14 thổi một chiều từ trên xuống, vùng làm việc ISO cấp 5, áp suất dương +30 Pa.",
-                 "Cánh tay robot làm việc theo định vị camera và các điểm lấy mẫu sinh ngẫu nhiên, mỗi bao dùng một ống lấy mẫu đã tiệt trùng.",
-                 "Mẫu được chia vào một đến sáu hộp vô trùng theo khối lượng mục tiêu. Mỗi hộp được đóng nắp, dán nhãn chống tháo và đọc lại mã.",
-                 "Dữ liệu môi trường, lô dụng cụ và hình ảnh chính được ghi tự động, không sửa được sau khi lưu."],
+                 "Cánh tay robot làm việc theo định vị camera và các điểm lấy mẫu sinh ngẫu nhiên. Ống lấy mẫu ba khoang lấy mẫu ở đầu, giữa và cuối bao chỉ trong một lần cắm. Mỗi bao dùng một ống đã tiệt trùng bên ngoài máy; trước khi dùng, ống được làm sạch và khử trùng lại tại trạm trong buồng.",
+                 "Lỗ chọc được dán kín tự động: máy cấp nhãn đưa ra miếng dán màng có số thứ tự, cánh tay robot hút lên và dán vào. Mẫu được chia vào một đến sáu hộp vô trùng theo khối lượng mục tiêu; mỗi hộp được đóng nắp, dán nhãn chống tháo và đọc lại mã.",
+                 "Dữ liệu môi trường, lô dụng cụ, số miếng dán và hình ảnh chính được ghi tự động, không sửa được sau khi lưu."],
           "zh": ["一台设备完成进袋、表面处理、抽取、分份和贴标。只做抽样，不含检测仪器。",
-                 "传递舱、无菌舱和舱口三段分体进场。",
+                 "传递舱、无菌舱和舱口三段分体进场，整机 3750 × 1300 × 2300 mm。",
+                 "袋子上下两面都做表面处理：间隔托辊带着袋子前后往复，上下各有紫外灯和酒精喷雾，减少袋子表面污染后再进无菌舱。",
                  "无菌舱设计：H14 高效过滤单向下送风，工作区 ISO 5 级，舱内正压 +30 Pa。",
-                 "机械臂按相机定位和随机生成的抽取点作业，抽样管一袋一管，舱外灭菌。",
-                 "样品按目标重量分到一至六个无菌盒，封盖后贴防拆封标签，再读码校验。",
-                 "环境数据、器具批次和关键影像自动写入记录，保存后不能修改。"]},
+                 "机械臂按相机定位和随机生成的抽取点作业。三槽抽样管一次插入，同时取前、中、后三段样品；抽样管一袋一管、舱外灭菌，用前在舱内清洁消毒工位再处理一次。",
+                 "穿刺口自动封孔：送标机送出带流水号的薄膜封孔贴，机械臂吸起贴上。样品按目标重量分到一至六个无菌盒，封盖后贴防拆封标签，再读码校验。",
+                 "环境数据、器具批次、封孔贴编号和关键影像自动写入记录，保存后不能修改。"]},
     "note": {"en": "Figures are design targets and change with the customer's specification. The video and 3D viewer are in Chinese.",
              "vi": "Các thông số là mục tiêu thiết kế và thay đổi theo yêu cầu của khách hàng. Video và trình xem 3D bằng tiếng Trung.",
              "zh": "数值为设计目标，按客户技术要求调整。"},
@@ -685,9 +688,10 @@ SAMPLE = {
              "vi": "Xoay, phóng to và tách rời máy ngay trên trình duyệt. Nên xem trên máy tính.",
              "zh": "在浏览器里旋转、缩放和分解整机，建议用电脑打开。"},
     "imgs": [("sample/modules.jpg", {"en": "Three modules", "vi": "Ba mô-đun", "zh": "三段分体"}),
-             ("sample/airflow.jpg", {"en": "One-way HEPA downflow", "vi": "Luồng khí HEPA một chiều", "zh": "单向下送风"}),
-             ("sample/tube.jpg", {"en": "Tube inserted at the bag corner", "vi": "Cắm ống từ góc bao", "zh": "袋角斜插抽样"}),
-             ("sample/hatch.jpg", {"en": "Sealed boxes at the hatch", "vi": "Hộp mẫu tại cửa xuất", "zh": "舱口贴标"})],
+             ("sample/surface.jpg", {"en": "Top and bottom surface treatment", "vi": "Xử lý bề mặt trên và dưới", "zh": "上下两面表面处理"}),
+             ("sample/tube.jpg", {"en": "Three-slot tube, one insertion", "vi": "Ống ba khoang, cắm một lần", "zh": "三槽管一次插入"}),
+             ("sample/seal.jpg", {"en": "Automatic puncture sealing", "vi": "Dán kín lỗ chọc tự động", "zh": "自动封孔"})],
+    "dur": "3:16",
 }
 
 

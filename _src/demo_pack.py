@@ -4,6 +4,7 @@
   python3 _src/demo_pack.py add <方案清单.json> [--publish]   # 在终端里输入口令（输两次）；直接回车会自动生成一个并显示在终端里
   python3 _src/demo_pack.py list                               # 列出已放上的方案（编号、标题、日期）
   python3 _src/demo_pack.py close <编号> [--publish]            # 关闭：删掉这份方案的加密文件
+  python3 _src/demo_pack.py replace <方案清单.json> [--publish] # 换内容：输入这份方案现有的口令，口令和编号都不变，客户不用换口令
 
 口令 → PBKDF2-SHA256（310000 次，盐 longteng-demo-v1）→ 48 字节：前 32 字节是 AES-256-GCM 钥匙，后 16 字节是文件夹编号。
 网站上只有加密文件：没有口令解不开，文件夹编号也推不出是哪份方案。口令不写进任何文件；登记表只记编号和标题，放在网站仓库之外。
@@ -85,11 +86,7 @@ def publish(msg):
     print('已发布到官网（约 1 分钟后生效）：https://longtengautomation.com/demo/')
 
 
-def add(spec_path, do_publish):
-    spec = json.load(open(spec_path, encoding='utf-8'))
-    code = ask_code(); key, did = derive(code); aes = AESGCM(key); dst = os.path.join(DEMO, did)
-    if os.path.exists(dst):
-        sys.exit('这个口令已经用过了，请换一个。')
+def pack(spec, aes, dst):
     items, total = [], 0
     for i, it in enumerate(spec['items']):
         o = {k: it[k] for k in ('type', 'title', 'desc') if k in it}
@@ -108,10 +105,45 @@ def add(spec_path, do_publish):
         items.append(o); print(f'  {it["title"]}：完成')
     man = {'title': spec['title'], 'subtitle': spec.get('subtitle', ''), 'wm': spec.get('for', ''), 'items': items}
     seal(aes, json.dumps(man, ensure_ascii=False).encode(), os.path.join(dst, 'm.bin'))
+    return total
+
+
+def add(spec_path, do_publish):
+    spec = json.load(open(spec_path, encoding='utf-8'))
+    code = ask_code(); key, did = derive(code); aes = AESGCM(key); dst = os.path.join(DEMO, did)
+    if os.path.exists(dst):
+        sys.exit('这个口令已经用过了，请换一个。')
+    total = pack(spec, aes, dst)
     r = reg_load(); r.append({'id': did, 'title': spec['title'], 'subtitle': spec.get('subtitle', ''), 'for': spec.get('for', ''), 'created': time.strftime('%Y-%m-%d %H:%M'), 'mb': round(total / 1e6, 1), 'status': 'open'}); reg_save(r)
     print(f'方案已加密放入官网目录：编号 {did[:8]}…，约 {total / 1e6:.0f} MB')
     if do_publish:
         publish(f'Demo: add one encrypted package')
+
+
+def replace(spec_path, do_publish):
+    """同一个口令换新内容：编号由口令推出，所以口令不变、编号不变，客户手里的口令照样能用。"""
+    spec = json.load(open(spec_path, encoding='utf-8')); r = reg_load()
+    for n in range(3):
+        if os.environ.get('LTDEMO_CODE'):          # 只给自动测试用，不打印
+            code = norm(os.environ['LTDEMO_CODE'])
+        else:
+            code = norm(getpass.getpass('请输入这份方案现在用的口令，然后按回车（屏幕上不显示字符，是正常的）：'))
+        key, did = derive(code)
+        hit = [x for x in r if x['id'] == did and x['status'] == 'open']
+        if hit and os.path.isdir(os.path.join(DEMO, did)):
+            break
+        if os.environ.get('LTDEMO_CODE') or n == 2:
+            sys.exit('这个口令对不上任何一份在用的方案，没有做任何改动。')
+        print('这个口令对不上任何一份在用的方案，请再输一次。\n')
+    print(f'对上了：{hit[0]["title"]} {hit[0]["subtitle"]}，开始换成新内容。')
+    dst = os.path.join(DEMO, did); tmp = dst + '.new'
+    shutil.rmtree(tmp, ignore_errors=True)
+    total = pack(spec, AESGCM(key), tmp)
+    shutil.rmtree(dst); os.rename(tmp, dst)
+    hit[0].update(title=spec['title'], subtitle=spec.get('subtitle', ''), mb=round(total / 1e6, 1), updated=time.strftime('%Y-%m-%d %H:%M')); reg_save(r)
+    print(f'已换成新内容：编号 {did[:8]}…，约 {total / 1e6:.0f} MB；口令不变')
+    if do_publish:
+        publish('Demo: update one encrypted package')
 
 
 def close(did, do_publish):
@@ -129,6 +161,8 @@ if __name__ == '__main__':
     a = sys.argv[1:]; pub = '--publish' in a; a = [x for x in a if x != '--publish']
     if a[:1] == ['add'] and len(a) == 2:
         add(a[1], pub)
+    elif a[:1] == ['replace'] and len(a) == 2:
+        replace(a[1], pub)
     elif a[:1] == ['close'] and len(a) == 2:
         close(a[1], pub)
     elif a[:1] == ['list']:
