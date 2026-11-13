@@ -370,23 +370,27 @@ def sort_spotlight(lang, single=False):
     return "".join(out)
 
 
-def sample_band(lang):
-    """Design-stage sample: the clip runs over a minute, so vcard's 0:ss duration cannot be used."""
-    S, title = SAMPLE, L(SAMPLE["h"], lang)
-    vid = (f'<button type="button" class="vc wide" data-src="{pre(lang)}assets/video/S01.mp4" data-title="{E(title)}" data-o="l" '
-           f'aria-label="{E(VSTR["play"][lang])}: {E(title)}"><img src="{vposter("S01", lang)}" alt="{E(title)}" loading="lazy">'
+def sample_band(lang, S=None):
+    """Projects-page sample band (LT-ASW, LT-PRV): video longer than a minute, so vcard's 0:ss duration cannot be used."""
+    S = S or SAMPLE
+    title, code = L(S["h"], lang), S["vid"]
+    vid = (f'<button type="button" class="vc wide" data-src="{pre(lang)}assets/video/{code}.mp4" data-title="{E(title)}" data-o="l" '
+           f'aria-label="{E(VSTR["play"][lang])}: {E(title)}"><img src="{vposter(code, lang)}" alt="{E(title)}" loading="lazy">'
            f'<span class="play">{ico("play")}</span><span class="dur">{S["dur"]}</span></button>')
     lis = "".join(f"<li>{E(x)}</li>" for x in L(S["d"], lang))
     th = "".join(f'<a href="#" data-img="{pre(lang)}assets/img/{f}" data-title="{E(L(c, lang))}">{img(f, lang, L(c, lang))}<span>{E(L(c, lang))}</span></a>' for f, c in S["imgs"])
-    return (f'<section class="sec tour xs"><div class="wrap"><div class="xsin"><div class="rv">{vid}<div class="xsth">{th}</div></div>'
+    demo = S["demo"] if "#" in S["demo"] else f'{S["demo"]}?lang={"vi" if lang == "vi" else lang}'
+    pdf = (f'<p class="xsnote"><a href="{pre(lang)}assets/doc/{S["pdf"]}" target="_blank" rel="noopener" style="color:#ffd9b3">{E(L(S["pdf_l"], lang))}</a></p>'
+           if S.get("pdf") else "")
+    return (f'<section class="sec tour xs" id="{S["id"]}"><div class="wrap"><div class="xsin"><div class="rv">{vid}<div class="xsth">{th}</div></div>'
             f'<div class="rv"><span class="kick light">{E(L(S["k"], lang))}</span><h2>{E(title)}</h2><span class="xstag">{E(L(S["tag"], lang))}</span>'
             f'<p>{E(L(S["p"], lang))}</p><ul class="chk">{lis}</ul>'
-            f'<div class="xscta"><a class="btn" href="{pre(lang)}assets/demo/lt-asw.html#3d" target="_blank" rel="noopener">{E(L(S["cta"], lang))}{ico("arrow")}</a><small>{E(L(S["cta2"], lang))}</small></div>'
-            f'<p class="xsnote">{E(L(S["note"], lang))}</p></div></div></div></section>')
+            f'<div class="xscta"><a class="btn" href="{pre(lang)}assets/demo/{demo}" target="_blank" rel="noopener">{E(L(S["cta"], lang))}{ico("arrow")}</a><small>{E(L(S["cta2"], lang))}</small></div>'
+            f'{pdf}<p class="xsnote">{E(L(S["note"], lang))}</p></div></div></div></section>')
 
 
 def body_projects(lang, single=False):
-    out = [pagehead(L(PAGE_TITLES["projects"], lang), STR["prj_sub"][lang], lang, "eq/ptc-line-a.jpg"), sample_band(lang)]
+    out = [pagehead(L(PAGE_TITLES["projects"], lang), STR["prj_sub"][lang], lang, "eq/ptc-line-a.jpg"), sample_band(lang, SAMPLE2), sample_band(lang)]
     for n, p in enumerate(PROJECTS):
         pics = (vcard(p["vid"], lang, L(p["t"], lang), "vc fill") if p.get("vid") else "") + "".join(img(i, lang, L(p["t"], lang)) for i in p["imgs"])
         npics = len(p["imgs"]) + (1 if p.get("vid") else 0)

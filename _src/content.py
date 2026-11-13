@@ -863,3 +863,48 @@ SAMPLE_TEST = {
 }
 RFQ["wants"].insert(4, SAMPLE_CTA)  # before "Join the team"
 
+
+
+# ── LT-PRV punch-rivet-inspect machine on the Projects page (2026-11-13). Concept-stage 3D model; figures only from the original concept (3 s, 0 operators, 1250×900×2000 mm) ──
+SAMPLE2 = {
+    "id": "lt-prv", "vid": "S02", "demo": "lt-prv.html", "pdf": "Longteng_LT-PRV_VI-EN-ZH.pdf", "dur": "1:39",
+    "k": {"en": "Standard machine · Punching & riveting", "vi": "Máy tiêu chuẩn · Đột lỗ & tán đinh", "zh": "标准机型 · 冲孔与铆接"},
+    "h": {"en": "LT-PRV: punching, cut-off, riveting and camera inspection in one machine",
+          "vi": "LT-PRV: đột lỗ, cắt đứt, tán đinh và kiểm tra bằng camera trên một máy",
+          "zh": "LT-PRV 冲压一体机：冲孔、冲切、铆接、视觉检测"},
+    "tag": {"en": "Concept-stage 3D model, configured to your part", "vi": "Mô hình 3D giai đoạn phương án, cấu hình theo chi tiết của Quý khách", "zh": "方案阶段三维模型，按零件配置"},
+    "p": {"en": "LT-PRV turns metal strip on a reel into riveted, camera-checked parts on one machine. It is built from standard modules, so the same platform is configured to each customer's part.",
+          "vi": "LT-PRV biến cuộn dải kim loại thành chi tiết đã tán đinh và kiểm tra bằng camera, trên một máy. Máy được ghép từ các mô-đun tiêu chuẩn nên cùng một nền máy có thể cấu hình theo chi tiết của từng khách hàng.",
+          "zh": "LT-PRV 把金属料卷直接做成铆好、经相机检测的零件，一台机器完成。整机由标准模块组成，同一平台按每位客户的零件配置。"},
+    "d": {"en": ["Six modules on one table: servo strip feed, punching, rivet feeding, riveting, camera inspection, cut-off and sorting.",
+                 "Cycle time 3 s per part, with no dedicated operator: staff only change the reel, top up rivets and empty the bins.",
+                 "A camera checks every part; good and rejected parts drop into separate bins, and the result and image can be kept for each part.",
+                 "Punch units can be added or removed and the riveting module kept or left out; each product has its own guide rails and a quick-change plate, and a servo sets the cut position.",
+                 "Machine 1250 × 900 × 2000 mm, 1800 mm long with the reel stand. Aluminium strip; other materials confirmed from your drawing and samples.",
+                 "For lighting rails and brackets, switch and socket metal parts, terminal strips and busbars, appliance, motor and automotive brackets."],
+          "vi": ["Sáu mô-đun trên một bàn máy: cấp dải servo, đột lỗ, cấp đinh tán, tán đinh, kiểm tra bằng camera, cắt đứt và phân loại.",
+                 "Thời gian chu kỳ 3 giây mỗi chi tiết, không bố trí công nhân đứng máy: chỉ cần thay cuộn, bổ sung đinh tán và lấy khay.",
+                 "Camera kiểm tra từng chi tiết; hàng đạt và không đạt rơi vào hai khay riêng; kết quả và hình ảnh có thể lưu theo từng chi tiết.",
+                 "Có thể thêm hoặc bớt cụm đột, giữ hoặc bỏ cụm tán đinh; mỗi mã sản phẩm có bộ ray dẫn riêng và tấm gá thay nhanh; vị trí cắt do servo tự chỉnh.",
+                 "Kích thước máy 1250 × 900 × 2000 mm, dài 1800 mm kể cả giá cuộn. Dải nhôm; vật liệu khác xác nhận theo bản vẽ và mẫu.",
+                 "Phù hợp với thanh gá và giá đỡ đèn, chi tiết kim loại của công tắc, ổ cắm, thanh đấu dây, thanh cái, giá đỡ điện gia dụng, động cơ và ô tô."],
+          "zh": ["六个模块装在同一张台面上：伺服送料、冲孔、铆钉送料、铆接、相机检测、冲切与分拣。",
+                 "节拍 3 秒／件，不设专职操作工：只需换料卷、加铆钉、取料盒。",
+                 "相机逐件检测，合格与不合格分盒，每件的结果和图片可以保存。",
+                 "冲压单元可增可减，铆接模块可留可去；每个型号配专用导轨和快换产品板，冲切位置由伺服自动定位。",
+                 "机身 1250 × 900 × 2000 mm，含料卷架长 1800 mm。铝条；其他材料按图纸与样件确认。",
+                 "适用于灯具安装条与支架、开关插座金属件、接线排、汇流排，以及家电、电机、汽车支架。"]},
+    "note": {"en": "Images are concept-stage 3D models; the final build follows the approved drawings. The video has a Vietnamese voice-over with Vietnamese, English and Chinese subtitles; the 3D viewer and the brochure are in Vietnamese, English and Chinese.",
+             "vi": "Hình ảnh là mô hình 3D giai đoạn phương án; cấu hình cuối cùng theo bản vẽ đã duyệt. Video thuyết minh tiếng Việt, phụ đề tiếng Việt, tiếng Anh và tiếng Trung; trình xem 3D và tài liệu giới thiệu có tiếng Việt, tiếng Anh và tiếng Trung.",
+             "zh": "图片为方案阶段三维示意，以最终确认图纸为准。视频为越南语配音，带越、英、中三语字幕；三维模型和产品介绍均为越、英、中三语。"},
+    "cta": {"en": "Open the 3D model", "vi": "Mở mô hình 3D", "zh": "打开三维模型"},
+    "cta2": {"en": "Rotate, zoom and tap each module in your browser. Works on a tablet or computer.",
+             "vi": "Xoay, phóng to và chạm vào từng mô-đun ngay trên trình duyệt. Xem được trên máy tính bảng hoặc máy tính.",
+             "zh": "在浏览器里旋转、缩放，点选各个模块，平板和电脑都能打开。"},
+    "pdf_l": {"en": "Download the brochure (PDF, Vietnamese · English · Chinese)", "vi": "Tải tài liệu giới thiệu (PDF, tiếng Việt · tiếng Anh · tiếng Trung)", "zh": "下载产品介绍（PDF，越英中三语）"},
+    "imgs": [("sample/prv-punch.jpg", {"en": "Punching", "vi": "Đột lỗ", "zh": "冲孔"}),
+             ("sample/prv-rivet.jpg", {"en": "Riveting", "vi": "Tán đinh", "zh": "铆接"}),
+             ("sample/prv-vision.jpg", {"en": "Camera inspection", "vi": "Kiểm tra bằng camera", "zh": "相机检测"}),
+             ("sample/prv-cut.jpg", {"en": "Cut-off and sorting", "vi": "Cắt đứt và phân loại", "zh": "冲切与分拣"})],
+}
+SAMPLE.update({"id": "lt-asw", "vid": "S01", "demo": "lt-asw.html#3d"})
